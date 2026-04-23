@@ -1,0 +1,77 @@
+A. Clases Principales (Conceptos)
+    Usuario / Cliente: La persona o grupo que solicita el viaje.
+    Viaje (Recomendación): El plan final propuesto.
+    Ciudad / Destino: Los lugares a visitar.
+    Punto_de_Interes (POI): Museos, monumentos, parques dentro de una ciudad.
+    Alojamiento: Hoteles, hostales, apartamentos.
+    Transporte: Avión, tren, autobús, coche de alquiler.
+    Tematica_Viaje: Romántico, cultural, descanso, aventura (esto puede ser una clase o un atributo).
+
+B. Propiedades y Atributos (Características, Preferencias y Restricciones)
+
+    Usuario:
+        edad (Entero)
+        nivel_cultural (Bajo, Medio, Alto)
+        acompañantes (Solo, Pareja, Familia_con_niños, Grupo_amigos)
+        motivo_viaje (Boda, Fin_curso, Vacaciones_estandar)
+        flexibilidad_presupuesto (Booleano: ¿Permite sacrificar días/calidad por precio?)
+        Extra idea: movilidad_reducida (Booleano: filtraría ciertas ciudades o alojamientos).
+
+    Restricciones de Búsqueda:
+        dias_min / dias_max
+        ciudades_min / ciudades_max
+        presupuesto_max (Float)
+        transporte_odiado (Ej: Miedo a volar).
+
+    Ciudad / Destino:
+        nivel_de_vida (Multiplicador de precio para alojamientos/comida).
+        cluster_tematico (Mediterránea, Capital_Europea, Naturaleza).
+        clima_habitual (Frio, Templado, Tropical).
+
+C. Relaciones (Object Properties)
+    Viaje incluye Ciudad
+    Ciudad tiene_alojamiento Alojamiento
+    Ciudad tiene_visita Punto_de_Interes
+    Usuario recibe Viaje
+
+
+###################################################
+
+1. Problema Concreto (Los Datos Brutos)
+    Es la información exacta y literal que se recoge del usuario mediante las preguntas o el formulario inicial. Son las instancias directas.
+        Ejemplo de entrada: 
+            - Viajan 2 adultos.
+            - Presupuesto total de 1800 euros.
+            - Motivo: Viaje de novios.
+            - No les gusta volar.
+            - Disponibilidad: 8 días.
+
+2. Abstracción (Del Problema Concreto al Problema Abstracto)
+    Aquí el sistema usa reglas de deducción para transformar esos datos numéricos y literales en perfiles cualitativos o conceptos genéricos 
+    (clases abstractas en vuestra ontología). Es la fase de entender "qué tipo de cliente" tenemos.
+        Reglas de abstracción:
+            - Si motivo es "Viaje de novios" → Entonces Objetivo = Romántico.
+            - Si presupuesto es 1800 para 2 personas en 8 días (112€/persona/día) → Entonces Nivel_Presupuesto = Medio-Alto.
+            - Si no les gusta volar → Entonces Restriccion_Transporte = Terrestre.
+        
+        El Problema Abstracto resultante: Tenemos un usuario de perfil Romántico, con presupuesto Medio-Alto, que requiere una ruta Terrestre de duración Media.
+
+3. Asociación Heurística (De Problema Abstracto a Solución Abstracta)
+    Aquí no decidís todavía si van a París o a Roma; decidís el tipo de viaje que encaja con el perfil abstracto del paso anterior. 
+    Relacionáis la ontología del usuario con la ontología del catálogo de viajes.
+        Reglas heurísticas (El "ojo clínico" del experto):
+            - Si Objetivo = Romántico Y Restriccion_Transporte = Terrestre → Entonces Tipo_Ruta = "Capitales Europeas Conectadas por Tren" o Tipo_Ruta = "Ciudades Mediterráneas Cercanas".
+            - Si Nivel_Presupuesto = Medio-Alto → Entonces Calidad_Alojamiento = 3 o 4 Estrellas.
+        
+        La Solución Abstracta resultante: La recomendación debe ser una ruta de tipo "Capitales Europeas", viajando en tren, durmiendo en hoteles de 4 estrellas, priorizando visitas de tipo cultural o de ocio tranquilo.
+
+4. Refinamiento (De Solución Abstracta a Solución Concreta)
+    Finalmente, el sistema busca en la base de hechos (instancias reales) para rellenar ese "molde" abstracto que habéis creado, 
+    comprobando las restricciones de tiempo y presupuesto final para asegurar que cuadra.
+        Reglas de instanciación/búsqueda:
+            - El sistema busca instancias dentro de la categoría "Capitales Europeas" conectadas por tren: Selecciona París y Londres.
+            - Asigna los días concretos según la importancia de la ciudad: París (4 días), Londres (4 días).
+            - Selecciona instancias de hoteles concretos: Hotel Romance París 4*, Hotel London Eye 4*.
+            - Suma los precios exactos para verificar que no pasa de 1800€.
+
+        La Solución Concreta: (El output que os pide el enunciado). "Precio total: 1750 euros. Ruta: París y Londres en Tren. Alojamiento..."
