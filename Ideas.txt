@@ -1,3 +1,6 @@
+Deberéis pensar en otras características/restricciones/preferencias que puedan ser útiles para elaborar
+los viajes, no os restrinjáis únicamente a las que menciona este enunciado
+
 A. Clases Principales (Conceptos)
     Usuario / Cliente: La persona o grupo que solicita el viaje.
     Viaje (Recomendación): El plan final propuesto.
@@ -14,8 +17,13 @@ B. Propiedades y Atributos (Características, Preferencias y Restricciones)
         nivel_cultural (Bajo, Medio, Alto)
         acompañantes (Solo, Pareja, Familia_con_niños, Grupo_amigos)
         motivo_viaje (Boda, Fin_curso, Vacaciones_estandar)
-        flexibilidad_presupuesto (Booleano: ¿Permite sacrificar días/calidad por precio?)
-        Extra idea: movilidad_reducida (Booleano: filtraría ciertas ciudades o alojamientos).
+        
+
+        Preferencias extras:
+            movilidad_reducida (Booleano: filtraría ciertas ciudades o alojamientos).
+            flexibilidad_presupuesto (Int: Un multiplicador de presupuesto para buscar mejores resultados?)
+            explorador (Int: Indica cuanto quiere visitar pocos conocidos)
+
 
     Restricciones de Búsqueda:
         dias_min / dias_max
