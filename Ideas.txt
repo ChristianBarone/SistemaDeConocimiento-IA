@@ -33,7 +33,8 @@ B. Propiedades y Atributos (Características, Preferencias y Restricciones)
 
     Ciudad / Destino:
         nivel_de_vida (Multiplicador de precio para alojamientos/comida).
-        cluster_tematico (Mediterránea, Capital_Europea, Naturaleza).
+        cluster_tematico (Mediterránea, Capital_Europea, Naturaleza)
+        (América_Norte, Báltico_Escandinavia, Caribe_Continental, Centroeuropeas, Mediterráneas,             Metrópolis_Europeas, Oriente_Asiático, Sudamérica)
         clima_habitual (Frio, Templado, Tropical).
 
 C. Relaciones (Object Properties)
