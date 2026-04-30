@@ -43,6 +43,8 @@ C. Relaciones (Object Properties)
     Ciudad tiene_visita Punto_de_Interes
     Usuario recibe Viaje
 
+    Relacions transport??
+
 
 ###################################################
 
