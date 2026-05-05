@@ -1,0 +1,591 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="urn:absolute:www.sbc.upc.edu/viatges"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="urn:absolute:www.sbc.upc.edu/viatges">
+    <Prefix name="" IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Viaje"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#conectaCon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#incluyeCiudad"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#recibeViaje"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tieneAlojamiento"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tienePOI"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#categoria"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#clima_habitual"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#cluster_tematico"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#duracion_horas"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#medio"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivel_de_vida"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombre"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#precio"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#precio_noche"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Barcelona"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BuenosAires"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HotelLumiereParis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Paris"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tokio"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+        <NamedIndividual IRI="#Barcelona"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+        <NamedIndividual IRI="#BuenosAires"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+        <NamedIndividual IRI="#HotelLumiereParis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+        <NamedIndividual IRI="#Paris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+        <NamedIndividual IRI="#Tokio"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneAlojamiento"/>
+        <NamedIndividual IRI="#Paris"/>
+        <NamedIndividual IRI="#HotelLumiereParis"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#clima_habitual"/>
+        <NamedIndividual IRI="#Barcelona"/>
+        <Literal>Templado</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#cluster_tematico"/>
+        <NamedIndividual IRI="#Barcelona"/>
+        <Literal>Mediterranea</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <NamedIndividual IRI="#Barcelona"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Barcelona"/>
+        <Literal>Barcelona</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#clima_habitual"/>
+        <NamedIndividual IRI="#BuenosAires"/>
+        <Literal>Templado</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#cluster_tematico"/>
+        <NamedIndividual IRI="#BuenosAires"/>
+        <Literal>Sudamerica</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <NamedIndividual IRI="#BuenosAires"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">0.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#BuenosAires"/>
+        <Literal>BuenosAires</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#clima_habitual"/>
+        <NamedIndividual IRI="#Paris"/>
+        <Literal>Templado</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#cluster_tematico"/>
+        <NamedIndividual IRI="#Paris"/>
+        <Literal>Metropolis</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <NamedIndividual IRI="#Paris"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Paris"/>
+        <Literal>Paris</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#clima_habitual"/>
+        <NamedIndividual IRI="#Tokio"/>
+        <Literal>Templado</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#cluster_tematico"/>
+        <NamedIndividual IRI="#Tokio"/>
+        <Literal>Asiatica</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <NamedIndividual IRI="#Tokio"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Tokio"/>
+        <Literal>Tokio</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#conectaCon"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#incluyeCiudad"/>
+        <Class IRI="#Viaje"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#recibeViaje"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tieneAlojamiento"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tienePOI"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#conectaCon"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#incluyeCiudad"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#recibeViaje"/>
+        <Class IRI="#Viaje"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tieneAlojamiento"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tienePOI"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#categoria"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#clima_habitual"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#cluster_tematico"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#duracion_horas"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#medio"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#precio"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#precio_noche"/>
+        <Class IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#categoria"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#clima_habitual"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#cluster_tematico"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#duracion_horas"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#medio"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivel_de_vida"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombre"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#precio"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#precio_noche"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento</IRI>
+        <Literal>Descriu el tipus d&apos;allotjament utilitzat al viatge.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad</IRI>
+        <Literal>Representa les ciutats que es poden visitar a un viatge.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres</IRI>
+        <Literal>Descriu els diferents punts d&apos;interes que es poden visitar dins del viatge.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje</IRI>
+        <Literal>Constitueix la tematica del viatge, especificada pel client</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte</IRI>
+        <Literal>Descriu el tipus de transport utilitzat per realitzar un desplaçament dins del viatge.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario</IRI>
+        <Literal>Representa l&apos;usuari client que es beneficiara de la planificació del viatge.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Viaje</IRI>
+        <Literal>Representa l&apos;objecte del viatge final proposat.</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

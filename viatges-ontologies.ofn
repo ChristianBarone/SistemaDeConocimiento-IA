@@ -1,0 +1,342 @@
+Prefix(:=<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<urn:absolute:www.sbc.upc.edu/viatges>
+
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren>))
+Declaration(Class(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>))
+Declaration(Class(<urn:absolute:www.sbc.upc.edu/viatges#Viaje>))
+Declaration(ObjectProperty(<urn:absolute:www.sbc.upc.edu/viatges#conectaCon>))
+Declaration(ObjectProperty(<urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad>))
+Declaration(ObjectProperty(<urn:absolute:www.sbc.upc.edu/viatges#recibeViaje>))
+Declaration(ObjectProperty(<urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento>))
+Declaration(ObjectProperty(<urn:absolute:www.sbc.upc.edu/viatges#tienePOI>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max>))
+Declaration(DataProperty(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#categoria>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#duracion_horas>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#medio>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#nombre>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#precio>))
+Declaration(DataProperty(<urn:absolute:www.sbc.upc.edu/viatges#precio_noche>))
+Declaration(NamedIndividual(<urn:absolute:www.sbc.upc.edu/viatges#Barcelona>))
+Declaration(NamedIndividual(<urn:absolute:www.sbc.upc.edu/viatges#BuenosAires>))
+Declaration(NamedIndividual(<urn:absolute:www.sbc.upc.edu/viatges#HotelLumiereParis>))
+Declaration(NamedIndividual(<urn:absolute:www.sbc.upc.edu/viatges#Paris>))
+Declaration(NamedIndividual(<urn:absolute:www.sbc.upc.edu/viatges#Tokio>))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <urn:absolute:www.sbc.upc.edu/viatges#conectaCon> (<urn:absolute:www.sbc.upc.edu/viatges#conectaCon>)
+
+ObjectPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#conectaCon> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+ObjectPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#conectaCon> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+
+# Object Property: <urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad> (<urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad>)
+
+ObjectPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad> <urn:absolute:www.sbc.upc.edu/viatges#Viaje>)
+ObjectPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+
+# Object Property: <urn:absolute:www.sbc.upc.edu/viatges#recibeViaje> (<urn:absolute:www.sbc.upc.edu/viatges#recibeViaje>)
+
+ObjectPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#recibeViaje> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+ObjectPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#recibeViaje> <urn:absolute:www.sbc.upc.edu/viatges#Viaje>)
+
+# Object Property: <urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento> (<urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento>)
+
+ObjectPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+ObjectPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+
+# Object Property: <urn:absolute:www.sbc.upc.edu/viatges#tienePOI> (<urn:absolute:www.sbc.upc.edu/viatges#tienePOI>)
+
+ObjectPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#tienePOI> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+ObjectPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#tienePOI> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants> xsd:string)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador> xsd:integer)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje> xsd:string)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida> xsd:boolean)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural> xsd:string)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max> xsd:float)
+
+# Data Property: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado>)
+
+DataPropertyDomain(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+DataPropertyRange(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#categoria> (<urn:absolute:www.sbc.upc.edu/viatges#categoria>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#categoria> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#categoria> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> (<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> (<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#duracion_horas> (<urn:absolute:www.sbc.upc.edu/viatges#duracion_horas>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#duracion_horas> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#duracion_horas> xsd:float)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#medio> (<urn:absolute:www.sbc.upc.edu/viatges#medio>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#medio> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#medio> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> (<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> xsd:float)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#nombre> (<urn:absolute:www.sbc.upc.edu/viatges#nombre>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#nombre> xsd:string)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#precio> (<urn:absolute:www.sbc.upc.edu/viatges#precio>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#precio> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#precio> xsd:float)
+
+# Data Property: <urn:absolute:www.sbc.upc.edu/viatges#precio_noche> (<urn:absolute:www.sbc.upc.edu/viatges#precio_noche>)
+
+DataPropertyDomain(<urn:absolute:www.sbc.upc.edu/viatges#precio_noche> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+DataPropertyRange(<urn:absolute:www.sbc.upc.edu/viatges#precio_noche> xsd:float)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> "Descriu el tipus d'allotjament utilitzat al viatge.")
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> "Representa les ciutats que es poden visitar a un viatge.")
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> "Descriu els diferents punts d'interes que es poden visitar dins del viatge.")
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> "Constitueix la tematica del viatge, especificada pel client")
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> "Descriu el tipus de transport utilitzat per realitzar un desplaçament dins del viatge.")
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren>)
+
+SubClassOf(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren> <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte>)
+
+# Class: <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> (<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario>)
+
+AnnotationAssertion(rdfs:comment <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> "Representa l'usuari client que es beneficiara de la planificació del viatge.")
+
+# Class: <urn:absolute:www.sbc.upc.edu/viatges#Viaje> (<urn:absolute:www.sbc.upc.edu/viatges#Viaje>)
+
+AnnotationAssertion(rdfs:comment <urn:absolute:www.sbc.upc.edu/viatges#Viaje> "Representa l'objecte del viatge final proposat.")
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <urn:absolute:www.sbc.upc.edu/viatges#Barcelona> (<urn:absolute:www.sbc.upc.edu/viatges#Barcelona>)
+
+ClassAssertion(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> <urn:absolute:www.sbc.upc.edu/viatges#Barcelona>)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> <urn:absolute:www.sbc.upc.edu/viatges#Barcelona> "Templado")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> <urn:absolute:www.sbc.upc.edu/viatges#Barcelona> "Mediterranea")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> <urn:absolute:www.sbc.upc.edu/viatges#Barcelona> "1.1"^^xsd:decimal)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <urn:absolute:www.sbc.upc.edu/viatges#Barcelona> "Barcelona")
+
+# Individual: <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires> (<urn:absolute:www.sbc.upc.edu/viatges#BuenosAires>)
+
+ClassAssertion(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires>)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires> "Templado")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires> "Sudamerica")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires> "0.7"^^xsd:decimal)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <urn:absolute:www.sbc.upc.edu/viatges#BuenosAires> "BuenosAires")
+
+# Individual: <urn:absolute:www.sbc.upc.edu/viatges#HotelLumiereParis> (<urn:absolute:www.sbc.upc.edu/viatges#HotelLumiereParis>)
+
+ClassAssertion(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> <urn:absolute:www.sbc.upc.edu/viatges#HotelLumiereParis>)
+
+# Individual: <urn:absolute:www.sbc.upc.edu/viatges#Paris> (<urn:absolute:www.sbc.upc.edu/viatges#Paris>)
+
+ClassAssertion(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> <urn:absolute:www.sbc.upc.edu/viatges#Paris>)
+ObjectPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento> <urn:absolute:www.sbc.upc.edu/viatges#Paris> <urn:absolute:www.sbc.upc.edu/viatges#HotelLumiereParis>)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> <urn:absolute:www.sbc.upc.edu/viatges#Paris> "Templado")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> <urn:absolute:www.sbc.upc.edu/viatges#Paris> "Metropolis")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> <urn:absolute:www.sbc.upc.edu/viatges#Paris> "1.4"^^xsd:decimal)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <urn:absolute:www.sbc.upc.edu/viatges#Paris> "Paris")
+
+# Individual: <urn:absolute:www.sbc.upc.edu/viatges#Tokio> (<urn:absolute:www.sbc.upc.edu/viatges#Tokio>)
+
+ClassAssertion(<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> <urn:absolute:www.sbc.upc.edu/viatges#Tokio>)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#clima_habitual> <urn:absolute:www.sbc.upc.edu/viatges#Tokio> "Templado")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico> <urn:absolute:www.sbc.upc.edu/viatges#Tokio> "Asiatica")
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida> <urn:absolute:www.sbc.upc.edu/viatges#Tokio> "1.3"^^xsd:decimal)
+DataPropertyAssertion(<urn:absolute:www.sbc.upc.edu/viatges#nombre> <urn:absolute:www.sbc.upc.edu/viatges#Tokio> "Tokio")
+
+
+)
