@@ -1,0 +1,1769 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#"
+     xml:base="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8VznF84DZvEVrpYevDZF7U -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R8VznF84DZvEVrpYevDZF7U">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:label>tiene_visita</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R95ikcHU4uXe9TG6Qw3S8Ak -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R95ikcHU4uXe9TG6Qw3S8Ak">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:label>recibe_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDIHUnjONDFD856BWcRx3VZ -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RDIHUnjONDFD856BWcRx3VZ">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:label>tiene_alojamiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RjpJoAkyuJEDHz7eH0PU8C -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RjpJoAkyuJEDHz7eH0PU8C">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:label>incluye_ciudad</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#a -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#a">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Transporte"/>
+        <rdfs:label>tiene_restricciones_transporte</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#admite_restricciones_usuario -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#admite_restricciones_usuario">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte"/>
+        <rdfs:label>admite_restricciones_de_usuario</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#es_usado_en -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#es_usado_en">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:label>es_usado_en_trayecto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#se_aplica_a -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#se_aplica_a">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>se_aplica_a_usuario</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_acompañantes -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_acompañantes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>tiene_acompañantes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_asociados -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_asociados">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:label>tiene_asociados_ciudad</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_categoria_punto_de_interes -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_categoria_punto_de_interes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+        <rdfs:label>tiene_categoria_punto_de_interes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudad_alojamiento -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudad_alojamiento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento"/>
+        <rdfs:label>tiene_ciudad_alojamiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudad_punto_de_interes -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudad_punto_de_interes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes"/>
+        <rdfs:label>tiene_ciudad_punto_de_interes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudades_visitadas_viaje -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_ciudades_visitadas_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje"/>
+        <rdfs:label>tiene_ciudades_visitadas_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_destino_trayecto -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_destino_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto"/>
+        <rdfs:label>tiene_destino_trayecto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_motivo_de_viaje -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_motivo_de_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+        <rdfs:label>tiene_motivo_de_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nivel_cultural -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nivel_cultural">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario"/>
+        <rdfs:label>tiene_nivel_cultural</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_alojamiento -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_alojamiento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <rdfs:label>tiene_nombre_alojamiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_ciudad -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_ciudad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad"/>
+        <rdfs:label>tiene_nombre_ciudad</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_punto_de_interes -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_punto_de_interes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>tiene_nombre_punto_de_interes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_transporte -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_transporte">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdfs:label>tiene_nombre_transporte</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_usuario -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_nombre_usuario">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario"/>
+        <rdfs:label>tiene_nombre_usuario</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_origen_trayecto -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_origen_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto"/>
+        <rdfs:label>tiene_origen_trayecto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_perfil_usuario_ideal -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_perfil_usuario_ideal">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>tiene_perfil_usuario_ideal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_pref_cumplidas_viaje -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_pref_cumplidas_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje"/>
+        <rdfs:label>tiene_pref_cumplidas_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_region_geografica -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_region_geografica">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>tiene_region_geografica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tematicas -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tematicas">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>tiene_tematicas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tipo_alojamiento -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tipo_alojamiento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>tiene_tipo_alojamiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tramo -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_tramo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:label>tiene_trayecto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_transporte_trayecto -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_transporte_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>tiene_transporte_trayecto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_trayectos_viaje -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_trayectos_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayectos_Viaje"/>
+        <rdfs:label>tiene_trayectos_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_usuario_viaje -->
+
+    <owl:ObjectProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiene_usuario_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje"/>
+        <rdfs:label>tiene_usuario_viaje</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9iSsRrfXFtCXA8SQPhcrK8 -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R9iSsRrfXFtCXA8SQPhcrK8">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>presupuesto_max_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBCW25iwQ8fr5LVuZ87tbAa -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBCW25iwQ8fr5LVuZ87tbAa">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>dias_disponibles_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBoLw5h4ApAsujCujY9xMz -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBoLw5h4ApAsujCujY9xMz">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>edad_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDEoZr09wiPepZrOUMecCCO -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RDEoZr09wiPepZrOUMecCCO">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>estrellas_alojamiento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RdFYhYLzx2Kq3vtakeTKD5 -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RdFYhYLzx2Kq3vtakeTKD5">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>nombre_ciudad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topDataProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </rdf:Description>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#b -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#b">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>num_ciudades_min_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#c -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#c">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>duracion_max_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coordX_ciudad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coordX_ciudad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>coordX_ciudad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coordY_ciudad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coordY_ciudad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>coordY_ciudad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_medio_por_km -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_medio_por_km">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>coste_medio_por_km_transporte</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_total_viaje -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_total_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>coste_total_viaje</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_trayecto -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#coste_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>coste_trayecto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#d -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#d">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>num_ciudades_max_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#disposicion_sacrif_calidad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#disposicion_sacrif_calidad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label>disposicion_sacrif_calidad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#distancia_km_trayecto -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#distancia_km_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>distancia_km_trayecto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_min_usuario -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_min_usuario">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>duracion_min_usuario</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_total_viaje -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_total_viaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>duracion_total_viaje</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_viaje_trayecto -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_viaje_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>duracion_viaje_trayecto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#es_apto_familias -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#es_apto_familias">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label>es_apto_familias_alojamiento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#importancia_poi -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#importancia_poi">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>importancia_poi</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#nivel_comodidad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#nivel_comodidad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>nivel_comodidad_transporte</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#nivel_vida_ciudad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#nivel_vida_ciudad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>nivel_vida_ciudad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#popularidad_ciudad -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#popularidad_ciudad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>popularidad_ciudad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_base_noche_alojamiento -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_base_noche_alojamiento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>precio_base_noche_alojamiento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_entrada_poi -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_entrada_poi">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>precio_entrada_poi</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_trayecto -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#precio_trayecto">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>precio_trayecto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#pref_calidad_alojamiento -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#pref_calidad_alojamiento">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label>pref_calidad_alojamiento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#pref_ciudades_conocidas -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#pref_ciudades_conocidas">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label>pref_ciudades_conocidas</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiempo_estimado_visita_poi -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#tiempo_estimado_visita_poi">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>tiempo_estimado_visita_poi(h)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#velocidad_media -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#velocidad_media">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>velocidad_media_transporte</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_trayecto(h) -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#duracion_trayecto(h)">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:label>duracion_trayecto(h)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Alojamiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Ciudad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Punto_de_Interes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>Acompañantes_Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:label>Categoria_Punto_de_Interes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:label>Ciudad_Alojamiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:label>Ciudad_Punto_de_Interes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:label>Ciudades_Visitadas_Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:label>Destino_Trayecto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>Motivo_Viaje_Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>Nivel_Cultural_Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:label>Nombre_Alojamiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:label>Nombre_Ciudad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+        <rdfs:label>Nombre_Punto_de_Interes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge"/>
+        <rdfs:label>Nombre_Tematica_Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <owl:disjointWith rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte"/>
+        <rdfs:label>Nombre_Transporte</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>Nombre_Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:label>Origen_Trayecto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:label>Pref_Cumplidas_Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <owl:disjointWith rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>Region_Geog_Ciudad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+        <rdfs:label>Restricciones_Admitidas_Transporte</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Transporte -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Transporte">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+        <rdfs:label>Restricciones_Transporte_Usuario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Tematica Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+        <rdfs:label>Tematicas_Ciudad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+        <rdfs:label>Tipo_Alojamiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Transporte</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto">
+        <rdfs:subClassOf rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        <rdfs:label>Transporte_Trayecto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Trayecto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayectos_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayectos_Viaje">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:label>Trayectos_Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje -->
+
+    <owl:Class rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+        <rdfs:label>Usuario_Viaje</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R71OvmC7z9SQYZBO9Ot2HJ -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R71OvmC7z9SQYZBO9Ot2HJ">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>Bernabeu</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7wW3gjSO52Nuh5GAIpjGgw -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7wW3gjSO52Nuh5GAIpjGgw">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/R71OvmC7z9SQYZBO9Ot2HJ"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/R9mrSIjYLZ4pzsre3dhn3wo"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/RBMqOa3MD7A7oWPwCCxQa7X"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/RDc891wB0DWi9VwYj5zLjSO"/>
+        <webprotege:RdFYhYLzx2Kq3vtakeTKD5>Madrid</webprotege:RdFYhYLzx2Kq3vtakeTKD5>
+        <rdfs:label>Madrid</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8F58ovAFPWtuN9qgEJjzIG -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8F58ovAFPWtuN9qgEJjzIG">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje"/>
+        <webprotege:R9iSsRrfXFtCXA8SQPhcrK8 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</webprotege:R9iSsRrfXFtCXA8SQPhcrK8>
+        <webprotege:RBoLw5h4ApAsujCujY9xMz rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</webprotege:RBoLw5h4ApAsujCujY9xMz>
+        <rdfs:label>Laura</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8ZUNtPjkb1VBNHDaGbAyMP -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8ZUNtPjkb1VBNHDaGbAyMP">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>London ay</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9mrSIjYLZ4pzsre3dhn3wo -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9mrSIjYLZ4pzsre3dhn3wo">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>Hitler</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9r9xCaOipzGdPejItbforu -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9r9xCaOipzGdPejItbforu">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>Big ben</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9yo30nNO4jlj3VSU0516fF -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9yo30nNO4jlj3VSU0516fF">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje"/>
+        <webprotege:R9iSsRrfXFtCXA8SQPhcrK8 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99999</webprotege:R9iSsRrfXFtCXA8SQPhcrK8>
+        <webprotege:RBoLw5h4ApAsujCujY9xMz rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">52</webprotege:RBoLw5h4ApAsujCujY9xMz>
+        <rdfs:label>Javier</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBMqOa3MD7A7oWPwCCxQa7X -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RBMqOa3MD7A7oWPwCCxQa7X">
+        <webprotege:RDEoZr09wiPepZrOUMecCCO rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</webprotege:RDEoZr09wiPepZrOUMecCCO>
+        <rdfs:label>UPC Fib</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBQdVYwBXsJn5RNch5q6mdd -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RBQdVYwBXsJn5RNch5q6mdd">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <webprotege:RDEoZr09wiPepZrOUMecCCO rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</webprotege:RDEoZr09wiPepZrOUMecCCO>
+        <rdfs:label>Debajo de un puente</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBhcTIcVV4BVSUv5DhfeSrn -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RBhcTIcVV4BVSUv5DhfeSrn">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <webprotege:RDEoZr09wiPepZrOUMecCCO rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</webprotege:RDEoZr09wiPepZrOUMecCCO>
+        <rdfs:label>Hotel Costiera</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCXR875kIqZeXXpTmMBpuPp -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RCXR875kIqZeXXpTmMBpuPp">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/RDsuQ1IYPLirtZNWCPraL7W"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/RpGQDsPQtAzPd2otYJqTNl"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/RBQdVYwBXsJn5RNch5q6mdd"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/RBhcTIcVV4BVSUv5DhfeSrn"/>
+        <webprotege:RdFYhYLzx2Kq3vtakeTKD5>Barcelona</webprotege:RdFYhYLzx2Kq3vtakeTKD5>
+        <rdfs:label>Barcelona</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCoGOIweZvlwas1jlOQIep6 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RCoGOIweZvlwas1jlOQIep6">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Ciudad"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/R8ZUNtPjkb1VBNHDaGbAyMP"/>
+        <webprotege:R8VznF84DZvEVrpYevDZF7U rdf:resource="http://webprotege.stanford.edu/R9r9xCaOipzGdPejItbforu"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/Rh0vJQf7eUagOWEo6UnV6h"/>
+        <webprotege:RDIHUnjONDFD856BWcRx3VZ rdf:resource="http://webprotege.stanford.edu/RufImS3FNjzkmf1mBMN9ZG"/>
+        <webprotege:RdFYhYLzx2Kq3vtakeTKD5>Londres</webprotege:RdFYhYLzx2Kq3vtakeTKD5>
+        <rdfs:label>Londres</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDc891wB0DWi9VwYj5zLjSO -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RDc891wB0DWi9VwYj5zLjSO">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <rdfs:label>Hotel Trivago</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDsuQ1IYPLirtZNWCPraL7W -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RDsuQ1IYPLirtZNWCPraL7W">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>Decimas Maremagnum</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rh0vJQf7eUagOWEo6UnV6h -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Rh0vJQf7eUagOWEo6UnV6h">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <rdfs:label>Hotel London</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RjlfiUduw4EeOkA4MoY7Bj -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RjlfiUduw4EeOkA4MoY7Bj">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Usuario"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje"/>
+        <webprotege:R9iSsRrfXFtCXA8SQPhcrK8 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</webprotege:R9iSsRrfXFtCXA8SQPhcrK8>
+        <webprotege:RBoLw5h4ApAsujCujY9xMz rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</webprotege:RBoLw5h4ApAsujCujY9xMz>
+        <rdfs:label>Abraham</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RpGQDsPQtAzPd2otYJqTNl -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RpGQDsPQtAzPd2otYJqTNl">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        <rdfs:label>Sagrada Fam</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RufImS3FNjzkmf1mBMN9ZG -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RufImS3FNjzkmf1mBMN9ZG">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+        <rdfs:label>Hotel Gingarou</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Airbnb -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Airbnb">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>Airbnb</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Alto -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Alto">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario"/>
+        <rdfs:label>Alto</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#America_Norte -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#America_Norte">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>America Norte</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Amigos -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Amigos">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>Amigos</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Apartamento -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Apartamento">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>Apartamento</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Autobus -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Autobus">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>Autobus</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Aventura -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Aventura">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>Aventura</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Avion -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Avion">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>Avion</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Bajo -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Bajo">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario"/>
+        <rdfs:label>Bajo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Baltico_Escandinavia -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Baltico_Escandinavia">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Baltico Escandinavia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Barco -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Barco">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>Barco</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Bodas -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Bodas">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+        <rdfs:label>Bodas</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Caribe -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Caribe">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Caribe</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Centroeuropea -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Centroeuropea">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Centroeuropea</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Coche_Alquiler -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Coche_Alquiler">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>Coche Alquiler</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Cultural -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Cultural">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>Cultural</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Descanso -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Descanso">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>Descanso</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Familia_Con_Niños -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Familia_Con_Niños">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>Familia Con Niños</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Fin_De_Curso -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Fin_De_Curso">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+        <rdfs:label>Fin De Curso</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Hostel -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Hostel">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>Hostel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Hotel -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Hotel">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>Hotel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Medio -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Medio">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario"/>
+        <rdfs:label>Medio</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Mediterranea -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Mediterranea">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Mediterranea</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Metropolis_Europeas -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Metropolis_Europeas">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Metropolis Europeas</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Miedo_A_Volar -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Miedo_A_Volar">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Transporte"/>
+        <rdfs:label>Miedo A Volar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Negocios -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Negocios">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+        <rdfs:label>Negocios</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Oriente_Asiatico -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Oriente_Asiatico">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Oriente Asiatico</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Otro_Tipo_Aloj -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Otro_Tipo_Aloj">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        <rdfs:label>Otro Tipo Aloj</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pareja -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pareja">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>Pareja</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Preferencia_Eco -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Preferencia_Eco">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Admitidas_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Restricciones_Transporte"/>
+        <rdfs:label>Preferencia Eco</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Romantico -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Romantico">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Tematica_Viaje"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematicas_Ciudad"/>
+        <rdfs:label>Romantico</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Solo -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Solo">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+        <rdfs:label>Solo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Sudamerica -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Sudamerica">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Region_Geog_Ciudad"/>
+        <rdfs:label>Sudamerica</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tren_Alta_Velocidad -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tren_Alta_Velocidad">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Transporte"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        <rdfs:label>Tren Alta Velocidad</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Vacaciones -->
+
+    <owl:NamedIndividual rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Vacaciones">
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+        <rdf:type rdf:resource="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+        <rdfs:label>Vacaciones</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://webprotege.stanford.edu/R9H9PRKdf0T9QSZPTj8k4UI"/>
+            <rdf:Description rdf:about="http://webprotege.stanford.edu/RBn4ghLkTaTvGUl4pLHwsY9"/>
+            <rdf:Description rdf:about="http://webprotege.stanford.edu/RBoIOfzMJO09Qr6YZzYZvB0"/>
+            <rdf:Description rdf:about="http://webprotege.stanford.edu/RDZi79MsDjLgWuL2Yvx1KRn"/>
+            <rdf:Description rdf:about="http://webprotege.stanford.edu/RKnDxrxS2oZjulTsXRidau"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Acompañantes"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Motivo_Viaje"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nivel_Cultural_Usuario"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tematica_Viatge"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayecto"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Categoria_Punto_de_Interes"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Punto_de_Interes"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Punto_de_Interes"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudad_Alojamiento"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Nombre_Alojamiento"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Tipo_Ciudad"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Ciudades_Visitadas_Viaje"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Pref_Cumplidas_Viaje"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Trayectos_Viaje"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Usuario_Viaje"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Destino_Trayecto"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Origen_Trayecto"/>
+            <rdf:Description rdf:about="urn:webprotege:ontology:4f6ec989-aacb-4c10-8a9c-c99af3608243#Transporte_Trayecto"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
