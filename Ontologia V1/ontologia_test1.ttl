@@ -1,0 +1,437 @@
+@prefix : <urn:absolute:www.sbc.upc.edu/viatges#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <urn:absolute:www.sbc.upc.edu/viatges> .
+
+<urn:absolute:www.sbc.upc.edu/viatges> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  urn:absolute:www.sbc.upc.edu/viatges#conectaCon
+:conectaCon rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+            rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#incluyeCiudad
+:incluyeCiudad rdf:type owl:ObjectProperty ;
+               rdfs:domain :Viaje ;
+               rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#recibeViaje
+:recibeViaje rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+             rdfs:range :Viaje .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#tieneAlojamiento
+:tieneAlojamiento rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+                  rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#tienePOI
+:tienePOI rdf:type owl:ObjectProperty ;
+          rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+          rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#acompanyants> rdf:type owl:DatatypeProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_max> rdf:type owl:DatatypeProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                      rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#ciudades_min> rdf:type owl:DatatypeProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                      rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_max> rdf:type owl:DatatypeProperty ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#dias_min> rdf:type owl:DatatypeProperty ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#edad> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#explorador> rdf:type owl:DatatypeProperty ;
+                                                                                    rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                    rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#motivo_viaje> rdf:type owl:DatatypeProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#movilidad_reducida> rdf:type owl:DatatypeProperty ;
+                                                                                            rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                            rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#nivel_cultural> rdf:type owl:DatatypeProperty ;
+                                                                                        rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#presupuesto_max> rdf:type owl:DatatypeProperty ;
+                                                                                         rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                         rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#transporte_odiado> rdf:type owl:DatatypeProperty ;
+                                                                                           rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> ;
+                                                                                           rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#categoria
+:categoria rdf:type owl:DatatypeProperty ;
+           rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> ;
+           rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#clima_habitual
+:clima_habitual rdf:type owl:DatatypeProperty ;
+                rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+                rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#cluster_tematico
+:cluster_tematico rdf:type owl:DatatypeProperty ;
+                  rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+                  rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#duracion_horas
+:duracion_horas rdf:type owl:DatatypeProperty ;
+                rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
+                rdfs:range xsd:float .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#medio
+:medio rdf:type owl:DatatypeProperty ;
+       rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
+       rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#nivel_de_vida
+:nivel_de_vida rdf:type owl:DatatypeProperty ;
+               rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+               rdfs:range xsd:float .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#nombre
+:nombre rdf:type owl:DatatypeProperty ;
+        rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> ,
+                    <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+        rdfs:range xsd:string .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#precio
+:precio rdf:type owl:DatatypeProperty ;
+        rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
+        rdfs:range xsd:float .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#precio_noche
+:precio_noche rdf:type owl:DatatypeProperty ;
+              rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> ;
+              rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> rdf:type owl:Class ;
+                                                                                     rdfs:comment "Descriu el tipus d'allotjament utilitzat al viatge." .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Autobus> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Aventura> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Avion> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> rdf:type owl:Class ;
+                                                                                rdfs:comment "Representa les ciutats que es poden visitar a un viatge." .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#CocheAlquiler> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Cultural> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Descanso> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> rdf:type owl:Class ;
+                                                                                        rdfs:comment "Descriu els diferents punts d'interes que es poden visitar dins del viatge." .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Romantico> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#TematicaViaje> rdf:type owl:Class ;
+                                                                                       rdfs:comment "Constitueix la tematica del viatge, especificada pel client" .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> rdf:type owl:Class ;
+                                                                                    rdfs:comment "Descriu el tipus de transport utilitzat per realitzar un desplaçament dins del viatge." .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Tren> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> .
+
+
+###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario
+<http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Usuario> rdf:type owl:Class ;
+                                                                                 rdfs:comment "Representa l'usuari client que es beneficiara de la planificació del viatge." .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#Viaje
+:Viaje rdf:type owl:Class ;
+       rdfs:comment "Representa l'objecte del viatge final proposat." .
+
+#################################################################
+#    Individuals
+#################################################################
+
+### =================================================================
+### 1. CIUDADES (8 ciudades, 4 países, 2 por país)
+### =================================================================
+
+### --- ESPAÑA ---
+:Barcelona rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Barcelona" ; :clima_habitual "Templado" ; :cluster_tematico "Mediterranea" ; :nivel_de_vida 1.1 ;
+    :conectaCon :Madrid , :Paris ;
+    :tieneAlojamiento :HotelW_Bcn , :HostalGotic_Bcn , :AptoEixample_Bcn ;
+    :tienePOI :SagradaFamilia_Bcn , :ParqueGuell_Bcn , :MuseoPicasso_Bcn .
+
+:Madrid rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Madrid" ; :clima_habitual "Templado" ; :cluster_tematico "Metropolis" ; :nivel_de_vida 1.0 ;
+    :conectaCon :Barcelona , :Berlin ;
+    :tieneAlojamiento :HotelRitz_Mad , :HostalSol_Mad , :AptoRetiro_Mad ;
+    :tienePOI :MuseoPrado_Mad , :ParqueRetiro_Mad , :PalacioReal_Mad .
+
+### --- FRANCIA ---
+:Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Paris" ; :clima_habitual "Templado" ; :cluster_tematico "Metropolis" ; :nivel_de_vida 1.4 ;
+    :conectaCon :Barcelona , :Niza , :Roma ;
+    :tieneAlojamiento :HotelRitz_Paris , :HostalMontmartre_Paris , :AptoMarais_Paris ;
+    :tienePOI :TorreEiffel_Paris , :MuseoLouvre_Paris , :ArcoTriunfo_Paris .
+
+:Niza rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Niza" ; :clima_habitual "Calido" ; :cluster_tematico "Costa" ; :nivel_de_vida 1.2 ;
+    :conectaCon :Paris , :Florencia ;
+    :tieneAlojamiento :HotelNegresco_Niz , :HostalVieux_Niz , :AptoPromenade_Niz ;
+    :tienePOI :PaseoIngleses_Niz , :ParqueColline_Niz , :MuseoMatisse_Niz .
+
+### --- ITALIA ---
+:Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Roma" ; :clima_habitual "Templado" ; :cluster_tematico "Historica" ; :nivel_de_vida 1.2 ;
+    :conectaCon :Paris , :Florencia ;
+    :tieneAlojamiento :HotelEden_Roma , :HostalTrastevere_Roma , :AptoVaticano_Roma ;
+    :tienePOI :Coliseo_Roma , :VillaBorghese_Roma , :MuseosVaticanos_Roma .
+
+:Florencia rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Florencia" ; :clima_habitual "Templado" ; :cluster_tematico "Artistica" ; :nivel_de_vida 1.1 ;
+    :conectaCon :Roma , :Niza , :Munich ;
+    :tieneAlojamiento :HotelBrunelleschi_Flo , :HostalArno_Flo , :AptoDuomo_Flo ;
+    :tienePOI :Duomo_Flo , :JardinBoboli_Flo , :GaleriaUffizi_Flo .
+
+### --- ALEMANIA ---
+:Berlin rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Berlin" ; :clima_habitual "Frio" ; :cluster_tematico "Cultura Urb" ; :nivel_de_vida 1.3 ;
+    :conectaCon :Madrid , :Munich ;
+    :tieneAlojamiento :HotelAdlon_Ber , :HostalMitte_Ber , :AptoKreuzberg_Ber ;
+    :tienePOI :PuertaBrandeburgo_Ber , :Tiergarten_Ber , :MuseoPergamo_Ber .
+
+:Munich rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
+    :nombre "Munich" ; :clima_habitual "Frio" ; :cluster_tematico "Tradicional" ; :nivel_de_vida 1.4 ;
+    :conectaCon :Berlin , :Florencia ;
+    :tieneAlojamiento :HotelBayerischer_Mun , :HostalIsar_Mun , :AptoMarienplatz_Mun ;
+    :tienePOI :Ayuntamiento_Mun , :EnglishGarden_Mun , :MuseoBMW_Mun .
+
+
+### =================================================================
+### 2. ALOJAMIENTOS (3 por ciudad)
+### =================================================================
+
+# BARCELONA
+:HotelW_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Hotel W" ; :categoria "5 Estrellas" ; :precio_noche 250.0 .
+:HostalGotic_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Hostal Gotic" ; :categoria "2 Estrellas" ; :precio_noche 40.0 .
+:AptoEixample_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Apto Eixample" ; :categoria "Estandar" ; :precio_noche 85.0 .
+
+# MADRID
+:HotelRitz_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Hotel Ritz" ; :categoria "5 Estrellas" ; :precio_noche 300.0 .
+:HostalSol_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Hostal Sol" ; :categoria "2 Estrellas" ; :precio_noche 35.0 .
+:AptoRetiro_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Apto Retiro" ; :categoria "Premium" ; :precio_noche 100.0 .
+
+# PARIS
+:HotelRitz_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Ritz Paris" ; :categoria "5 Estrellas" ; :precio_noche 400.0 .
+:HostalMontmartre_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Montmartre Inn" ; :categoria "3 Estrellas" ; :precio_noche 60.0 .
+:AptoMarais_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Marais Studio" ; :categoria "Estandar" ; :precio_noche 110.0 .
+
+# NIZA
+:HotelNegresco_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Hotel Negresco" ; :categoria "5 Estrellas" ; :precio_noche 280.0 .
+:HostalVieux_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Vieux Nice Hostel" ; :categoria "2 Estrellas" ; :precio_noche 45.0 .
+:AptoPromenade_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Promenade Apto" ; :categoria "Estandar" ; :precio_noche 95.0 .
+
+# ROMA
+:HotelEden_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Hotel Eden" ; :categoria "5 Estrellas" ; :precio_noche 320.0 .
+:HostalTrastevere_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Trastevere Hostel" ; :categoria "3 Estrellas" ; :precio_noche 50.0 .
+:AptoVaticano_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Vatican Flat" ; :categoria "Estandar" ; :precio_noche 90.0 .
+
+# FLORENCIA
+:HotelBrunelleschi_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Brunelleschi" ; :categoria "5 Estrellas" ; :precio_noche 290.0 .
+:HostalArno_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Arno Hostel" ; :categoria "2 Estrellas" ; :precio_noche 40.0 .
+:AptoDuomo_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Duomo View Flat" ; :categoria "Premium" ; :precio_noche 120.0 .
+
+# BERLIN
+:HotelAdlon_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Hotel Adlon" ; :categoria "5 Estrellas" ; :precio_noche 350.0 .
+:HostalMitte_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Mitte Hostel" ; :categoria "3 Estrellas" ; :precio_noche 55.0 .
+:AptoKreuzberg_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Kreuzberg Loft" ; :categoria "Estandar" ; :precio_noche 80.0 .
+
+# MUNICH
+:HotelBayerischer_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hotel> ; :nombre "Bayerischer Hof" ; :categoria "5 Estrellas" ; :precio_noche 330.0 .
+:HostalIsar_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Hostal> ; :nombre "Isar Hostel" ; :categoria "2 Estrellas" ; :precio_noche 45.0 .
+:AptoMarienplatz_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Apartamento> ; :nombre "Marienplatz Flat" ; :categoria "Premium" ; :precio_noche 110.0 .
+
+
+### =================================================================
+### 3. PUNTOS DE INTERÉS (3 por ciudad)
+### =================================================================
+
+# BARCELONA: SagradaFamilia_Bcn (Mon), ParqueGuell_Bcn (Parque), MuseoPicasso_Bcn (Museo)
+:SagradaFamilia_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:ParqueGuell_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:MuseoPicasso_Bcn rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+
+# MADRID: MuseoPrado_Mad (Museo), ParqueRetiro_Mad (Parque), PalacioReal_Mad (Mon)
+:MuseoPrado_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+:ParqueRetiro_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:PalacioReal_Mad rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+
+# PARIS: TorreEiffel_Paris (Mon), MuseoLouvre_Paris (Museo), ArcoTriunfo_Paris (Mon)
+:TorreEiffel_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:MuseoLouvre_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+:ArcoTriunfo_Paris rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+
+# NIZA: PaseoIngleses_Niz (Ocio), ParqueColline_Niz (Parque), MuseoMatisse_Niz (Museo)
+:PaseoIngleses_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ocio> .
+:ParqueColline_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:MuseoMatisse_Niz rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+
+# ROMA: Coliseo_Roma (Mon), VillaBorghese_Roma (Parque), MuseosVaticanos_Roma (Museo)
+:Coliseo_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:VillaBorghese_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:MuseosVaticanos_Roma rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+
+# FLORENCIA: Duomo_Flo (Mon), JardinBoboli_Flo (Parque), GaleriaUffizi_Flo (Museo)
+:Duomo_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:JardinBoboli_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:GaleriaUffizi_Flo rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+
+# BERLIN: PuertaBrandeburgo_Ber (Mon), Tiergarten_Ber (Parque), MuseoPergamo_Ber (Museo)
+:PuertaBrandeburgo_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:Tiergarten_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:MuseoPergamo_Ber rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
+
+# MUNICH: Ayuntamiento_Mun (Mon), EnglishGarden_Mun (Parque), MuseoBMW_Mun (Museo)
+:Ayuntamiento_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Monumento> .
+:EnglishGarden_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Parque> .
+:MuseoBMW_Mun rdf:type owl:NamedIndividual , <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Museo> .
