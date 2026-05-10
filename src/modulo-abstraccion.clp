@@ -3,7 +3,7 @@
 
 (defmodule ABSTRACCION
     (import MAIN ?ALL)
-    (import PREGUNTAS ?ALL)
+    (import PREGUNTAS ?ALL)   ; ← añadir esta línea
     (export ?ALL)
 )
 

@@ -145,4 +145,5 @@
     (printout t crlf "Buscando viaje..." crlf crlf)
     (retract ?f)
     (assert (entrada-completada))
+    (focus ABSTRACCION)
 )

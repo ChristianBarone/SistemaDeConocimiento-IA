@@ -4,7 +4,6 @@
 ;;; Translated to CLIPS from ontology ontologia_test1.ttl
 ;;; :Date 06/05/2026 12:35:53
 
-(defmodule MAIN (export defclass ?ALL))
 
 (defclass Alojamiento "Descriu el tipus d'allotjament utilitzat al viatge."
     (is-a USER)
