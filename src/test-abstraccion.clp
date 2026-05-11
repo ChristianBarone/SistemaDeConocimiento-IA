@@ -29,4 +29,6 @@
 )
 
 ;;; 3. Arranca en ABSTRACCION directamente
+(reset)
 (focus ABSTRACCION)
+(run)

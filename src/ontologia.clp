@@ -516,3 +516,46 @@
     )
 
 )
+
+(defclass CandidatoCiudad "Evaluacion de una ciudad candidata para el viaje"
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    ;;; Ciudad evaluada
+    (slot ciudad
+        (type INSTANCE)
+        (create-accessor read-write))
+    ;;; Evaluacion de compatibilidad con la tematica: SI, NO, PARCIAL
+    (slot tematica-ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Evaluacion del nivel de vida vs presupuesto: SI, NO, PARCIAL
+    (slot presupuesto-ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO, PARCIAL
+    (slot accesibilidad-ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Evaluacion de transporte (no usa medio odiado): SI, NO
+    (slot transporte-ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Lista de ventajas detectadas
+    (multislot ventajas
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Lista de desventajas detectadas
+    (multislot desventajas
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Grado de adecuacion: MUY_RECOMENDABLE, ADECUADO, PARCIALMENTE_ADECUADO, NO_RECOMENDABLE
+    (slot grado
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Explicacion del grado asignado
+    (slot motivo
+        (type STRING)
+        (default "")
+        (create-accessor read-write))
+)
