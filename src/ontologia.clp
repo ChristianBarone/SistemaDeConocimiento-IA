@@ -1,7 +1,7 @@
 ;;; ---------------------------------------------------------
-;;; ontologia_test1.clp
+;;; ontologia.clp
 ;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology ontologia_test1.ttl
+;;; Translated to CLIPS from ontology ontologia.ttl
 ;;; :Date 06/05/2026 12:35:53
 
 
@@ -168,6 +168,9 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (multislot nombre_usuario
+        (type STRING)
+        (create-accessor read-write))
     (multislot recibeViaje
         (type INSTANCE)
         (create-accessor read-write))

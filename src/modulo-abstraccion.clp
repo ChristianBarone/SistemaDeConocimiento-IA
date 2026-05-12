@@ -1,9 +1,6 @@
-;;; Módulo de abstracción: deriva características del Usuario
-;;; Usa hechos auxiliares en lugar de modificar la ontología
-
 (defmodule ABSTRACCION
     (import MAIN ?ALL)
-    (import PREGUNTAS ?ALL)   
+    (import PREGUNTAS ?ALL)
     (export ?ALL)
 )
 
@@ -13,22 +10,24 @@
 
 ; SI presupuesto/dias_max > 200 ENTONCES nivel-presupuesto = LUJO
 (defrule ABSTRACCION::presupuesto-lujo
+    (declare (salience 10))
     (entrada-completada)
     (not (nivel-presupuesto ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (> (/ (nth$ 1 (send ?u get-presupuesto_max))
-               (nth$ 1 (send ?u get-dias_max))) 200))
+                (nth$ 1 (send ?u get-dias_max))) 200))
 =>
     (assert (nivel-presupuesto LUJO))
 )
 
 ; SI presupuesto/dias_max entre 100-200 ENTONCES nivel-presupuesto = ALTO
 (defrule ABSTRACCION::presupuesto-alto
+    (declare (salience 10))
     (entrada-completada)
     (not (nivel-presupuesto ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (and (> (/ (nth$ 1 (send ?u get-presupuesto_max))
-                    (nth$ 1 (send ?u get-dias_max))) 100)
+                     (nth$ 1 (send ?u get-dias_max))) 100)
                (<= (/ (nth$ 1 (send ?u get-presupuesto_max))
                       (nth$ 1 (send ?u get-dias_max))) 200)))
 =>
@@ -37,11 +36,12 @@
 
 ; SI presupuesto/dias_max entre 50-100 ENTONCES nivel-presupuesto = MEDIO
 (defrule ABSTRACCION::presupuesto-medio
+    (declare (salience 10))
     (entrada-completada)
     (not (nivel-presupuesto ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (and (> (/ (nth$ 1 (send ?u get-presupuesto_max))
-                    (nth$ 1 (send ?u get-dias_max))) 50)
+                     (nth$ 1 (send ?u get-dias_max))) 50)
                (<= (/ (nth$ 1 (send ?u get-presupuesto_max))
                       (nth$ 1 (send ?u get-dias_max))) 100)))
 =>
@@ -50,11 +50,12 @@
 
 ; SI presupuesto/dias_max <= 50 ENTONCES nivel-presupuesto = BAJO
 (defrule ABSTRACCION::presupuesto-bajo
+    (declare (salience 10))
     (entrada-completada)
     (not (nivel-presupuesto ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (<= (/ (nth$ 1 (send ?u get-presupuesto_max))
-               (nth$ 1 (send ?u get-dias_max))) 50))
+                 (nth$ 1 (send ?u get-dias_max))) 50))
 =>
     (assert (nivel-presupuesto BAJO))
 )
@@ -65,6 +66,7 @@
 
 ; SI motivo = Bodas Y acompaniantes = Pareja → Romantico
 (defrule ABSTRACCION::tematica-romantica
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -76,6 +78,7 @@
 
 ; SI motivo = Fin_De_Curso → Aventura (independiente del grupo)
 (defrule ABSTRACCION::tematica-aventura
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -84,8 +87,9 @@
     (assert (tematica-deducida Aventura))
 )
 
-; SI motivo = Negocios → Cultural (ciudades con oferta cultural/empresarial)
+; SI motivo = Negocios → Cultural
 (defrule ABSTRACCION::tematica-cultural-negocios
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -96,6 +100,7 @@
 
 ; SI motivo = Vacaciones Y acompaniantes = Familia_Con_Ninos → Familiar
 (defrule ABSTRACCION::tematica-familiar
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -107,6 +112,7 @@
 
 ; SI motivo = Vacaciones Y acompaniantes = Amigos → Ocio
 (defrule ABSTRACCION::tematica-ocio
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -118,6 +124,7 @@
 
 ; SI motivo = Vacaciones Y acompaniantes = Solo/Pareja → Descanso
 (defrule ABSTRACCION::tematica-descanso
+    (declare (salience 10))
     (entrada-completada)
     (not (tematica-deducida ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -133,6 +140,7 @@
 
 ; SI explorador >= 4 Y nivel_cultural = Alto → Explorador_Cultural
 (defrule ABSTRACCION::perfil-explorador-cultural
+    (declare (salience 10))
     (entrada-completada)
     (not (perfil-viajero ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -144,6 +152,7 @@
 
 ; SI explorador >= 4 Y nivel_cultural != Alto → Aventurero
 (defrule ABSTRACCION::perfil-aventurero
+    (declare (salience 10))
     (entrada-completada)
     (not (perfil-viajero ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -155,6 +164,7 @@
 
 ; SI explorador entre 2-3 Y nivel_cultural = Alto → Turista_Cultural
 (defrule ABSTRACCION::perfil-turista-cultural
+    (declare (salience 10))
     (entrada-completada)
     (not (perfil-viajero ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -165,12 +175,13 @@
     (assert (perfil-viajero Turista_Cultural))
 )
 
-; SI explorador <= 2 → Turista_Estandar
+; SI explorador <= 1 → Turista_Estandar
 (defrule ABSTRACCION::perfil-estandar
+    (declare (salience 10))
     (entrada-completada)
     (not (perfil-viajero ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
-    (test (<= (nth$ 1 (send ?u get-explorador)) 2))
+    (test (<= (nth$ 1 (send ?u get-explorador)) 1))
 =>
     (assert (perfil-viajero Turista_Estandar))
 )
@@ -181,6 +192,7 @@
 
 ; SI dias_max <= 3 → viaje Corto
 (defrule ABSTRACCION::duracion-corta
+    (declare (salience 10))
     (entrada-completada)
     (not (duracion-viaje ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -191,6 +203,7 @@
 
 ; SI dias_max entre 4-7 → viaje Medio
 (defrule ABSTRACCION::duracion-media
+    (declare (salience 10))
     (entrada-completada)
     (not (duracion-viaje ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -202,6 +215,7 @@
 
 ; SI dias_max > 7 → viaje Largo
 (defrule ABSTRACCION::duracion-larga
+    (declare (salience 10))
     (entrada-completada)
     (not (duracion-viaje ?))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -253,9 +267,9 @@
 (defrule ABSTRACCION::pasar-a-heuristica
     (declare (salience -10))
     (tematica-deducida ?tem)
-    (nivel-presupuesto  ?pres)
-    (perfil-viajero     ?perf)
-    (duracion-viaje     ?dur)
+    (nivel-presupuesto ?pres)
+    (perfil-viajero ?perf)
+    (duracion-viaje ?dur)
 =>
     (printout t "--- Abstraccion completada ---" crlf)
     (printout t "  Tematica:    " ?tem  crlf)
