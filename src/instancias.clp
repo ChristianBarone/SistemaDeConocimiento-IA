@@ -336,7 +336,7 @@
 ;;; USUARIO DE EJEMPLO
 ;;; ------------------------------------------------------------
 
-    ([UsuarioEjemplo] of Usuario
+    ([usuario1] of Usuario
         (nombre_usuario     "Javier")
         (edad               35)
         (nivel_cultural     "Medio")

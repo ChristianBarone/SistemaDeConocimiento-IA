@@ -49,56 +49,63 @@
              (posicion ?pos)))
 )
 
-;; Regla 3: Seleccionar ciudades ADECUADO si no hay MUY_RECOMENDABLE
-(defrule SALIDA::seleccionar-ciudades-adecuado
+;; Regla 3: Seleccionar ciudades con menor grado (Adecuado o Parcial)
+(defrule SALIDA::seleccionar-ciudades-restantes
     (declare (salience 85))
     ?cand <- (object (is-a CandidatoCiudad) 
                      (ciudad ?ciu) 
-                     (grado ADECUADO))
+                     (grado ADECUADO|PARCIALMENTE_ADECUADO))
     (not (ciudad-seleccionada (ciudad ?ciu)))
-    ?u <- (object (is-a Usuario) (name [usuario1]))
-    (test (< (length$ (find-all-facts ((?f ciudad-seleccionada)) TRUE)) 
-              (nth$ 1 (send ?u get-ciudades_max))))
 =>
-    (bind ?aloList (send ?ciu get-tieneAlojamiento))
-    (bind ?alojamiento (if (> (length$ ?aloList) 0) 
-                           then (nth$ 1 ?aloList)
-                           else nil))
-    (bind ?pos (+ 1 (length$ (find-all-facts ((?f ciudad-seleccionada)) TRUE))))
+    ;; Extraemos la lista de hoteles de la ciudad (slot tieneAlojamiento)
+    (bind ?lista-hoteles (send ?ciu get-tieneAlojamiento))
+    
+    ;; Seleccionamos el primer hotel de la lista si existe
+    (bind ?hotel-elegido [ninguno])
+    (if (> (length$ ?lista-hoteles) 0) 
+        then (bind ?hotel-elegido (nth$ 1 ?lista-hoteles)))
+
     (assert (ciudad-seleccionada 
-             (ciudad ?ciu) 
-             (alojamiento ?alojamiento)
-             (posicion ?pos)))
+                (ciudad ?ciu) 
+                (alojamiento ?hotel-elegido)
+                (posicion 1))) ;; El orden se puede ajustar después
 )
 
-;; Regla 4: Mostrar el itinerario generado
-(defrule SALIDA::mostrar-itinerario
-    (declare (salience 50))
-    ?cs <- (ciudad-seleccionada (ciudad ?ciu) 
-                                (alojamiento ?alo)
-                                (posicion ?pos))
+;; Regla 4: Mostrar detalle de la parada
+(defrule SALIDA::mostrar-parada
+    (declare (salience 80))
+    ?f <- (ciudad-seleccionada (ciudad ?ciu) (alojamiento ?aloj) (posicion ?pos))
     (not (mostrada ?ciu))
+    
+    ;; Obtenemos los datos de la instancia Ciudad
+    ?obj-ciu <- (object (is-a Ciudad) (name ?ciu) (nombre ?nomCiudad))
+    
+    ;; Obtenemos los datos de la instancia Usuario para el transporte
     ?u <- (object (is-a Usuario) (name [usuario1]))
 =>
-    (bind ?nomCiudad (nth$ 1 (send ?ciu get-nombre)))
-    (bind ?nomAlojamiento (if (and ?alo (neq ?alo nil)) 
-                              then (nth$ 1 (send ?alo get-nombre))
-                              else "No disponible"))
+    ;; 1. Obtener nombre del Hotel
+    (bind ?nombreHotel "Sin hotel asignado")
+    (if (neq ?aloj [ninguno])
+        then (bind ?nombreHotel (nth$ 1 (send ?aloj get-nombre))))
     
-    ;; Obtener transporte
-    (bind ?transporte (send ?ciu get-tipo_transporte)) 
+    ;; 2. Lógica de Transporte (Simplificada: si no odia el avión, recomienda avión)
+    (bind ?odio (send ?u get-transporte_odiado))
+    (bind ?transporte "Tren")
+    (if (neq ?odio "Avion") then (bind ?transporte "Avion"))
 
+    ;; 3. Impresión por pantalla
     (printout t "PARADA " ?pos ": " ?nomCiudad crlf)
-    (printout t "  * HOTEL: " ?nomAlojamiento crlf)
+    (printout t "  * HOTEL: " ?nombreHotel crlf)
     (printout t "  * TRANSPORTE RECOMENDADO: " ?transporte crlf)
     
-    ;; Mostrar puntos de interés si existen
-    (bind ?poisList (send ?ciu get-tienePOI))
-    (if (> (length$ ?poisList) 0)
-        then
-        (printout t "  * LUGARES: " (nth$ 1 ?poisList) crlf))
+    ;; 4. Mostrar Puntos de Interés (POI)
+    (bind ?pois (send ?obj-ciu get-tienePOI))
+    (if (> (length$ ?pois) 0) then
+        (printout t "  * VISITAS RECOMENDADAS: ")
+        (foreach ?p ?pois (printout t (instance-name ?p) " "))
+        (printout t crlf))
+        
     (printout t "------------------------------------------" crlf)
-    
     (assert (mostrada ?ciu))
 )
 
