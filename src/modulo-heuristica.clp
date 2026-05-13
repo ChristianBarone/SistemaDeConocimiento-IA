@@ -41,7 +41,7 @@
      ;; BAJO: solo ciudades muy económicas (<= 1.0)
      else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)))))
     
-    (send ?cand put-presupuesto-ok ?ok)
+    (send ?cand put-presupuesto_ok ?ok)
 )
 
 ;;; RESTRICCIÓN 2: TRANSPORTE (no usar medio odiado)
@@ -53,7 +53,7 @@
     ;; Si no hay transporte odiado o es "Ninguno", OK
     ;; Si hay, asumimos que hay alternativas (mejor en versión completa)
     (bind ?ok (if (or (eq ?transp "") (eq ?transp "Ninguno")) then SI else SI))
-    (send ?cand put-transporte-ok ?ok)
+    (send ?cand put-transporte_ok ?ok)
 )
 
 ;;; RESTRICCIÓN 3: ACCESIBILIDAD (si movilidad_reducida == TRUE, requiere SI)
@@ -65,8 +65,8 @@
     ;; Si NO hay movilidad reducida, todas las ciudades están OK
     ;; Si hay, necesitamos que sea SI (no PARCIAL)
     (if (eq ?mov FALSE)
-        then (send ?cand put-accesibilidad-ok SI)
-        else (send ?cand put-accesibilidad-ok PARCIAL))  ;; TODO: verificar accesibilidad real
+        then (send ?cand put-accesibilidad_ok SI)
+        else (send ?cand put-accesibilidad_ok PARCIAL))  ;; TODO: verificar accesibilidad real
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,8 +80,8 @@
     (object (name ?ciu) (cluster_tematico ?cluster))
 =>
     (if (eq ?t ?cluster) 
-        then (send ?cand put-tematica-ok SI)
-        else (send ?cand put-tematica-ok PARCIAL))
+        then (send ?cand put-tematica_ok SI)
+        else (send ?cand put-tematica_ok PARCIAL))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,7 +91,7 @@
 ; Ventaja: Temática encaja perfectamente
 (defrule HEURISTICA::ventaja-tematica-perfecta
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (grado nil))
 =>
     (slot-insert$ ?cand ventajas 1 "Temática perfecta")
@@ -173,7 +173,7 @@
 ; Desventaja: Temática no encaja
 (defrule HEURISTICA::desventaja-tematica-no-encaja
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok PARCIAL)
+                     (tematica_ok PARCIAL)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Temática parcialmente compatible")
@@ -187,7 +187,7 @@
 (defrule HEURISTICA::bloquear-presupuesto
     (declare (salience 0))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok NO)
+                     (presupuesto_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -199,7 +199,7 @@
 (defrule HEURISTICA::bloquear-accesibilidad
     (declare (salience 0))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (accesibilidad-ok NO)
+                     (accesibilidad_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -211,7 +211,7 @@
 (defrule HEURISTICA::bloquear-transporte
     (declare (salience 0))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (transporte-ok NO)
+                     (transporte_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -223,10 +223,10 @@
 (defrule HEURISTICA::clasificar-muy-recomendable
     (declare (salience -1))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok SI)
-                     (transporte-ok SI)
-                     (accesibilidad-ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
-                     (tematica-ok SI)
+                     (presupuesto_ok SI)
+                     (transporte_ok SI)
+                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
+                     (tematica_ok SI)
                      (ventajas $?v&:(> (length$ ?v) 0))
                      (grado nil))
 =>
@@ -238,9 +238,9 @@
 (defrule HEURISTICA::clasificar-adecuado
     (declare (salience -2))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok SI)
-                     (transporte-ok SI)
-                     (accesibilidad-ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
+                     (presupuesto_ok SI)
+                     (transporte_ok SI)
+                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
                      (grado nil))
 =>
     (send ?cand put-grado ADECUADO)
@@ -279,7 +279,7 @@
      else (if (and (eq ?nivel MEDIO) (<= ?nv 1.5)) then (bind ?ok SI)
      else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)))))
     
-    (send ?cand put-presupuesto-ok ?ok)
+    (send ?cand put-presupuesto_ok ?ok)
 )
 
 (defrule HEURISTICA::evaluar-tematica-candidato
@@ -288,8 +288,8 @@
     (object (name ?ciu) (cluster_tematico ?cluster))
 =>
     (if (eq ?t ?cluster) 
-        then (send ?cand put-tematica-ok SI)
-        else (send ?cand put-tematica-ok PARCIAL))
+        then (send ?cand put-tematica_ok SI)
+        else (send ?cand put-tematica_ok PARCIAL))
 )
 
 (defrule HEURISTICA::evaluar-transporte-candidato
@@ -299,8 +299,8 @@
 =>
     ;; Por ahora, asumimos que el transporte es compatible si no es el odiado
     (if (eq ?transp "Ninguno")
-        then (send ?cand put-transporte-ok SI)
-        else (send ?cand put-transporte-ok SI))  ;; Asumir que hay alternativas
+        then (send ?cand put-transporte_ok SI)
+        else (send ?cand put-transporte_ok SI))  ;; Asumir que hay alternativas
 )
 
 (defrule HEURISTICA::evaluar-accesibilidad-candidato
@@ -311,8 +311,8 @@
     ;; Por ahora, asumir que todas las ciudades tienen algo de accesibilidad
     ;; Si hay movilidad reducida, marcar como PARCIAL (requiere verificación)
     (if (eq ?mov TRUE)
-        then (send ?cand put-accesibilidad-ok PARCIAL)
-        else (send ?cand put-accesibilidad-ok SI))
+        then (send ?cand put-accesibilidad_ok PARCIAL)
+        else (send ?cand put-accesibilidad_ok SI))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -322,7 +322,7 @@
 ; Añade ventaja a ciudades costeras o mediterráneas compatibles con la temática
 (defrule HEURISTICA::ventaja-romantico-costa
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -335,7 +335,7 @@
 ; Añade ventaja cultural a ciudades históricas o artísticas
 (defrule HEURISTICA::ventaja-cultural-historica
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -348,7 +348,7 @@
 ; Añade ventaja a grandes ciudades metropolitanas
 (defrule HEURISTICA::ventaja-metropolis
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -360,7 +360,7 @@
 ; Añade desventaja cuando la temática no coincide
 (defrule HEURISTICA::desventaja-tematica-no-encaja
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok NO)
+                     (tematica_ok NO)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Tematica no coincide")
@@ -369,7 +369,7 @@
 ; Añade desventaja cuando la temática es parcialmente compatible
 (defrule HEURISTICA::desventaja-tematica-parcial
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok PARCIAL)
+                     (tematica_ok PARCIAL)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Tematica parcialmente compatible")
@@ -382,7 +382,7 @@
 ; Añade ventaja a ciudades económicas
 (defrule HEURISTICA::ventaja-ciudad-economica
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok SI)
+                     (presupuesto_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -394,7 +394,7 @@
 ; Añade desventaja cuando el presupuesto no es suficiente
 (defrule HEURISTICA::desventaja-precio-alto
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok NO)
+                     (presupuesto_ok NO)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Cara para el presupuesto")
@@ -403,7 +403,7 @@
 ; Añade desventaja cuando el presupuesto es ajustado
 (defrule HEURISTICA::desventaja-precio-ajustado
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok PARCIAL)
+                     (presupuesto_ok PARCIAL)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Precio ajustado")
@@ -427,7 +427,7 @@
 ; Añade ventaja cultural si la ciudad contiene museos
 (defrule HEURISTICA::ventaja-museo
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -458,7 +458,7 @@
 ; Añade ventaja cuando existen hoteles compatibles con el presupuesto
 (defrule HEURISTICA::ventaja-hotel-disponible
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok SI)
+                     (presupuesto_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -472,7 +472,7 @@
 ; Añade ventaja cuando existen alojamientos económicos
 (defrule HEURISTICA::ventaja-hostal
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok ?pok&:(or (eq ?pok SI)
+                     (presupuesto_ok ?pok&:(or (eq ?pok SI)
                                                (eq ?pok PARCIAL)))
                      (ciudad ?c)
                      (grado nil))
@@ -491,7 +491,7 @@
 ; Añade ventaja a ciudades con clima cálido
 (defrule HEURISTICA::ventaja-clima-calido
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -503,7 +503,7 @@
 ; Añade ventaja a ciudades con clima templado
 (defrule HEURISTICA::ventaja-clima-templado
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
+                     (tematica_ok SI)
                      (ciudad ?c)
                      (grado nil))
     (object (name ?c)
@@ -517,18 +517,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Añade ventaja cuando el transporte es compatible
-(defrule HEURISTICA::ventaja-transporte-ok
+(defrule HEURISTICA::ventaja-transporte_ok
     ?cand <- (object (is-a CandidatoCiudad)
-                     (transporte-ok SI)
+                     (transporte_ok SI)
                      (grado nil))
 =>
     (slot-insert$ ?cand ventajas 1 "Transporte conveniente")
 )
 
 ; Añade desventaja cuando el transporte no es compatible
-(defrule HEURISTICA::desventaja-transporte-no-ok
+(defrule HEURISTICA::desventaja-transporte-no_ok
     ?cand <- (object (is-a CandidatoCiudad)
-                     (transporte-ok NO)
+                     (transporte_ok NO)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Requiere transporte no deseado")
@@ -541,7 +541,7 @@
 ; Añade desventaja cuando existen problemas de accesibilidad
 (defrule HEURISTICA::desventaja-accesibilidad
     ?cand <- (object (is-a CandidatoCiudad)
-                     (accesibilidad-ok NO)
+                     (accesibilidad_ok NO)
                      (grado nil))
 =>
     (slot-insert$ ?cand desventajas 1 "Problemas de accesibilidad")
@@ -555,10 +555,10 @@
 (defrule HEURISTICA::clasificar-muy-recomendable
     (declare (salience -1))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
-                     (presupuesto-ok SI)
-                     (transporte-ok SI)
-                     (accesibilidad-ok ?acc&:(or (eq ?acc SI)
+                     (tematica_ok SI)
+                     (presupuesto_ok SI)
+                     (transporte_ok SI)
+                     (accesibilidad_ok ?acc&:(or (eq ?acc SI)
                                                  (eq ?acc PARCIAL)))
                      (ventajas $?v&:(> (length$ ?v) 0))
                      (grado nil))
@@ -571,10 +571,10 @@
 (defrule HEURISTICA::clasificar-adecuado
     (declare (salience -2))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
-                     (presupuesto-ok SI)
-                     (transporte-ok SI)
-                     (accesibilidad-ok ?acc&:(or (eq ?acc SI)
+                     (tematica_ok SI)
+                     (presupuesto_ok SI)
+                     (transporte_ok SI)
+                     (accesibilidad_ok ?acc&:(or (eq ?acc SI)
                                                  (eq ?acc PARCIAL)))
                      (grado nil))
 =>
@@ -586,9 +586,9 @@
 (defrule HEURISTICA::clasificar-parcial-presupuesto
     (declare (salience -3))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok SI)
-                     (presupuesto-ok PARCIAL)
-                     (accesibilidad-ok ?acc&:(or (eq ?acc SI)
+                     (tematica_ok SI)
+                     (presupuesto_ok PARCIAL)
+                     (accesibilidad_ok ?acc&:(or (eq ?acc SI)
                                                  (eq ?acc PARCIAL)))
                      (grado nil))
 =>
@@ -601,8 +601,8 @@
 (defrule HEURISTICA::clasificar-parcial-tematica
     (declare (salience -3))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok PARCIAL)
-                     (presupuesto-ok ?pok&:(or (eq ?pok SI)
+                     (tematica_ok PARCIAL)
+                     (presupuesto_ok ?pok&:(or (eq ?pok SI)
                                                (eq ?pok PARCIAL)))
                      (grado nil))
 =>
@@ -614,11 +614,11 @@
 (defrule HEURISTICA::clasificar-parcial-transporte
     (declare (salience -3))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok ?tok&:(or (eq ?tok SI)
+                     (tematica_ok ?tok&:(or (eq ?tok SI)
                                             (eq ?tok PARCIAL)))
-                     (presupuesto-ok ?pok&:(or (eq ?pok SI)
+                     (presupuesto_ok ?pok&:(or (eq ?pok SI)
                                                (eq ?pok PARCIAL)))
-                     (transporte-ok NO)
+                     (transporte_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado PARCIALMENTE_ADECUADO)
@@ -629,7 +629,7 @@
 (defrule HEURISTICA::clasificar-no-recomendable-accesibilidad
     (declare (salience -4))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (accesibilidad-ok NO)
+                     (accesibilidad_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -641,7 +641,7 @@
 (defrule HEURISTICA::clasificar-no-recomendable-presupuesto
     (declare (salience -4))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto-ok NO)
+                     (presupuesto_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -653,8 +653,8 @@
 (defrule HEURISTICA::clasificar-no-recomendable-total
     (declare (salience -4))
     ?cand <- (object (is-a CandidatoCiudad)
-                     (tematica-ok NO)
-                     (presupuesto-ok NO)
+                     (tematica_ok NO)
+                     (presupuesto_ok NO)
                      (grado nil))
 =>
     (send ?cand put-grado NO_RECOMENDABLE)
@@ -675,7 +675,7 @@
         (bind ?c (send ?cand get-ciudad))
 
         (printout t "  "
-                    (nth$ 1 (send ?c get-nombre))
+                    (send ?c get-nombre)
                     " -> "
                     (send ?cand get-grado)
                     " | "

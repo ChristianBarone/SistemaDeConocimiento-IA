@@ -12,6 +12,10 @@
 #    Object Properties
 #################################################################
 
+###  urn:absolute:www.sbc.upc.edu/viatges#CandidatoCiudad
+:CandidatoCiudad rdf:type owl:ObjectProperty .
+
+
 ###  urn:absolute:www.sbc.upc.edu/viatges#Ciudad
 :Ciudad rdf:type owl:ObjectProperty .
 
@@ -26,6 +30,14 @@
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#Viaje
 :Viaje rdf:type owl:ObjectProperty .
+
+
+###  urn:absolute:www.sbc.upc.edu/viatges#ciudad
+:ciudad rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :CandidatoCiudad ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :CandidatoCiudad ;
+        rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#conectaCon
@@ -44,7 +56,7 @@
 :incluyeCiudad rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :Viaje ;
                rdfs:domain :Viaje ;
-               rdfs:range :CiudadCandidata .
+               rdfs:range :CandidatoCiudad .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#incluyePI
@@ -209,13 +221,13 @@
              rdfs:subPropertyOf owl:topDataProperty .
 
 
+###  urn:absolute:www.sbc.upc.edu/viatges#CandidatoCiudad
+:CandidatoCiudad rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty .
+
+
 ###  urn:absolute:www.sbc.upc.edu/viatges#Ciudad
 :Ciudad rdf:type owl:DatatypeProperty .
-
-
-###  urn:absolute:www.sbc.upc.edu/viatges#CiudadCandidata
-:CiudadCandidata rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#PuntoInteres
@@ -270,8 +282,8 @@
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#desventajas
 :desventajas rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf :CiudadCandidata ;
-             rdfs:domain :CiudadCandidata ;
+             rdfs:subPropertyOf :CandidatoCiudad ;
+             rdfs:domain :CandidatoCiudad ;
              rdfs:range xsd:string .
 
 
@@ -293,27 +305,18 @@
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#durada_estada
 :durada_estada rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :CiudadCandidata ;
+               rdfs:subPropertyOf :CandidatoCiudad ;
                rdf:type owl:FunctionalProperty ;
-               rdfs:domain :CiudadCandidata ;
+               rdfs:domain :CandidatoCiudad ;
                rdfs:range xsd:int .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#grado
 :grado rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf :CiudadCandidata ;
+       rdfs:subPropertyOf :CandidatoCiudad ;
        rdf:type owl:FunctionalProperty ;
-       rdfs:domain :CiudadCandidata ;
+       rdfs:domain :CandidatoCiudad ;
        rdfs:range xsd:string .
-
-
-###  urn:absolute:www.sbc.upc.edu/viatges#hora_salida
-:hora_salida rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf :Transporte ;
-             rdf:type owl:FunctionalProperty ;
-             rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
-             rdfs:range xsd:dateTime ;
-             rdfs:comment "De moment ignorarem aquest atribut" .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#medio
@@ -326,9 +329,9 @@
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#motivo
 :motivo rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf :CiudadCandidata ;
+        rdfs:subPropertyOf :CandidatoCiudad ;
         rdf:type owl:FunctionalProperty ;
-        rdfs:domain :CiudadCandidata ;
+        rdfs:domain :CandidatoCiudad ;
         rdfs:range xsd:string .
 
 
@@ -380,35 +383,35 @@
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#presupuesto_ok
 :presupuesto_ok rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf :CiudadCandidata ;
+                rdfs:subPropertyOf :CandidatoCiudad ;
                 rdf:type owl:FunctionalProperty ;
-                rdfs:domain :CiudadCandidata ;
+                rdfs:domain :CandidatoCiudad ;
                 rdfs:range xsd:string ;
                 rdfs:comment "Evaluacion del nivel de vida vs presupuesto: SI, NO, PARCIAL" .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#tematica_ok
 :tematica_ok rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf :CiudadCandidata ;
+             rdfs:subPropertyOf :CandidatoCiudad ;
              rdf:type owl:FunctionalProperty ;
-             rdfs:domain :CiudadCandidata ;
+             rdfs:domain :CandidatoCiudad ;
              rdfs:range xsd:string ;
              rdfs:comment "Evaluacion de compatibilidad con la tematica: SI, NO, PARCIAL" .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#transporte_ok
 :transporte_ok rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :CiudadCandidata ;
+               rdfs:subPropertyOf :CandidatoCiudad ;
                rdf:type owl:FunctionalProperty ;
-               rdfs:domain :CiudadCandidata ;
+               rdfs:domain :CandidatoCiudad ;
                rdfs:range xsd:string ;
                rdfs:comment "Evaluacion de transporte (no usa medio odiado): SI, NO" .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#ventajas
 :ventajas rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf :CiudadCandidata ;
-          rdfs:domain :CiudadCandidata ;
+          rdfs:subPropertyOf :CandidatoCiudad ;
+          rdfs:domain :CandidatoCiudad ;
           rdfs:range xsd:string .
 
 
@@ -521,9 +524,8 @@
                                                                                  rdfs:comment "Representa l'usuari client que es beneficiara de la planificació del viatge." .
 
 
-###  urn:absolute:www.sbc.upc.edu/viatges#CiudadCandidata
-:CiudadCandidata rdf:type owl:Class ;
-                 rdfs:subClassOf <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> .
+###  urn:absolute:www.sbc.upc.edu/viatges#CandidatoCiudad
+:CandidatoCiudad rdf:type owl:Class .
 
 
 ###  urn:absolute:www.sbc.upc.edu/viatges#Viaje
@@ -1098,7 +1100,7 @@
 #    Annotations
 #################################################################
 
-:CiudadCandidata rdfs:comment "Representa el com s'adecua una ciutat a les restriccions de l'usuari" .
+:CandidatoCiudad rdfs:comment "Representa el com s'adecua una ciutat a les restriccions de l'usuari" .
 
 
 :Viaje rdfs:comment "Representa l'objecte del viatge final proposat." .

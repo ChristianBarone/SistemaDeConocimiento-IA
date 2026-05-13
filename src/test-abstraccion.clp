@@ -1,11 +1,12 @@
 ;;; test_abstraccion.clp — prueba aislada del módulo ABSTRACCION
 
-(defmodule MAIN (export ?ALL))
+; (defmodule MAIN (export ?ALL))
 
-;;; 1. Carga los módulos necesarios
-(load "ontologia.clp")
-(load "modulo-preguntas.clp")   ; necesario para importar (entrada-completada)
-(load "modulo-abstraccion.clp")
+; ;;; 1. Carga los módulos necesarios
+; (load "ontologia_v2.clp")
+; (load "instancias_v2.clp")
+; (load "modulo-preguntas.clp")   ; necesario para importar (entrada-completada)
+; (load "modulo-abstraccion.clp")
 
 ;;; 2. Usuario de prueba hardcodeado — no pasa por PREGUNTAS
 (deffacts PREGUNTAS::usuario-test
@@ -29,6 +30,6 @@
 )
 
 ;;; 3. Arranca en ABSTRACCION directamente
-(reset)
-(focus ABSTRACCION)
-(run)
+; (reset)
+; (focus ABSTRACCION)
+; (run)
