@@ -54,7 +54,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO, PARCIAL
-    (multislot precio_PI
+    (slot precio_PI
         (type FLOAT)
         (create-accessor read-write))
 )
@@ -113,6 +113,18 @@
     (pattern-match reactive)
 )
 
+(defclass Familiar
+    (is-a TematicaViaje)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Ocio
+    (is-a TematicaViaje)
+    (role concrete)
+    (pattern-match reactive)
+)
+
 (defclass Alojamiento "Descriu el tipus d'allotjament utilitzat al viatge."
     (is-a USER)
     (role concrete)
@@ -123,7 +135,7 @@
     (slot nombre
         (type STRING)
         (create-accessor read-write))
-    (multislot precio_noche
+    (slot precio_noche
         (type FLOAT)
         (create-accessor read-write))
 )
@@ -159,13 +171,13 @@
     (multislot tienePOI
         (type INSTANCE)
         (create-accessor read-write))
-    (multislot clima_habitual
+    (slot clima_habitual
         (type STRING)
         (create-accessor read-write))
-    (multislot cluster_tematico
-        (type STRING)
+    (slot cluster_tematico
+        (type SYMBOL)
         (create-accessor read-write))
-    (multislot nivel_de_vida
+    (slot nivel_de_vida
         (type FLOAT)
         (create-accessor read-write))
     (slot nombre
@@ -213,7 +225,7 @@
     (slot presupuesto_max
         (type FLOAT)
         (create-accessor read-write))
-    (multislot transporte_odiado
+    (slot transporte_odiado
         (type STRING)
         (create-accessor read-write))
 )
@@ -255,6 +267,10 @@
     (multislot ventajas
         (type STRING)
         (create-accessor read-write))
+    (slot incompatibilidad_especifica
+        (type SYMBOL)
+        (default NO)
+        (create-accessor read-write))
 )
 
 (defclass Viaje "Representa l'objecte del viatge final proposat."
@@ -278,5 +294,41 @@
         (create-accessor read-write))
     (slot precio_total
         (type INTEGER)
+        (create-accessor read-write))
+)
+
+(defclass ViajeCandidato
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot incluyeCiudad
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot incluyeAlojamiento
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot n_ciudades
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot durada_dias
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot precio_total
+        (type FLOAT)
+        (default 0.0)
+        (create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot valido
+        (type SYMBOL)
+        (default FALSE)
+        (create-accessor read-write))
+    (slot seleccionado
+        (type SYMBOL)
+        (default FALSE)
         (create-accessor read-write))
 )
