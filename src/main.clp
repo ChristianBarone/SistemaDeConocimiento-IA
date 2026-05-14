@@ -13,6 +13,6 @@
 (defrule flujo-principal
    (declare (salience 10))
    =>
-   (focus PREGUNTAS ABSTRACCION HEURISTICA REFINAMIENTO SALIDA)
+   (focus PREGUNTAS)
 )
 (run)
