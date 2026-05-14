@@ -1,4 +1,4 @@
-; (defmodule MAIN (export ?ALL))
+(defmodule MAIN (export ?ALL))
 
 ; (load "ontologia_v2.clp")
 ; (load "instancias_v2.clp")
@@ -9,5 +9,5 @@
 (defrule flujo-principal
    (declare (salience 10))
    =>
-   (focus PREGUNTAS ABSTRACCION HEURISTICA REFINAMIENTO SALIDA)
+   (focus PREGUNTAS)
 )
