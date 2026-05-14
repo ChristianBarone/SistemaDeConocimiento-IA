@@ -3,13 +3,13 @@
 ;;; Los slots de evaluacion (tematica-ok, presupuesto-ok, etc.) se rellenan
 ;;; directamente, simulando lo que habria hecho el modulo de abstraccion
 
-; (defmodule MAIN (export ?ALL))
+(defmodule MAIN (export ?ALL))
 
-; (load "ontologia_v2.clp")
-; (load "instancias_v2.clp")
-; (load "modulo-preguntas.clp")
-; (load "modulo-abstraccion.clp")
-; (load "modulo-heuristica.clp")
+(load "ontologia_v2.clp")
+(load "instancias_v2.clp")
+(load "modulo-preguntas.clp")
+(load "modulo-abstraccion.clp")
+(load "modulo-heuristica.clp")
 
 ;;; ============================================================
 ;;; CASO 1: Pareja romantica, presupuesto ALTO
@@ -85,3 +85,7 @@
     (printout t "            Madrid/Roma/Florencia -> PARCIALMENTE_ADECUADO" crlf)
     (printout t "==============================" crlf crlf)
 )
+
+(reset)
+(focus HEURISTICA)
+(run)
