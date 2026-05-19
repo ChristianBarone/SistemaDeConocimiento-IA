@@ -1,0 +1,14 @@
+(clear)
+
+(load "main.clp")
+(load "ontologia_v3.clp")
+(load "instancias_v3.clp")
+(load "modulo-preguntas.clp")
+(load "modulo-abstraccion.clp")
+(load "modulo-heuristica.clp")
+(load "modulo-refinamiento.clp")
+(load "modulo-salida.clp")
+
+;;; 3. INICIO AUTOMÁTICO
+(reset)
+(run)
