@@ -288,6 +288,9 @@
     (multislot incluyeAlojamiento
         (type INSTANCE)
         (create-accessor read-write))
+    (multislot incluyePuntoDeInteres
+        (type INSTANCE)
+        (create-accessor read-write))
     (slot n_ciudades
         (type INTEGER)
         (default 0)
