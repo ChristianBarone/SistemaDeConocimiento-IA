@@ -1,0 +1,41 @@
+Resumen de clases del sistema y atributos
+
+- Tematica: clase general para representar la temática de un viaje o elemento.
+    - Aventura, Cultural, Descanso, Romantico, Familiar, Ocio: subclases de Tematica que representan los tipos temáticos posibles.
+
+- Transporte: representa un desplazamiento entre ciudades. 
+Atributos: tieneFin, tieneOrigen, duracion_horas, medio, accesible y precio.
+    - Autobus, Avion, CocheAlquiler, Tren: subclases de Transporte; heredan los mismos atributos y solo concretan el tipo de transporte.
+
+- PuntoDeInteres: representa un lugar visitable del viaje. 
+Atributos: accesible, precio_PI, gaudi_infants, popularidad y tematica_adecuada.
+    - Monumento, Museo, Recreativo, Parque: subclases de PuntoDeInteres; heredan esos atributos y representan el tipo de punto de interés.
+
+- Alojamiento: representa el lugar donde se hospeda el usuario. 
+Atributos: categoria, nombre, precio_noche, accesible y calidad.
+    - Apartamento, Hostal, Hotel: subclases de Alojamiento; heredan esos atributos y concretan el tipo de alojamiento.
+
+- Ciudad: representa una ciudad candidata para el viaje. 
+Atributos: conectaCon, tieneAlojamiento, tienePOI, cluster_tematico, nivel_de_vida, nombre, popularidad, valoracion_primavera, valoracion_verano, valoracion_otono y valoracion_invierno.
+!! Eliminado clima habitual
+
+- Usuario: representa el perfil del viajero. 
+Atributos: recibeViaje, acompanyants, ciudades_max, ciudades_min, dias_max, dias_min, edad, explorador, grado_ahorro, prioridad_alojamiento, temporada_viaje, motivo_viaje, movilidad_reducida, nivel_cultural, presupuesto_max y transporte_odiado.
+
+- Viaje: representa la propuesta final generada por el sistema. 
+Atributos: incluyeCiudad, incluyePI, tieneTema, viajaCon, durada_dias y precio_total.
+
+- ViajeCandidato: representa una propuesta intermedia que el sistema evalúa antes de escoger la final. 
+Atributos: incluyeCiudad, incluyeAlojamiento, n_ciudades, durada_dias, precio_total, puntuacion, ajuste_ahorro, ajuste_explorador, ajuste_temporada, ajuste_alojamiento, ajuste_infants, valido y seleccionado.
+
+- CandidatoCiudad: representa la evaluación de una ciudad respecto al usuario. 
+Atributos: ciudad, desventajas, durada_estada, grado, motivo, presupuesto_ok, tematica_ok, transporte_ok, ventajas, incompatibilidad_especifica, ajuste_explorador y ajuste_temporada.
+
+- AlojamientoCandidato: representa la evaluación de un alojamiento posible. 
+Atributos: alojamiento, accesibilidad_ok, precio_ok, puntuacion y ajuste_prioridad_alojamiento.
+
+- TransporteCandidato: representa la evaluación de un transporte posible. 
+Atributos: transporte, accesibilidad_ok, precio_ok, odiado y puntuacion.
+
+- PuntoDeInteresCandidato: representa la evaluación de un punto de interés posible. 
+Atributos: puntodeinteres, accesibilidad_ok, precio_ok, puntuacion y ajuste_infants.

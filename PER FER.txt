@@ -1,0 +1,12 @@
+- Que doni dos resultats (NO PODEN COINCIDIR CIUTATS). Potser caldrà retocar CandidatoCiudad
+- Definir el nombre mínim i màxim de dies per ciutat.
+	- Caldria multiplicar la ountuació assignada a cada ciutat pel nombre de dies d'estada. Recompensar estades en ciutats bones.
+- Aplicar/esborrar nivel de vida
+- Incorporar la preferència de transport, no únicament com a restricció.
+	- Penalitzar els desplaçaments amb mitjans de transport no preferits.
+	- Si no hi ha una preferència de transport definida, penalitzar els trajectes llargs, per exemple mitjançant un multiplicador negatiu basat en la durada.
+- Aplicar el grau de perfil explorador a la ciutat o als punts d'interès.
+- Aplicar el grau de prioritat de l'hotel.
+	- Si l'usuari prioritza l'allotjament, penalitzar els hotels amb poques estrelles.
+- Aplicar la valoració segons la temporada.
+	- Penalitzar aquelles ciutats amb una puntuació baixa per a l'estació de l'any corresponent; per exemple, una ciutat de platja a l'hivern o una ciutat d'interior o de muntanya a l'estiu.

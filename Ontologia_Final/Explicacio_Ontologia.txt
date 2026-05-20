@@ -1,0 +1,130 @@
+Resumen de clases del sistema y atributos
+
+- Tematica: clase general que representa la temática principal de un viaje o la afinidad temática de un elemento del dominio.
+    - Aventura, Cultural, Descanso, Romantico, Familiar, Ocio: subclases de Tematica que representan los tipos temáticos posibles dentro del sistema.
+
+- Transporte: representa un desplazamiento entre dos ciudades dentro del viaje.
+  Atributos:
+    - tieneOrigen: ciudad de salida del trayecto.
+    - tieneFin: ciudad de destino del trayecto.
+    - duracion_horas: duración estimada del desplazamiento en horas.
+    - tipo: medio de transporte utilizado, por ejemplo AUTOBUS, AVION, COCHE_ALQUILER o TREN.
+    - detalles: información textual complementaria del trayecto, como si es directo, nocturno o con transbordo.
+    - accesible: indica si el transporte es adecuado para personas con movilidad reducida.
+    - precio: coste del trayecto.
+
+- PuntoDeInteres: representa un lugar visitable dentro de una ciudad que puede formar parte del viaje.
+  Atributos:
+    - tipo: clase de punto de interés, como MONUMENTO, MUSEO, RECREATIVO o PARQUE.
+    - accesible: nivel de accesibilidad del lugar, con valores como SI, NO o PARCIAL.
+    - precio_PI: coste de acceso o visita al punto de interés.
+    - gaudi_infants: grado en que el lugar resulta adecuado o disfrutable para niños, en una escala de 1 a 5.
+    - popularidad: nivel de interés turístico o relevancia general del lugar, en una escala de 1 a 5.
+    - tematica_adecuada: temática con la que mejor encaja ese punto de interés.
+
+- Alojamiento: representa el lugar donde se hospeda el usuario durante el viaje.
+  Atributos:
+    - categoria: tipo de alojamiento, como APARTAMENTO, HOSTAL o HOTEL.
+    - nombre: nombre comercial o identificador del alojamiento.
+    - precio_noche: coste por noche.
+    - accesible: indica si el alojamiento es adecuado para personas con movilidad reducida.
+    - calidad: valoración global de la calidad del alojamiento en una escala de 1 a 5.
+
+- Ciudad: representa una ciudad que puede formar parte del viaje.
+  Atributos:
+    - conectaCon: conjunto de ciudades con las que existe conexión posible.
+    - tieneAlojamiento: alojamientos disponibles en esa ciudad.
+    - tienePOI: puntos de interés disponibles en esa ciudad.
+    - cluster_tematico: temática dominante o más representativa de la ciudad.
+    - nivel_de_vida: indicador aproximado del coste de vida de la ciudad.
+    - nombre: nombre de la ciudad.
+    - popularidad: nivel de atractivo general de la ciudad en una escala de 1 a 5.
+    - valoracion_primavera: recomendación de visitar la ciudad en primavera, de 1 a 5.
+    - valoracion_verano: recomendación de visitar la ciudad en verano, de 1 a 5.
+    - valoracion_otono: recomendación de visitar la ciudad en otoño, de 1 a 5.
+    - valoracion_invierno: recomendación de visitar la ciudad en invierno, de 1 a 5.
+    - Se ha eliminado el atributo de clima habitual, simplificando la descripción de la ciudad.
+
+- Usuario: representa el perfil del viajero para el que se genera la recomendación.
+  Atributos:
+    - recibeViaje: viajes que recibe como propuesta.
+    - acompanyants: personas que acompañan al usuario, por ejemplo pareja, amigos o niños.
+    - ciudades_max: número máximo de ciudades deseadas.
+    - ciudades_min: número mínimo de ciudades deseadas.
+    - dias_max: duración máxima aceptable del viaje.
+    - dias_min: duración mínima aceptable del viaje.
+    - edad: edad del usuario.
+    - explorador: grado de preferencia por viajes más exploratorios frente a convencionales, de 1 a 5.
+    - grado_ahorro: importancia que el usuario da al ahorro, de 1 a 5.
+    - prioridad_alojamiento: importancia que el usuario da a la calidad del alojamiento, de 1 a 5.
+    - temporada_viaje: estación del año en la que se quiere realizar el viaje.
+    - motivo_viaje: razón principal del viaje.
+    - movilidad_reducida: indica si el usuario tiene necesidades de accesibilidad.
+    - nivel_cultural: nivel o interés cultural del usuario.
+    - presupuesto_max: presupuesto máximo disponible.
+    - transporte_odiado: medio de transporte que el usuario quiere evitar.
+    - transporte_preferido: medio de transporte que el usuario prefiere utilizar.
+
+- Viaje: representa la propuesta final generada por el sistema.
+  Atributos:
+    - incluyeCiudad: ciudades incluidas en el viaje final.
+    - incluyePI: puntos de interés incluidos en la propuesta final.
+    - tieneTema: temática principal asignada al viaje.
+    - viajaCon: usuarios o perfiles asociados al viaje.
+    - durada_dias: duración total del viaje en días.
+    - precio_total: coste total estimado del viaje.
+
+- ViajeCandidato: representa una propuesta intermedia que el sistema analiza antes de decidir la solución final.
+  Atributos:
+    - incluyeCiudad: ciudades incluidas en la propuesta candidata.
+    - incluyeAlojamiento: alojamientos asociados a esa propuesta.
+    - n_ciudades: número de ciudades que contiene la propuesta.
+    - durada_dias: duración total de la propuesta en días.
+    - precio_total: coste estimado total de la propuesta.
+    - puntuacion: puntuación global obtenida por la propuesta.
+    - ajuste_ahorro: ajuste aplicado según la importancia del ahorro para el usuario.
+    - ajuste_explorador: ajuste aplicado según el perfil explorador del usuario.
+    - ajuste_temporada: ajuste aplicado según la temporada del viaje.
+    - ajuste_alojamiento: ajuste aplicado según la prioridad dada al alojamiento.
+    - ajuste_infants: ajuste aplicado según la adecuación para niños.
+    - valido: indica si la propuesta cumple las restricciones mínimas.
+    - seleccionado: indica si esa propuesta ha sido finalmente elegida.
+
+- CandidatoCiudad: representa la evaluación de una ciudad concreta respecto a las preferencias y restricciones del usuario.
+  Atributos:
+    - ciudad: ciudad evaluada.
+    - ventajas: lista de aspectos favorables detectados en esa ciudad.
+    - desventajas: lista de aspectos desfavorables detectados en esa ciudad.
+    - durada_estada: número recomendado de días de estancia en esa ciudad.
+    - grado: valoración global del encaje de la ciudad, por ejemplo alto, medio o bajo.
+    - motivo: explicación breve del motivo de la valoración asignada.
+    - presupuesto_ok: indica si la ciudad encaja dentro del presupuesto.
+    - tematica_ok: indica si la ciudad encaja temáticamente con lo que busca el usuario.
+    - transporte_ok: indica si dispone de transporte adecuado para el perfil del usuario.
+    - incompatibilidad_especifica: marca si existe alguna razón importante para descartar esa ciudad.
+    - ajuste_explorador: ajuste de puntuación según el perfil explorador del usuario.
+    - ajuste_temporada: ajuste de puntuación según la temporada elegida.
+
+- AlojamientoCandidato: representa la evaluación de un alojamiento posible antes de incorporarlo al viaje.
+  Atributos:
+    - alojamiento: alojamiento evaluado.
+    - accesibilidad_ok: indica si cumple los requisitos de accesibilidad.
+    - precio_ok: indica si su precio encaja en el presupuesto.
+    - puntuacion: valoración global del alojamiento como candidato.
+    - ajuste_prioridad_alojamiento: ajuste aplicado según la importancia que el usuario da al alojamiento.
+
+- TransporteCandidato: representa la evaluación de un transporte posible antes de seleccionarlo.
+  Atributos:
+    - transporte: transporte evaluado.
+    - accesibilidad_ok: indica si el transporte cumple las necesidades de accesibilidad.
+    - precio_ok: indica si el coste del transporte es aceptable.
+    - odiado: indica si ese transporte coincide con uno que el usuario quiere evitar.
+    - puntuacion: valoración global del transporte candidato.
+
+- PuntoDeInteresCandidato: representa la evaluación de un punto de interés posible antes de incluirlo en el viaje.
+  Atributos:
+    - puntodeinteres: punto de interés evaluado.
+    - accesibilidad_ok: indica si el lugar es suficientemente accesible para el usuario.
+    - precio_ok: indica si su coste encaja en el presupuesto previsto.
+    - puntuacion: valoración global del punto de interés.
+    - ajuste_infants: ajuste aplicado según lo adecuado que sea para niños.

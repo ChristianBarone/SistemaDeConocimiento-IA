@@ -13,7 +13,7 @@
 ;;; 1. CREAR CANDIDATOS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule HEURISTICA::crear-candidatos-ciudad
+(defrule HEURISTICA::crear-candidatos
     (declare (salience 10))
     (entrada-completada)
     (object (is-a Ciudad) (name ?n))
@@ -21,47 +21,14 @@
     (make-instance (sym-cat "Cand-" ?n) of CandidatoCiudad (ciudad ?n))
 )
 
-(defrule HEURISTICA::crear-candidatos-alojamiento
-    (declare (salience 10))
-    (entrada-completada)
-    (object (is-a Alojamiento) (name ?n))
-=>
-    (make-instance (sym-cat "Cand-" ?n) of AlojamientoCandidato (alojamiento ?n))
-)
-
-(defrule HEURISTICA::crear-candidatos-transporte
-    (declare (salience 10))
-    (entrada-completada)
-    (object (is-a Transporte) (name ?n))
-=>
-    (make-instance (sym-cat "Cand-" ?n) of TransporteCandidato (transporte ?n))
-)
-
-(defrule HEURISTICA::crear-candidatos-puntointeres
-    (declare (salience 10))
-    (entrada-completada)
-    (object (is-a PuntoDeInteres) (name ?n))
-=>
-    (make-instance (sym-cat "Cand-" ?n) of PuntoDeinteresCandidato (puntodeinteres ?n))
-)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 2. EVALUAR RESTRICCIONES (OBLIGATORIAS)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule HEURISTICA::restriccion-transporte-odiado
-    (declare (salience 5))
-    ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_odiado ?transp))
-    ?cand <- (object (is-a TransporteCandidato) (transporte ?transp))
-=>
-    (bind ?ok SI)
-    (send ?cand put-odiado ?ok)
-)
-
-(defrule HEURISTICA::restriccion-presupuesto-ciudad
+(defrule HEURISTICA::restriccion-presupuesto
     (nivel-presupuesto ?nivel)
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
-    (object (is-a Ciudad) (name ?ciu) (nivel_de_vida ?nv))
+    (object (name ?ciu) (nivel_de_vida ?nv))
 =>
     (bind ?ok NO)
     (if (eq ?nivel LUJO) then (bind ?ok SI)
@@ -71,46 +38,16 @@
     (send ?cand put-presupuesto_ok ?ok)
 )
 
-(defrule HEURISTICA::restriccion-presupuesto-alojamiento
-    (nivel-presupuesto ?nivel)
-    ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
-    (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
+(defrule HEURISTICA::restriccion-transporte
+    (declare (salience 5))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_odiado ?transp))
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
 =>
-    (bind ?ok NO)
-    (if (and (eq ?nivel LUJO) (>= ?precio 300)) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 30) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok SI)))))
-    (send ?cand put-presupuesto_ok ?ok)
+    (bind ?ok (if (or (eq ?transp "") (eq ?transp "Ninguno")) then SI else SI))
+    (send ?cand put-transporte_ok ?ok)
 )
 
-(defrule HEURISTICA::restriccion-presupuesto-transporte
-    (nivel-presupuesto ?nivel)
-    ?cand <- (object (is-a TransporteCandidato) (transporte ?trans) (odiado NO))
-    (object (is-a Transporte) (name ?trans) (precio ?precio))
-=>
-    (bind ?ok NO)
-    (if (and (eq ?nivel LUJO) (>= ?precio 300)) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 50) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 60)) then (bind ?ok SI)))))
-    (send ?cand put-presupuesto_ok ?ok)
-)
-
-(defrule HEURISTICA::restriccion-presupuesto-puntodeinteres
-    (nivel-presupuesto ?nivel)
-    ?cand <- (object (is-a PuntoDeinteresCandidato) (puntodeinteres ?punto))
-    (object (is-a PuntoDeInteres) (name ?punto) (precio_PI ?precio))
-=>
-    (bind ?ok NO)
-    (if (eq ?nivel LUJO) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (<= ?precio 200)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (<= ?precio 70)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 30)) then (bind ?ok SI)))))
-    (send ?cand put-presupuesto_ok ?ok)
-)
-
-(defrule HEURISTICA::restriccion-accesibilidad-
+(defrule HEURISTICA::restriccion-accesibilidad
     (declare (salience 5))
     ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
