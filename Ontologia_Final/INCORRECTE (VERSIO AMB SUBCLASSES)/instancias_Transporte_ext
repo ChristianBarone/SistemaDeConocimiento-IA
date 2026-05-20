@@ -1,0 +1,1802 @@
+(definstances instancias-ciudades
+
+([Trans_Amsterdam_Paris] of Autobus
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Paris])
+   (duracion_horas 6.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 33.5)
+)
+
+([Trans_Amsterdam_Copenhague] of CocheAlquiler
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Copenhague])
+   (duracion_horas 7.8)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 67.7)
+)
+
+([Trans_Amsterdam_Munich] of Tren
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Munich])
+   (duracion_horas 6.0)
+   (medio "tren")
+   (accesible SI)
+   (precio 80.1)
+)
+
+([Trans_Amsterdam_Praga] of Avion
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Praga])
+   (duracion_horas 3.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 120.3)
+)
+
+([Trans_Amsterdam_Innsbruck] of Autobus
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Innsbruck])
+   (duracion_horas 10.5)
+   (medio "autobus")
+   (accesible SI)
+   (precio 48.7)
+)
+
+([Trans_Amsterdam_Dublin] of Tren
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Dublin])
+   (duracion_horas 6.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 88.1)
+)
+
+([Trans_Amsterdam_Salzburgo] of Avion
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Salzburgo])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 127.5)
+)
+
+([Trans_Amsterdam_Bergen] of Autobus
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Bergen])
+   (duracion_horas 12.6)
+   (medio "autobus")
+   (accesible SI)
+   (precio 56.6)
+)
+
+([Trans_Amsterdam_Viena] of Tren
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Viena])
+   (duracion_horas 8.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 104.2)
+)
+
+([Trans_Amsterdam_Venecia] of Avion
+   (tieneOrigen [Amsterdam])
+   (tieneFin [Venecia])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 147.9)
+)
+
+([Trans_Venecia_Ljubljana] of Autobus
+   (tieneOrigen [Venecia])
+   (tieneFin [Ljubljana])
+   (duracion_horas 3.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 21.2)
+)
+
+([Trans_Venecia_Florencia] of CocheAlquiler
+   (tieneOrigen [Venecia])
+   (tieneFin [Florencia])
+   (duracion_horas 2.9)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 34.3)
+)
+
+([Trans_Venecia_Innsbruck] of Tren
+   (tieneOrigen [Venecia])
+   (tieneFin [Innsbruck])
+   (duracion_horas 2.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 39.4)
+)
+
+([Trans_Venecia_Salzburgo] of Autobus
+   (tieneOrigen [Venecia])
+   (tieneFin [Salzburgo])
+   (duracion_horas 4.3)
+   (medio "autobus")
+   (accesible SI)
+   (precio 25.5)
+)
+
+([Trans_Venecia_Munich] of CocheAlquiler
+   (tieneOrigen [Venecia])
+   (tieneFin [Munich])
+   (duracion_horas 4.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 42.4)
+)
+
+([Trans_Venecia_Roma] of CocheAlquiler
+   (tieneOrigen [Venecia])
+   (tieneFin [Roma])
+   (duracion_horas 5.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 49.5)
+)
+
+([Trans_Venecia_Viena] of Tren
+   (tieneOrigen [Venecia])
+   (tieneFin [Viena])
+   (duracion_horas 4.0)
+   (medio "tren")
+   (accesible SI)
+   (precio 59.2)
+)
+
+([Trans_Venecia_Niza] of Tren
+   (tieneOrigen [Venecia])
+   (tieneFin [Niza])
+   (duracion_horas 4.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 60.0)
+)
+
+([Trans_Venecia_Praga] of Autobus
+   (tieneOrigen [Venecia])
+   (tieneFin [Praga])
+   (duracion_horas 7.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 39.0)
+)
+
+([Trans_Venecia_Paris] of Avion
+   (tieneOrigen [Venecia])
+   (tieneFin [Paris])
+   (duracion_horas 3.4)
+   (medio "avion")
+   (accesible SI)
+   (precio 136.1)
+)
+
+([Trans_Viena_Salzburgo] of Autobus
+   (tieneOrigen [Viena])
+   (tieneFin [Salzburgo])
+   (duracion_horas 4.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 24.5)
+)
+
+([Trans_Viena_Praga] of CocheAlquiler
+   (tieneOrigen [Viena])
+   (tieneFin [Praga])
+   (duracion_horas 3.5)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 38.1)
+)
+
+([Trans_Viena_Ljubljana] of Tren
+   (tieneOrigen [Viena])
+   (tieneFin [Ljubljana])
+   (duracion_horas 2.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 45.0)
+)
+
+([Trans_Viena_Munich] of Tren
+   (tieneOrigen [Viena])
+   (tieneFin [Munich])
+   (duracion_horas 3.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 52.0)
+)
+
+([Trans_Viena_Innsbruck] of Autobus
+   (tieneOrigen [Viena])
+   (tieneFin [Innsbruck])
+   (duracion_horas 5.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 31.3)
+)
+
+([Trans_Viena_Venecia] of CocheAlquiler
+   (tieneOrigen [Viena])
+   (tieneFin [Venecia])
+   (duracion_horas 5.6)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 52.9)
+)
+
+([Trans_Viena_Florencia] of Tren
+   (tieneOrigen [Viena])
+   (tieneFin [Florencia])
+   (duracion_horas 5.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 76.9)
+)
+
+([Trans_Viena_Roma] of Autobus
+   (tieneOrigen [Viena])
+   (tieneFin [Roma])
+   (duracion_horas 10.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 50.2)
+)
+
+([Trans_Viena_Niza] of Tren
+   (tieneOrigen [Viena])
+   (tieneFin [Niza])
+   (duracion_horas 7.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 97.7)
+)
+
+([Trans_Viena_Copenhague] of Avion
+   (tieneOrigen [Viena])
+   (tieneFin [Copenhague])
+   (duracion_horas 3.4)
+   (medio "avion")
+   (accesible SI)
+   (precio 139.4)
+)
+
+([Trans_Praga_Viena] of Autobus
+   (tieneOrigen [Praga])
+   (tieneFin [Viena])
+   (duracion_horas 4.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 24.5)
+)
+
+([Trans_Praga_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Praga])
+   (tieneFin [Salzburgo])
+   (duracion_horas 3.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 39.7)
+)
+
+([Trans_Praga_Munich] of Tren
+   (tieneOrigen [Praga])
+   (tieneFin [Munich])
+   (duracion_horas 2.9)
+   (medio "tren")
+   (accesible SI)
+   (precio 47.0)
+)
+
+([Trans_Praga_Innsbruck] of Tren
+   (tieneOrigen [Praga])
+   (tieneFin [Innsbruck])
+   (duracion_horas 3.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 54.5)
+)
+
+([Trans_Praga_Ljubljana] of Autobus
+   (tieneOrigen [Praga])
+   (tieneFin [Ljubljana])
+   (duracion_horas 6.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 34.3)
+)
+
+([Trans_Praga_Venecia] of CocheAlquiler
+   (tieneOrigen [Praga])
+   (tieneFin [Venecia])
+   (duracion_horas 6.8)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 61.1)
+)
+
+([Trans_Praga_Copenhague] of Tren
+   (tieneOrigen [Praga])
+   (tieneFin [Copenhague])
+   (duracion_horas 5.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 77.2)
+)
+
+([Trans_Praga_Amsterdam] of Autobus
+   (tieneOrigen [Praga])
+   (tieneFin [Amsterdam])
+   (duracion_horas 10.2)
+   (medio "autobus")
+   (accesible SI)
+   (precio 47.5)
+)
+
+([Trans_Praga_Florencia] of Tren
+   (tieneOrigen [Praga])
+   (tieneFin [Florencia])
+   (duracion_horas 6.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 86.7)
+)
+
+([Trans_Praga_Paris] of Avion
+   (tieneOrigen [Praga])
+   (tieneFin [Paris])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 140.9)
+)
+
+([Trans_Barcelona_Valencia] of Autobus
+   (tieneOrigen [Barcelona])
+   (tieneFin [Valencia])
+   (duracion_horas 4.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 27.2)
+)
+
+([Trans_Barcelona_Niza] of CocheAlquiler
+   (tieneOrigen [Barcelona])
+   (tieneFin [Niza])
+   (duracion_horas 6.3)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 57.2)
+)
+
+([Trans_Barcelona_Madrid] of Tren
+   (tieneOrigen [Barcelona])
+   (tieneFin [Madrid])
+   (duracion_horas 4.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 65.5)
+)
+
+([Trans_Barcelona_Florencia] of Avion
+   (tieneOrigen [Barcelona])
+   (tieneFin [Florencia])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 129.7)
+)
+
+([Trans_Barcelona_Paris] of Autobus
+   (tieneOrigen [Barcelona])
+   (tieneFin [Paris])
+   (duracion_horas 11.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 53.5)
+)
+
+([Trans_Barcelona_Roma] of Tren
+   (tieneOrigen [Barcelona])
+   (tieneFin [Roma])
+   (duracion_horas 7.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 97.4)
+)
+
+([Trans_Barcelona_Oporto] of Avion
+   (tieneOrigen [Barcelona])
+   (tieneFin [Oporto])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 143.3)
+)
+
+([Trans_Barcelona_Venecia] of Autobus
+   (tieneOrigen [Barcelona])
+   (tieneFin [Venecia])
+   (duracion_horas 13.2)
+   (medio "autobus")
+   (accesible SI)
+   (precio 58.7)
+)
+
+([Trans_Barcelona_Innsbruck] of Tren
+   (tieneOrigen [Barcelona])
+   (tieneFin [Innsbruck])
+   (duracion_horas 8.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 108.4)
+)
+
+([Trans_Barcelona_Munich] of Avion
+   (tieneOrigen [Barcelona])
+   (tieneFin [Munich])
+   (duracion_horas 3.7)
+   (medio "avion")
+   (accesible SI)
+   (precio 161.6)
+)
+
+([Trans_Florencia_Venecia] of Autobus
+   (tieneOrigen [Florencia])
+   (tieneFin [Venecia])
+   (duracion_horas 3.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 22.2)
+)
+
+([Trans_Florencia_Roma] of CocheAlquiler
+   (tieneOrigen [Florencia])
+   (tieneFin [Roma])
+   (duracion_horas 3.2)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 36.5)
+)
+
+([Trans_Florencia_Niza] of Tren
+   (tieneOrigen [Florencia])
+   (tieneFin [Niza])
+   (duracion_horas 3.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 48.9)
+)
+
+([Trans_Florencia_Ljubljana] of Tren
+   (tieneOrigen [Florencia])
+   (tieneFin [Ljubljana])
+   (duracion_horas 3.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 52.5)
+)
+
+([Trans_Florencia_Innsbruck] of Autobus
+   (tieneOrigen [Florencia])
+   (tieneFin [Innsbruck])
+   (duracion_horas 5.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 31.5)
+)
+
+([Trans_Florencia_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Florencia])
+   (tieneFin [Salzburgo])
+   (duracion_horas 6.0)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 55.6)
+)
+
+([Trans_Florencia_Munich] of Tren
+   (tieneOrigen [Florencia])
+   (tieneFin [Munich])
+   (duracion_horas 4.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 63.7)
+)
+
+([Trans_Florencia_Viena] of Tren
+   (tieneOrigen [Florencia])
+   (tieneFin [Viena])
+   (duracion_horas 5.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 76.9)
+)
+
+([Trans_Florencia_Praga] of Tren
+   (tieneOrigen [Florencia])
+   (tieneFin [Praga])
+   (duracion_horas 6.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 86.7)
+)
+
+([Trans_Florencia_Barcelona] of Avion
+   (tieneOrigen [Florencia])
+   (tieneFin [Barcelona])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 129.7)
+)
+
+([Trans_Dublin_Amsterdam] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Amsterdam])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 125.8)
+)
+
+([Trans_Dublin_Paris] of Autobus
+   (tieneOrigen [Dublin])
+   (tieneFin [Paris])
+   (duracion_horas 11.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 51.0)
+)
+
+([Trans_Dublin_Bergen] of Tren
+   (tieneOrigen [Dublin])
+   (tieneFin [Bergen])
+   (duracion_horas 9.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 114.5)
+)
+
+([Trans_Dublin_Copenhague] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Copenhague])
+   (duracion_horas 4.0)
+   (medio "avion")
+   (accesible SI)
+   (precio 183.6)
+)
+
+([Trans_Dublin_Oporto] of Tren
+   (tieneOrigen [Dublin])
+   (tieneFin [Oporto])
+   (duracion_horas 11.8)
+   (medio "tren")
+   (accesible SI)
+   (precio 143.0)
+)
+
+([Trans_Dublin_Munich] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Munich])
+   (duracion_horas 4.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 200.4)
+)
+
+([Trans_Dublin_Innsbruck] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Innsbruck])
+   (duracion_horas 4.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 205.4)
+)
+
+([Trans_Dublin_Madrid] of Tren
+   (tieneOrigen [Dublin])
+   (tieneFin [Madrid])
+   (duracion_horas 12.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 150.6)
+)
+
+([Trans_Dublin_Niza] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Niza])
+   (duracion_horas 4.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 210.0)
+)
+
+([Trans_Dublin_Praga] of Avion
+   (tieneOrigen [Dublin])
+   (tieneFin [Praga])
+   (duracion_horas 4.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 210.9)
+)
+
+([Trans_Madrid_Valencia] of Autobus
+   (tieneOrigen [Madrid])
+   (tieneFin [Valencia])
+   (duracion_horas 4.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 27.1)
+)
+
+([Trans_Madrid_Oporto] of CocheAlquiler
+   (tieneOrigen [Madrid])
+   (tieneFin [Oporto])
+   (duracion_horas 5.5)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 51.8)
+)
+
+([Trans_Madrid_Barcelona] of Tren
+   (tieneOrigen [Madrid])
+   (tieneFin [Barcelona])
+   (duracion_horas 4.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 65.5)
+)
+
+([Trans_Madrid_Niza] of Avion
+   (tieneOrigen [Madrid])
+   (tieneFin [Niza])
+   (duracion_horas 3.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 152.1)
+)
+
+([Trans_Madrid_Paris] of Autobus
+   (tieneOrigen [Madrid])
+   (tieneFin [Paris])
+   (duracion_horas 14.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 64.6)
+)
+
+([Trans_Madrid_Florencia] of Tren
+   (tieneOrigen [Madrid])
+   (tieneFin [Florencia])
+   (duracion_horas 11.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 135.9)
+)
+
+([Trans_Madrid_Roma] of Avion
+   (tieneOrigen [Madrid])
+   (tieneFin [Roma])
+   (duracion_horas 4.1)
+   (medio "avion")
+   (accesible SI)
+   (precio 198.7)
+)
+
+([Trans_Madrid_Venecia] of Tren
+   (tieneOrigen [Madrid])
+   (tieneFin [Venecia])
+   (duracion_horas 12.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 147.4)
+)
+
+([Trans_Madrid_Innsbruck] of Avion
+   (tieneOrigen [Madrid])
+   (tieneFin [Innsbruck])
+   (duracion_horas 4.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 206.3)
+)
+
+([Trans_Madrid_Dublin] of Avion
+   (tieneOrigen [Madrid])
+   (tieneFin [Dublin])
+   (duracion_horas 4.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 209.1)
+)
+
+([Trans_Munich_Innsbruck] of Autobus
+   (tieneOrigen [Munich])
+   (tieneFin [Innsbruck])
+   (duracion_horas 2.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 16.9)
+)
+
+([Trans_Munich_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Munich])
+   (tieneFin [Salzburgo])
+   (duracion_horas 1.9)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 27.2)
+)
+
+([Trans_Munich_Praga] of Tren
+   (tieneOrigen [Munich])
+   (tieneFin [Praga])
+   (duracion_horas 2.9)
+   (medio "tren")
+   (accesible SI)
+   (precio 47.0)
+)
+
+([Trans_Munich_Venecia] of Autobus
+   (tieneOrigen [Munich])
+   (tieneFin [Venecia])
+   (duracion_horas 4.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 27.2)
+)
+
+([Trans_Munich_Ljubljana] of CocheAlquiler
+   (tieneOrigen [Munich])
+   (tieneFin [Ljubljana])
+   (duracion_horas 4.3)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 43.6)
+)
+
+([Trans_Munich_Viena] of CocheAlquiler
+   (tieneOrigen [Munich])
+   (tieneFin [Viena])
+   (duracion_horas 4.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 46.4)
+)
+
+([Trans_Munich_Florencia] of Tren
+   (tieneOrigen [Munich])
+   (tieneFin [Florencia])
+   (duracion_horas 4.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 63.7)
+)
+
+([Trans_Munich_Niza] of Tren
+   (tieneOrigen [Munich])
+   (tieneFin [Niza])
+   (duracion_horas 5.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 73.5)
+)
+
+([Trans_Munich_Amsterdam] of Autobus
+   (tieneOrigen [Munich])
+   (tieneFin [Amsterdam])
+   (duracion_horas 9.6)
+   (medio "autobus")
+   (accesible SI)
+   (precio 45.4)
+)
+
+([Trans_Munich_Paris] of CocheAlquiler
+   (tieneOrigen [Munich])
+   (tieneFin [Paris])
+   (duracion_horas 8.6)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 72.8)
+)
+
+([Trans_Niza_Florencia] of Autobus
+   (tieneOrigen [Niza])
+   (tieneFin [Florencia])
+   (duracion_horas 5.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 28.0)
+)
+
+([Trans_Niza_Venecia] of CocheAlquiler
+   (tieneOrigen [Niza])
+   (tieneFin [Venecia])
+   (duracion_horas 5.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 53.5)
+)
+
+([Trans_Niza_Roma] of Tren
+   (tieneOrigen [Niza])
+   (tieneFin [Roma])
+   (duracion_horas 4.3)
+   (medio "tren")
+   (accesible SI)
+   (precio 62.5)
+)
+
+([Trans_Niza_Barcelona] of Tren
+   (tieneOrigen [Niza])
+   (tieneFin [Barcelona])
+   (duracion_horas 4.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 64.2)
+)
+
+([Trans_Niza_Innsbruck] of Autobus
+   (tieneOrigen [Niza])
+   (tieneFin [Innsbruck])
+   (duracion_horas 7.5)
+   (medio "autobus")
+   (accesible SI)
+   (precio 37.5)
+)
+
+([Trans_Niza_Munich] of CocheAlquiler
+   (tieneOrigen [Niza])
+   (tieneFin [Munich])
+   (duracion_horas 7.5)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 65.6)
+)
+
+([Trans_Niza_Ljubljana] of Tren
+   (tieneOrigen [Niza])
+   (tieneFin [Ljubljana])
+   (duracion_horas 5.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 76.4)
+)
+
+([Trans_Niza_Salzburgo] of Tren
+   (tieneOrigen [Niza])
+   (tieneFin [Salzburgo])
+   (duracion_horas 5.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 77.6)
+)
+
+([Trans_Niza_Paris] of Autobus
+   (tieneOrigen [Niza])
+   (tieneFin [Paris])
+   (duracion_horas 9.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 46.3)
+)
+
+([Trans_Niza_Valencia] of Avion
+   (tieneOrigen [Niza])
+   (tieneFin [Valencia])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 129.9)
+)
+
+([Trans_Paris_Amsterdam] of Autobus
+   (tieneOrigen [Paris])
+   (tieneFin [Amsterdam])
+   (duracion_horas 6.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 33.5)
+)
+
+([Trans_Paris_Munich] of CocheAlquiler
+   (tieneOrigen [Paris])
+   (tieneFin [Munich])
+   (duracion_horas 8.6)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 72.8)
+)
+
+([Trans_Paris_Niza] of Tren
+   (tieneOrigen [Paris])
+   (tieneFin [Niza])
+   (duracion_horas 6.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 81.7)
+)
+
+([Trans_Paris_Innsbruck] of Tren
+   (tieneOrigen [Paris])
+   (tieneFin [Innsbruck])
+   (duracion_horas 6.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 82.5)
+)
+
+([Trans_Paris_Dublin] of Autobus
+   (tieneOrigen [Paris])
+   (tieneFin [Dublin])
+   (duracion_horas 11.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 51.0)
+)
+
+([Trans_Paris_Salzburgo] of Tren
+   (tieneOrigen [Paris])
+   (tieneFin [Salzburgo])
+   (duracion_horas 7.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 91.9)
+)
+
+([Trans_Paris_Barcelona] of Avion
+   (tieneOrigen [Paris])
+   (tieneFin [Barcelona])
+   (duracion_horas 3.4)
+   (medio "avion")
+   (accesible SI)
+   (precio 134.7)
+)
+
+([Trans_Paris_Venecia] of Autobus
+   (tieneOrigen [Paris])
+   (tieneFin [Venecia])
+   (duracion_horas 11.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 54.1)
+)
+
+([Trans_Paris_Praga] of Tren
+   (tieneOrigen [Paris])
+   (tieneFin [Praga])
+   (duracion_horas 7.8)
+   (medio "tren")
+   (accesible SI)
+   (precio 99.5)
+)
+
+([Trans_Paris_Florencia] of Avion
+   (tieneOrigen [Paris])
+   (tieneFin [Florencia])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 141.4)
+)
+
+([Trans_Roma_Florencia] of Autobus
+   (tieneOrigen [Roma])
+   (tieneFin [Florencia])
+   (duracion_horas 3.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 23.5)
+)
+
+([Trans_Roma_Venecia] of CocheAlquiler
+   (tieneOrigen [Roma])
+   (tieneFin [Venecia])
+   (duracion_horas 5.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 49.5)
+)
+
+([Trans_Roma_Niza] of Tren
+   (tieneOrigen [Roma])
+   (tieneFin [Niza])
+   (duracion_horas 4.3)
+   (medio "tren")
+   (accesible SI)
+   (precio 62.5)
+)
+
+([Trans_Roma_Ljubljana] of Tren
+   (tieneOrigen [Roma])
+   (tieneFin [Ljubljana])
+   (duracion_horas 4.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 64.0)
+)
+
+([Trans_Roma_Innsbruck] of Autobus
+   (tieneOrigen [Roma])
+   (tieneFin [Innsbruck])
+   (duracion_horas 8.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 42.1)
+)
+
+([Trans_Roma_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Roma])
+   (tieneFin [Salzburgo])
+   (duracion_horas 8.2)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 70.7)
+)
+
+([Trans_Roma_Munich] of Tren
+   (tieneOrigen [Roma])
+   (tieneFin [Munich])
+   (duracion_horas 6.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 82.7)
+)
+
+([Trans_Roma_Viena] of Autobus
+   (tieneOrigen [Roma])
+   (tieneFin [Viena])
+   (duracion_horas 10.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 50.2)
+)
+
+([Trans_Roma_Barcelona] of Tren
+   (tieneOrigen [Roma])
+   (tieneFin [Barcelona])
+   (duracion_horas 7.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 97.4)
+)
+
+([Trans_Roma_Praga] of Avion
+   (tieneOrigen [Roma])
+   (tieneFin [Praga])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 145.5)
+)
+
+([Trans_Innsbruck_Munich] of Autobus
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Munich])
+   (duracion_horas 2.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 16.9)
+)
+
+([Trans_Innsbruck_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Salzburgo])
+   (duracion_horas 2.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 29.0)
+)
+
+([Trans_Innsbruck_Venecia] of Tren
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Venecia])
+   (duracion_horas 2.2)
+   (medio "tren")
+   (accesible SI)
+   (precio 39.4)
+)
+
+([Trans_Innsbruck_Ljubljana] of Autobus
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Ljubljana])
+   (duracion_horas 4.3)
+   (medio "autobus")
+   (accesible SI)
+   (precio 25.6)
+)
+
+([Trans_Innsbruck_Praga] of Autobus
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Praga])
+   (duracion_horas 5.8)
+   (medio "autobus")
+   (accesible SI)
+   (precio 31.2)
+)
+
+([Trans_Innsbruck_Viena] of CocheAlquiler
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Viena])
+   (duracion_horas 5.0)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 48.9)
+)
+
+([Trans_Innsbruck_Florencia] of Tren
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Florencia])
+   (duracion_horas 3.6)
+   (medio "tren")
+   (accesible SI)
+   (precio 55.0)
+)
+
+([Trans_Innsbruck_Niza] of Tren
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Niza])
+   (duracion_horas 4.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 66.0)
+)
+
+([Trans_Innsbruck_Roma] of Autobus
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Roma])
+   (duracion_horas 8.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 42.1)
+)
+
+([Trans_Innsbruck_Paris] of CocheAlquiler
+   (tieneOrigen [Innsbruck])
+   (tieneFin [Paris])
+   (duracion_horas 8.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 73.6)
+)
+
+([Trans_Funchal_Oporto] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Oporto])
+   (duracion_horas 3.9)
+   (medio "avion")
+   (accesible SI)
+   (precio 178.6)
+)
+
+([Trans_Funchal_Madrid] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Madrid])
+   (duracion_horas 4.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 210.1)
+)
+
+([Trans_Funchal_Valencia] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Valencia])
+   (duracion_horas 4.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 234.8)
+)
+
+([Trans_Funchal_Barcelona] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Barcelona])
+   (duracion_horas 5.0)
+   (medio "avion")
+   (accesible SI)
+   (precio 268.6)
+)
+
+([Trans_Funchal_Paris] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Paris])
+   (duracion_horas 5.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 324.2)
+)
+
+([Trans_Funchal_Niza] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Niza])
+   (duracion_horas 5.7)
+   (medio "avion")
+   (accesible SI)
+   (precio 326.7)
+)
+
+([Trans_Funchal_Dublin] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Dublin])
+   (duracion_horas 5.7)
+   (medio "avion")
+   (accesible SI)
+   (precio 329.2)
+)
+
+([Trans_Funchal_Florencia] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Florencia])
+   (duracion_horas 6.1)
+   (medio "avion")
+   (accesible SI)
+   (precio 363.3)
+)
+
+([Trans_Funchal_Roma] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Roma])
+   (duracion_horas 6.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 368.7)
+)
+
+([Trans_Funchal_Amsterdam] of Avion
+   (tieneOrigen [Funchal])
+   (tieneFin [Amsterdam])
+   (duracion_horas 6.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 371.6)
+)
+
+([Trans_Valencia_Madrid] of Autobus
+   (tieneOrigen [Valencia])
+   (tieneFin [Madrid])
+   (duracion_horas 4.7)
+   (medio "autobus")
+   (accesible SI)
+   (precio 27.1)
+)
+
+([Trans_Valencia_Barcelona] of CocheAlquiler
+   (tieneOrigen [Valencia])
+   (tieneFin [Barcelona])
+   (duracion_horas 4.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 42.2)
+)
+
+([Trans_Valencia_Oporto] of Tren
+   (tieneOrigen [Valencia])
+   (tieneFin [Oporto])
+   (duracion_horas 6.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 85.2)
+)
+
+([Trans_Valencia_Niza] of Avion
+   (tieneOrigen [Valencia])
+   (tieneFin [Niza])
+   (duracion_horas 3.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 129.9)
+)
+
+([Trans_Valencia_Paris] of Autobus
+   (tieneOrigen [Valencia])
+   (tieneFin [Paris])
+   (duracion_horas 14.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 65.3)
+)
+
+([Trans_Valencia_Florencia] of Tren
+   (tieneOrigen [Valencia])
+   (tieneFin [Florencia])
+   (duracion_horas 9.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 117.0)
+)
+
+([Trans_Valencia_Roma] of Avion
+   (tieneOrigen [Valencia])
+   (tieneFin [Roma])
+   (duracion_horas 3.8)
+   (medio "avion")
+   (accesible SI)
+   (precio 169.1)
+)
+
+([Trans_Valencia_Venecia] of Autobus
+   (tieneOrigen [Valencia])
+   (tieneFin [Venecia])
+   (duracion_horas 17.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 73.6)
+)
+
+([Trans_Valencia_Innsbruck] of Tren
+   (tieneOrigen [Valencia])
+   (tieneFin [Innsbruck])
+   (duracion_horas 11.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 135.7)
+)
+
+([Trans_Valencia_Munich] of Avion
+   (tieneOrigen [Valencia])
+   (tieneFin [Munich])
+   (duracion_horas 4.1)
+   (medio "avion")
+   (accesible SI)
+   (precio 197.8)
+)
+
+([Trans_Copenhague_Amsterdam] of Autobus
+   (tieneOrigen [Copenhague])
+   (tieneFin [Amsterdam])
+   (duracion_horas 9.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 43.0)
+)
+
+([Trans_Copenhague_Praga] of CocheAlquiler
+   (tieneOrigen [Copenhague])
+   (tieneFin [Praga])
+   (duracion_horas 8.0)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 68.8)
+)
+
+([Trans_Copenhague_Bergen] of Tren
+   (tieneOrigen [Copenhague])
+   (tieneFin [Bergen])
+   (duracion_horas 6.0)
+   (medio "tren")
+   (accesible SI)
+   (precio 80.8)
+)
+
+([Trans_Copenhague_Munich] of Avion
+   (tieneOrigen [Copenhague])
+   (tieneFin [Munich])
+   (duracion_horas 3.4)
+   (medio "avion")
+   (accesible SI)
+   (precio 135.9)
+)
+
+([Trans_Copenhague_Viena] of Autobus
+   (tieneOrigen [Copenhague])
+   (tieneFin [Viena])
+   (duracion_horas 12.3)
+   (medio "autobus")
+   (accesible SI)
+   (precio 55.5)
+)
+
+([Trans_Copenhague_Salzburgo] of Tren
+   (tieneOrigen [Copenhague])
+   (tieneFin [Salzburgo])
+   (duracion_horas 7.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 98.8)
+)
+
+([Trans_Copenhague_Innsbruck] of Avion
+   (tieneOrigen [Copenhague])
+   (tieneFin [Innsbruck])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 147.6)
+)
+
+([Trans_Copenhague_Paris] of Autobus
+   (tieneOrigen [Copenhague])
+   (tieneFin [Paris])
+   (duracion_horas 14.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 63.3)
+)
+
+([Trans_Copenhague_Ljubljana] of Tren
+   (tieneOrigen [Copenhague])
+   (tieneFin [Ljubljana])
+   (duracion_horas 9.4)
+   (medio "tren")
+   (accesible SI)
+   (precio 117.0)
+)
+
+([Trans_Copenhague_Venecia] of Avion
+   (tieneOrigen [Copenhague])
+   (tieneFin [Venecia])
+   (duracion_horas 3.8)
+   (medio "avion")
+   (accesible SI)
+   (precio 171.6)
+)
+
+([Trans_Oporto_Madrid] of Autobus
+   (tieneOrigen [Oporto])
+   (tieneFin [Madrid])
+   (duracion_horas 6.3)
+   (medio "autobus")
+   (accesible SI)
+   (precio 33.1)
+)
+
+([Trans_Oporto_Valencia] of Autobus
+   (tieneOrigen [Oporto])
+   (tieneFin [Valencia])
+   (duracion_horas 10.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 48.2)
+)
+
+([Trans_Oporto_Barcelona] of Tren
+   (tieneOrigen [Oporto])
+   (tieneFin [Barcelona])
+   (duracion_horas 7.9)
+   (medio "tren")
+   (accesible SI)
+   (precio 101.2)
+)
+
+([Trans_Oporto_Funchal] of Avion
+   (tieneOrigen [Oporto])
+   (tieneFin [Funchal])
+   (duracion_horas 3.9)
+   (medio "avion")
+   (accesible SI)
+   (precio 178.6)
+)
+
+([Trans_Oporto_Paris] of Autobus
+   (tieneOrigen [Oporto])
+   (tieneFin [Paris])
+   (duracion_horas 16.9)
+   (medio "autobus")
+   (accesible SI)
+   (precio 72.7)
+)
+
+([Trans_Oporto_Niza] of Avion
+   (tieneOrigen [Oporto])
+   (tieneFin [Niza])
+   (duracion_horas 4.1)
+   (medio "avion")
+   (accesible SI)
+   (precio 194.9)
+)
+
+([Trans_Oporto_Dublin] of Avion
+   (tieneOrigen [Oporto])
+   (tieneFin [Dublin])
+   (duracion_horas 4.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 199.1)
+)
+
+([Trans_Oporto_Amsterdam] of Tren
+   (tieneOrigen [Oporto])
+   (tieneFin [Amsterdam])
+   (duracion_horas 13.8)
+   (medio "tren")
+   (accesible SI)
+   (precio 165.1)
+)
+
+([Trans_Oporto_Florencia] of Avion
+   (tieneOrigen [Oporto])
+   (tieneFin [Florencia])
+   (duracion_horas 4.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 233.3)
+)
+
+([Trans_Oporto_Innsbruck] of Avion
+   (tieneOrigen [Oporto])
+   (tieneFin [Innsbruck])
+   (duracion_horas 4.7)
+   (medio "avion")
+   (accesible SI)
+   (precio 242.5)
+)
+
+([Trans_Ljubljana_Venecia] of Autobus
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Venecia])
+   (duracion_horas 3.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 21.2)
+)
+
+([Trans_Ljubljana_Salzburgo] of CocheAlquiler
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Salzburgo])
+   (duracion_horas 3.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 35.9)
+)
+
+([Trans_Ljubljana_Innsbruck] of Tren
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Innsbruck])
+   (duracion_horas 2.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 44.5)
+)
+
+([Trans_Ljubljana_Viena] of Autobus
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Viena])
+   (duracion_horas 4.4)
+   (medio "autobus")
+   (accesible SI)
+   (precio 25.9)
+)
+
+([Trans_Ljubljana_Munich] of CocheAlquiler
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Munich])
+   (duracion_horas 4.3)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 43.6)
+)
+
+([Trans_Ljubljana_Florencia] of CocheAlquiler
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Florencia])
+   (duracion_horas 4.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 46.9)
+)
+
+([Trans_Ljubljana_Praga] of Tren
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Praga])
+   (duracion_horas 4.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 60.2)
+)
+
+([Trans_Ljubljana_Roma] of Tren
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Roma])
+   (duracion_horas 4.5)
+   (medio "tren")
+   (accesible SI)
+   (precio 64.0)
+)
+
+([Trans_Ljubljana_Niza] of Autobus
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Niza])
+   (duracion_horas 9.1)
+   (medio "autobus")
+   (accesible SI)
+   (precio 43.4)
+)
+
+([Trans_Ljubljana_Paris] of Avion
+   (tieneOrigen [Ljubljana])
+   (tieneFin [Paris])
+   (duracion_horas 3.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 150.7)
+)
+
+([Trans_Salzburgo_Munich] of Autobus
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Munich])
+   (duracion_horas 2.2)
+   (medio "autobus")
+   (accesible SI)
+   (precio 17.8)
+)
+
+([Trans_Salzburgo_Innsbruck] of CocheAlquiler
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Innsbruck])
+   (duracion_horas 2.1)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 29.0)
+)
+
+([Trans_Salzburgo_Ljubljana] of Tren
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Ljubljana])
+   (duracion_horas 2.3)
+   (medio "tren")
+   (accesible SI)
+   (precio 40.1)
+)
+
+([Trans_Salzburgo_Viena] of Autobus
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Viena])
+   (duracion_horas 4.0)
+   (medio "autobus")
+   (accesible SI)
+   (precio 24.5)
+)
+
+([Trans_Salzburgo_Venecia] of CocheAlquiler
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Venecia])
+   (duracion_horas 3.7)
+   (medio "coche_alquiler")
+   (accesible NO)
+   (precio 39.5)
+)
+
+([Trans_Salzburgo_Praga] of Tren
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Praga])
+   (duracion_horas 2.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 44.4)
+)
+
+([Trans_Salzburgo_Florencia] of Tren
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Florencia])
+   (duracion_horas 4.3)
+   (medio "tren")
+   (accesible SI)
+   (precio 62.3)
+)
+
+([Trans_Salzburgo_Niza] of Tren
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Niza])
+   (duracion_horas 5.7)
+   (medio "tren")
+   (accesible SI)
+   (precio 77.6)
+)
+
+([Trans_Salzburgo_Roma] of Autobus
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Roma])
+   (duracion_horas 9.5)
+   (medio "autobus")
+   (accesible SI)
+   (precio 44.9)
+)
+
+([Trans_Salzburgo_Amsterdam] of Tren
+   (tieneOrigen [Salzburgo])
+   (tieneFin [Amsterdam])
+   (duracion_horas 6.8)
+   (medio "tren")
+   (accesible SI)
+   (precio 89.4)
+)
+
+([Trans_Bergen_Copenhague] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Copenhague])
+   (duracion_horas 3.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 116.0)
+)
+
+([Trans_Bergen_Amsterdam] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Amsterdam])
+   (duracion_horas 3.5)
+   (medio "avion")
+   (accesible SI)
+   (precio 142.1)
+)
+
+([Trans_Bergen_Dublin] of Tren
+   (tieneOrigen [Bergen])
+   (tieneFin [Dublin])
+   (duracion_horas 9.1)
+   (medio "tren")
+   (accesible SI)
+   (precio 114.5)
+)
+
+([Trans_Bergen_Praga] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Praga])
+   (duracion_horas 4.0)
+   (medio "avion")
+   (accesible SI)
+   (precio 188.8)
+)
+
+([Trans_Bergen_Paris] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Paris])
+   (duracion_horas 4.1)
+   (medio "avion")
+   (accesible SI)
+   (precio 190.6)
+)
+
+([Trans_Bergen_Munich] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Munich])
+   (duracion_horas 4.2)
+   (medio "avion")
+   (accesible SI)
+   (precio 205.5)
+)
+
+([Trans_Bergen_Salzburgo] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Salzburgo])
+   (duracion_horas 4.3)
+   (medio "avion")
+   (accesible SI)
+   (precio 213.2)
+)
+
+([Trans_Bergen_Innsbruck] of Tren
+   (tieneOrigen [Bergen])
+   (tieneFin [Innsbruck])
+   (duracion_horas 13.0)
+   (medio "tren")
+   (accesible SI)
+   (precio 156.0)
+)
+
+([Trans_Bergen_Viena] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Viena])
+   (duracion_horas 4.4)
+   (medio "avion")
+   (accesible SI)
+   (precio 218.4)
+)
+
+([Trans_Bergen_Ljubljana] of Avion
+   (tieneOrigen [Bergen])
+   (tieneFin [Ljubljana])
+   (duracion_horas 4.6)
+   (medio "avion")
+   (accesible SI)
+   (precio 239.4)
+)
+)

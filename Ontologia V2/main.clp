@@ -1,7 +1,7 @@
 (defmodule MAIN (export ?ALL))
 
-;(load "ontologia_v3.clp")
-;(load "instancias_v3.clp")
+;(load "ontologia_v2.clp")
+;(load "instancias_v2.clp")
 ;(load "modulo-preguntas.clp")
 ;(load "modulo-abstraccion.clp")
 ;(load "modulo-heuristica.clp")

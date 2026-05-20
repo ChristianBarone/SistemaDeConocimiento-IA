@@ -20,6 +20,10 @@
     (slot medio
         (type STRING)
         (create-accessor read-write))
+    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO
+    (slot accesible
+        (type SYMBOL)
+        (create-accessor read-write))
     (slot precio
         (type FLOAT)
         (create-accessor read-write))
@@ -53,8 +57,11 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO, PARCIAL
-    (multislot precio_PI
+    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO, PARCIAL (no visitable en su totalidad)
+    (slot accesible
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot precio_PI
         (type FLOAT)
         (create-accessor read-write))
 )
@@ -83,35 +90,6 @@
     (pattern-match reactive)
 )
 
-(defclass TematicaViaje "Constitueix la tematica del viatge, especificada pel client"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Aventura
-    (is-a TematicaViaje)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Cultural
-    (is-a TematicaViaje)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Descanso
-    (is-a TematicaViaje)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Romantico
-    (is-a TematicaViaje)
-    (role concrete)
-    (pattern-match reactive)
-)
 
 (defclass Alojamiento "Descriu el tipus d'allotjament utilitzat al viatge."
     (is-a USER)
@@ -123,8 +101,12 @@
     (slot nombre
         (type STRING)
         (create-accessor read-write))
-    (multislot precio_noche
+    (slot precio_noche
         (type FLOAT)
+        (create-accessor read-write))
+    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, NO
+    (slot accesible
+        (type SYMBOL)
         (create-accessor read-write))
 )
 
@@ -159,15 +141,19 @@
     (multislot tienePOI
         (type INSTANCE)
         (create-accessor read-write))
-    (multislot clima_habitual
+    (slot clima_habitual
         (type STRING)
         (create-accessor read-write))
-    (multislot cluster_tematico
-        (type STRING)
+    (slot cluster_tematico
+        (type SYMBOL)
         (create-accessor read-write))
-    (multislot nivel_de_vida
+    (slot nivel_de_vida
         (type FLOAT)
         (create-accessor read-write))
+    ; ;;; Evaluacion de accesibilidad (movilidad reducida): SI, PARCIAL
+    ; (slot accesible
+    ;     (type SYMBOL)
+    ;     (create-accessor read-write))
     (slot nombre
         (type STRING)
         (create-accessor read-write))
@@ -213,46 +199,7 @@
     (slot presupuesto_max
         (type FLOAT)
         (create-accessor read-write))
-    (multislot transporte_odiado
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass CandidatoCiudad "Representa el com s'adecua una ciutat a les restriccions de l'usuari"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (slot ciudad
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot desventajas
-        (type STRING)
-        (create-accessor read-write))
-    (slot durada_estada
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot grado
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot motivo
-        (type STRING)
-        (create-accessor read-write))
-    (slot accesibilidad_ok
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Evaluacion del nivel de vida vs presupuesto: SI, NO, PARCIAL
-    (slot presupuesto_ok
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Evaluacion de compatibilidad con la tematica: SI, NO, PARCIAL
-    (slot tematica_ok
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Evaluacion de transporte (no usa medio odiado): SI, NO
-    (slot transporte_ok
-        (type SYMBOL)
-        (create-accessor read-write))
-    (multislot ventajas
+    (slot transporte_odiado
         (type STRING)
         (create-accessor read-write))
 )
@@ -279,4 +226,167 @@
     (slot precio_total
         (type INTEGER)
         (create-accessor read-write))
+)
+
+(defclass ViajeCandidato
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot incluyeCiudad
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot incluyeAlojamiento
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot n_ciudades
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot durada_dias
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot precio_total
+        (type FLOAT)
+        (default 0.0)
+        (create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    (slot valido
+        (type SYMBOL)
+        (default FALSE)
+        (create-accessor read-write))
+    (slot seleccionado
+        (type SYMBOL)
+        (default FALSE)
+        (create-accessor read-write))
+)
+
+(defclass CandidatoCiudad "Representa el com s'adecua una ciutat a les restriccions de l'usuari"
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot ciudad
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot desventajas
+        (type STRING)
+        (create-accessor read-write))
+    (slot durada_estada
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot grado
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot motivo
+        (type STRING)
+        (create-accessor read-write))
+    ;;; Evaluacion del nivel de vida vs presupuesto: SI, NO, PARCIAL
+    (slot presupuesto_ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Evaluacion de compatibilidad con la tematica: SI, NO, PARCIAL
+    (slot tematica_ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    ;;; Evaluacion de transporte (no usa medio odiado): SI, NO
+    (slot transporte_ok
+        (type SYMBOL)
+        (create-accessor read-write))
+    (multislot ventajas
+        (type STRING)
+        (create-accessor read-write))
+    (slot incompatibilidad_especifica
+        (type SYMBOL)
+        (default NO)
+        (create-accessor read-write))
+)
+
+(defclass AlojamientoCandidato
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot alojamiento
+        (type INSTANCE)
+        (create-accessor read-write))
+    ; (slot categoria ;; PREMIUM, ESTANDARD, BARATO
+    ;     (type SYMBOL)
+    ;     (create-accessor read-write))
+    (slot accesibilidad_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot precio_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    ; (slot seleccionado
+    ;     (type SYMBOL)
+    ;     (default FALSE)
+    ;     (create-accessor read-write))
+)
+
+(defclass TransporteCandidato
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot transporte
+        (type INSTANCE)
+        (create-accessor read-write))
+    ; (slot categoria ;; PREMIUM, ESTANDARD, BARATO
+    ;     (type SYMBOL)
+    ;     (create-accessor read-write))
+    (slot accesibilidad_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot precio_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot odiado
+        (type SYMBOL) ;; SI, NO
+        (create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    ; (slot seleccionado
+    ;     (type SYMBOL)
+    ;     (default FALSE)
+    ;     (create-accessor read-write))
+)
+
+(defclass PuntoDeInteresCandidato
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot puntodeinteres
+        (type INSTANCE)
+        (create-accessor read-write))
+    ; (slot categoria ;; CARO, BARATO, GRATIS
+    ;     (type SYMBOL)
+    ;     (create-accessor read-write))
+    (slot accesibilidad_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot precio_ok
+        (type SYMBOL) ;; SI, NO
+        (default FALSE)
+        (create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+    ; (slot seleccionado
+    ;     (type SYMBOL)
+    ;     (default FALSE)
+    ;     (create-accessor read-write))
 )
