@@ -1,10 +1,4 @@
 (definstances instances
-     ([tema-aventura]  of Aventura)
-     ([tema-cultural]  of Cultural)
-     ([tema-descanso]  of Descanso)
-     ([tema-romantico] of Romantico)
-     ([tema-familiar]  of Familiar)
-     ([tema-ocio]      of Ocio)
 
     ([AptoDuomo_Flo] of Apartamento
          (categoria  "Premium")

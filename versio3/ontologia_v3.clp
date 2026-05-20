@@ -150,10 +150,10 @@
     (slot nivel_de_vida
         (type FLOAT)
         (create-accessor read-write))
-    ; ;;; Evaluacion de accesibilidad (movilidad reducida): SI, PARCIAL
-    ; (slot accesible
-    ;     (type SYMBOL)
-    ;     (create-accessor read-write))
+    ;;; Evaluacion de accesibilidad (movilidad reducida): SI, PARCIAL
+    (slot accesible
+        (type SYMBOL)
+        (create-accessor read-write))
     (slot nombre
         (type STRING)
         (create-accessor read-write))
@@ -200,7 +200,7 @@
         (type FLOAT)
         (create-accessor read-write))
     (slot transporte_odiado
-        (type STRING)
+        (type SYMBOL)
         (create-accessor read-write))
 )
 
@@ -291,8 +291,7 @@
     (slot tematica_ok
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Evaluacion de transporte (no usa medio odiado): SI, NO
-    (slot transporte_ok
+    (slot accesibilidad_ok ;; SI, PARCIAL
         (type SYMBOL)
         (create-accessor read-write))
     (multislot ventajas
@@ -322,7 +321,13 @@
         (type SYMBOL) ;; SI, NO
         (default FALSE)
         (create-accessor read-write))
-    (slot puntuacion
+     (multislot desventajas
+        (type STRING)
+        (create-accessor read-write))
+    (multislot ventajas
+        (type STRING)
+        (create-accessor read-write))
+   (slot puntuacion
         (type INTEGER)
         (default 0)
         (create-accessor read-write))
@@ -337,7 +342,7 @@
     (role concrete)
     (pattern-match reactive)
     (slot transporte
-        (type INSTANCE)
+        (type SYMBOL) ;; Tipo de transporte (Avion, Tren, Autobus, CocheAlquiler)
         (create-accessor read-write))
     ; (slot categoria ;; PREMIUM, ESTANDARD, BARATO
     ;     (type SYMBOL)
@@ -353,7 +358,13 @@
     (slot odiado
         (type SYMBOL) ;; SI, NO
         (create-accessor read-write))
-    (slot puntuacion
+   (multislot desventajas
+        (type STRING)
+        (create-accessor read-write))
+    (multislot ventajas
+        (type STRING)
+        (create-accessor read-write))
+   (slot puntuacion
         (type INTEGER)
         (default 0)
         (create-accessor read-write))
@@ -381,7 +392,13 @@
         (type SYMBOL) ;; SI, NO
         (default FALSE)
         (create-accessor read-write))
-    (slot puntuacion
+    (multislot desventajas
+        (type STRING)
+        (create-accessor read-write))
+    (multislot ventajas
+        (type STRING)
+        (create-accessor read-write))
+   (slot puntuacion
         (type INTEGER)
         (default 0)
         (create-accessor read-write))

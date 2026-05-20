@@ -73,7 +73,7 @@
     (test (eq (send ?u get-motivo_viaje) "Bodas"))
     (test (eq (nth$ 1 (send ?u get-acompanyants)) "Pareja"))
 =>
-    (assert (tematica-deducida Romantico))
+    (assert (tematica-deducida "Romantico"))
 )
 
 ; SI motivo = Fin_De_Curso → Aventura (independiente del grupo)
@@ -84,7 +84,7 @@
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (eq (send ?u get-motivo_viaje) "Fin_De_Curso"))
 =>
-    (assert (tematica-deducida Aventura))
+    (assert (tematica-deducida "Aventura"))
 )
 
 ; SI motivo = Negocios → Cultural
@@ -95,7 +95,7 @@
     ?u <- (object (is-a Usuario) (name [usuario1]))
     (test (eq (send ?u get-motivo_viaje) "Negocios"))
 =>
-    (assert (tematica-deducida Cultural))
+    (assert (tematica-deducida "Cultural"))
 )
 
 ; SI motivo = Vacaciones Y acompaniantes = Familia_Con_Ninos → Familiar
@@ -107,7 +107,7 @@
     (test (eq (send ?u get-motivo_viaje) "Vacaciones"))
     (test (eq (nth$ 1 (send ?u get-acompanyants)) "Familia_Con_Ninos"))
 =>
-    (assert (tematica-deducida Familiar))
+    (assert (tematica-deducida "Familiar"))
 )
 
 ; SI motivo = Vacaciones Y acompaniantes = Amigos → Ocio
@@ -119,7 +119,7 @@
     (test (eq (send ?u get-motivo_viaje) "Vacaciones"))
     (test (eq (nth$ 1 (send ?u get-acompanyants)) "Amigos"))
 =>
-    (assert (tematica-deducida Ocio))
+    (assert (tematica-deducida "Ocio"))
 )
 
 ; SI motivo = Vacaciones Y acompaniantes = Solo/Pareja → Descanso
@@ -131,7 +131,7 @@
     (test (eq (send ?u get-motivo_viaje) "Vacaciones"))
     (test (member$ (nth$ 1 (send ?u get-acompanyants)) (create$ "Solo" "Pareja")))
 =>
-    (assert (tematica-deducida Descanso))
+    (assert (tematica-deducida "Descanso"))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -233,7 +233,7 @@
     (entrada-completada)
     (not (tematica-deducida ?))
 =>
-    (assert (tematica-deducida Cultural))
+    (assert (tematica-deducida "Cultural"))
 )
 
 (defrule ABSTRACCION::presupuesto-defecto

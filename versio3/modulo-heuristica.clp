@@ -42,7 +42,7 @@
     (entrada-completada)
     (object (is-a PuntoDeInteres) (name ?n))
 =>
-    (make-instance (sym-cat "Cand-" ?n) of PuntoDeinteresCandidato (puntodeinteres ?n))
+    (make-instance (sym-cat "Cand-" ?n) of PuntoDeInteresCandidato (puntodeinteres ?n))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -50,12 +50,57 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule HEURISTICA::restriccion-transporte-odiado
-    (declare (salience 5))
+    (declare (salience 10))
     ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_odiado ?transp))
     ?cand <- (object (is-a TransporteCandidato) (transporte ?transp))
 =>
     (bind ?ok SI)
     (send ?cand put-odiado ?ok)
+)
+
+(defrule HEURISTICA::restriccion-accesibilidad-ciudad
+    (declare (salience 5))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
+    (object (is-a Ciudad) (name ?ciu) (accesible ?nivel))
+=>
+    (bind ?ok SI)
+    (if (and (eq ?mov TRUE) (eq ?nivel PARCIAL)) then (bind ?ok PARCIAL))
+    (send ?cand put-accesibilidad_ok ?ok)
+)
+
+(defrule HEURISTICA::restriccion-accesibilidad-alojamiento
+    (declare (salience 5))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
+    ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
+    (object (is-a Alojamiento) (name ?aloj) (accesible ?nivel))
+=>
+    (bind ?ok SI)
+    (if (and (eq ?mov TRUE) (eq ?nivel NO)) then (bind ?ok NO))
+    (send ?cand put-accesibilidad_ok ?ok)
+)
+
+(defrule HEURISTICA::restriccion-accesibilidad-transporte
+    (declare (salience 5))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
+    ?cand <- (object (is-a TransporteCandidato) (transporte ?trans) (odiado NO))
+    (object (is-a ?trans) (accesible ?nivel))
+=>
+    (bind ?ok SI)
+    (if (and (eq ?mov TRUE) (eq ?nivel NO)) then (bind ?ok NO))
+    (send ?cand put-accesibilidad_ok ?ok)
+)
+
+(defrule HEURISTICA::restriccion-accesibilidad-puntodeinteres
+    (declare (salience 5))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
+    ?cand <- (object (is-a PuntoDeInteresCandidato) (puntodeinteres ?pi))
+    (object (is-a PuntoDeInteres) (name ?pi) (accesible ?nivel))
+=>
+    (bind ?ok SI)
+    (if (and (eq ?mov TRUE) (eq ?nivel NO)) then (bind ?ok NO)
+     else (if (and (eq ?mov TRUE) (eq ?nivel PARCIAL)) then (bind ?ok PARCIAL)))
+    (send ?cand put-accesibilidad_ok ?ok)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-ciudad
@@ -66,8 +111,11 @@
     (bind ?ok NO)
     (if (eq ?nivel LUJO) then (bind ?ok SI)
      else (if (and (eq ?nivel ALTO) (<= ?nv 2.0)) then (bind ?ok SI)
+     else (if (and (eq ?nivel ALTO) (<= ?nv 2.3)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel MEDIO) (<= ?nv 1.5)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)))))
+     else (if (and (eq ?nivel MEDIO) (<= ?nv 1.8)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)
+     else (if (and (eq ?nivel BAJO) (<= ?nv 1.3)) then (bind ?ok PARCIAL))))))))
     (send ?cand put-presupuesto_ok ?ok)
 )
 
@@ -77,47 +125,48 @@
     (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
 =>
     (bind ?ok NO)
-    (if (and (eq ?nivel LUJO) (>= ?precio 300)) then (bind ?ok SI)
+    (if (and (eq ?nivel LUJO) (>= ?precio 350)) then (bind ?ok SI)
+     else (if (and (eq ?nivel LUJO) (>= ?precio 250)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
+     else (if (and (eq ?nivel ALTO) (>= ?precio 65) (<= ?precio 350)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel MEDIO) (>= ?precio 30) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok SI)))))
+     else (if (and (eq ?nivel MEDIO) (>= ?precio 15) (<= ?precio 100)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 35)) then (bind ?ok SI)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok PARCIAL)))))))))
     (send ?cand put-presupuesto_ok ?ok)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-transporte
     (nivel-presupuesto ?nivel)
     ?cand <- (object (is-a TransporteCandidato) (transporte ?trans) (odiado NO))
-    (object (is-a Transporte) (name ?trans) (precio ?precio))
+    (object (is-a ?trans) (precio ?precio))
 =>
     (bind ?ok NO)
     (if (and (eq ?nivel LUJO) (>= ?precio 300)) then (bind ?ok SI)
+     else (if (and (eq ?nivel LUJO) (>= ?precio 200)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 50) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 60)) then (bind ?ok SI)))))
+     else (if (and (eq ?nivel ALTO) (>= ?precio 65) (<= ?precio 350)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel MEDIO) (>= ?precio 30) (<= ?precio 90)) then (bind ?ok SI)
+     else (if (and (eq ?nivel MEDIO) (>= ?precio 15) (<= ?precio 100)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 35)) then (bind ?ok SI)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok PARCIAL)))))))))
     (send ?cand put-presupuesto_ok ?ok)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-puntodeinteres
     (nivel-presupuesto ?nivel)
-    ?cand <- (object (is-a PuntoDeinteresCandidato) (puntodeinteres ?punto))
+    ?cand <- (object (is-a PuntoDeInteresCandidato) (puntodeinteres ?punto))
     (object (is-a PuntoDeInteres) (name ?punto) (precio_PI ?precio))
 =>
     (bind ?ok NO)
     (if (eq ?nivel LUJO) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (<= ?precio 200)) then (bind ?ok SI)
+     else (if (and (eq ?nivel ALTO) (<= ?precio 150)) then (bind ?ok SI)
+     else (if (and (eq ?nivel ALTO) (<= ?precio 200)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel MEDIO) (<= ?precio 70)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 30)) then (bind ?ok SI)))))
+     else (if (and (eq ?nivel MEDIO) (<= ?precio 80)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 30)) then (bind ?ok SI)
+     else (if (and (eq ?nivel BAJO) (<= ?precio 40)) then (bind ?ok PARCIAL))))))))
     (send ?cand put-presupuesto_ok ?ok)
-)
-
-(defrule HEURISTICA::restriccion-accesibilidad-
-    (declare (salience 5))
-    ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
-=>
-    (if (eq ?mov FALSE)
-        then (send ?cand put-accesibilidad_ok SI)
-        else (send ?cand put-accesibilidad_ok PARCIAL)) 
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -130,9 +179,13 @@
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
     (object (name ?ciu) (cluster_tematico ?cluster))
 =>
-    (if (eq ?t ?cluster) 
-        then (send ?cand put-tematica_ok SI)
-        else (send ?cand put-tematica_ok PARCIAL))
+    ; (if (eq ?t ?cluster) then (send ?cand put-tematica_ok SI)
+    ; ;; Incompatibles: {Aventura, descanso}, {Romantico, Familiar}
+    ;  else (if (or (and (eq ?t Aventura) (eq ?cluster Descanso)) ((and (eq ?cluster Aventura) (eq ?t Descanso))))
+    ;       then (send ?cand put-tematica_ok NO)
+    ;  else (if (or (and (eq ?t Romantico) (eq ?cluster Familiar)) ((and (eq ?cluster Romatico) (eq ?t Familiar))))
+    ;       then (send ?cand put-tematica_ok NO)
+    ;  else (send ?cand put-tematica_ok PARCIAL))))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +199,7 @@
     (slot-insert$ ?cand ventajas 1 "Tematica perfecta")
 )
 
+;; TODO: millorar clima
 (defrule HEURISTICA::ventaja-clima-calido
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (clima_habitual "Calido"))
@@ -199,23 +253,23 @@
 (defrule HEURISTICA::ventaja-hotel
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hotel))
+    (object (name ?aloj) (is-a Hotel) (categoria ?cat&:(or (eq ?cat "5 Estrellas") (eq ?cat "4 Estrellas"))))
     (test (eq (member$ "Hotel de calidad disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Hotel de calidad disponible")
 )
 
-(defrule HEURISTICA::ventaja-hostal
+(defrule HEURISTICA::ventaja-alojamiento-economico
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hostal))
+    (object (name ?aloj) (precio_noche ?precio&:(<= ?precio 50)))
     (test (eq (member$ "Alojamiento economico disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Alojamiento economico disponible")
 )
 
 (defrule HEURISTICA::ventaja-transporte-ok
-    ?cand <- (object (is-a CandidatoCiudad) (transporte_ok SI) (ventajas $?v) (grado nil))
+    ?cand <- (object (is-a TransporteCandidato) (accesibilidad_ok SI) (odiado NO) (ventajas $?v))
     (test (eq (member$ "Transporte conveniente" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Transporte conveniente")
@@ -335,22 +389,21 @@
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
 )
 
-(defrule HEURISTICA::bloquear-transporte
+(defrule HEURISTICA::bloquear-transporte-odiado
     (declare (salience 0))
-    ?cand <- (object (is-a CandidatoCiudad) (transporte_ok NO) (desventajas $?d) (grado nil))
+    ?cand <- (object (is-a TransporteCandidato) (odiado SI) (desventajas $?v))
 =>
-    (send ?cand put-grado NO_RECOMENDABLE)
-    (send ?cand put-motivo "RESTRICCIÓN: Requiere transporte prohibido")
-    (if (eq (member$ "RESTRICCIÓN: Transporte prohibido" ?d) FALSE) then
-        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Transporte prohibido"))
+    (send ?cand put-motivo "RESTRICCIÓN: Requiere transporte odiado")
+    (if (eq (member$ "RESTRICCIÓN: Transporte odiado" ?v) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Transporte odiado"))
 )
 
 (defrule HEURISTICA::clasificar-muy-recomendable
     (declare (salience -1))
     ?cand <- (object (is-a CandidatoCiudad)
                      (presupuesto_ok SI)
-                     (transporte_ok SI)
-                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
+                     ;; (transporte_ok SI)
+                     (accesibilidad_ok SI)
                      (tematica_ok SI)
                      (ventajas $?v&:(> (length$ ?v) 0))
                      (grado nil))
@@ -363,7 +416,7 @@
     (declare (salience -2))
     ?cand <- (object (is-a CandidatoCiudad)
                      (presupuesto_ok SI)
-                     (transporte_ok SI)
+                     ; (transporte_ok SI)
                      (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
                      (grado nil))
 =>
