@@ -4,18 +4,6 @@
 ;;; Translated to CLIPS from ontology ontologia_extra.ttl
 ;;; :Date 16/05/2026 19:03:57
 
-(defclass Tematica
-   (is-a USER)
-   (role concrete)
-   (pattern-match reactive))
-
-(defclass Aventura  (is-a Tematica) (role concrete) (pattern-match reactive))
-(defclass Cultural  (is-a Tematica) (role concrete) (pattern-match reactive))
-(defclass Descanso  (is-a Tematica) (role concrete) (pattern-match reactive))
-(defclass Romantico (is-a Tematica) (role concrete) (pattern-match reactive))
-(defclass Familiar  (is-a Tematica) (role concrete) (pattern-match reactive))
-(defclass Ocio      (is-a Tematica) (role concrete) (pattern-match reactive))
-
 (defclass Ciudad "Representa les ciutats que es poden visitar a un viatge."
     (is-a USER)
     (role concrete)
@@ -29,6 +17,9 @@
     (multislot tienePOI
         (type INSTANCE)
         (create-accessor read-write))
+    ; (slot clima_habitual
+    ;     (type STRING)
+    ;     (create-accessor read-write))
     (slot cluster_tematico
         (type INSTANCE)
         (allowed-classes Tematica)
@@ -338,11 +329,13 @@
 
     (slot valido
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default NO)
         (create-accessor read-write))
     (slot seleccionado
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default NO)
         (create-accessor read-write))
 )
 
@@ -434,11 +427,13 @@
         (create-accessor read-write))
     (slot accesibilidad_ok
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot precio_ok
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
@@ -463,15 +458,18 @@
     ;     (type SYMBOL)
     ;     (create-accessor read-write))
     (slot accesibilidad_ok
-        (type SYMBOL) ;; SI, NO
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot precio_ok
         (type SYMBOL) ;; SI, NO
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot odiado
         (type SYMBOL) ;; SI, NO
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
@@ -492,11 +490,13 @@
         (create-accessor read-write))
     (slot accesibilidad_ok
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot precio_ok
         (type SYMBOL)
-        (default FALSE)
+        (allowed-symbols SI NO)
+        (default SI)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
