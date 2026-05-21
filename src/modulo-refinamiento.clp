@@ -150,7 +150,7 @@
 (deffunction REFINAMIENTO::puntos-grado (?g)
     (if (eq ?g MUY_RECOMENDABLE) then (return 60))
     (if (eq ?g ADECUADO) then (return 35))
-    (if (eq ?g PARCIALMENTE_ADECUADO) then (return 12))
+    (if (eq ?g POCO_ADECUADO) then (return 12))
     (return -100)
 )
 

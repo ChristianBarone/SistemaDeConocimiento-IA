@@ -111,8 +111,8 @@
 =>
     (bind ?ok NO)
     (if (eq ?nivel LUJO) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (<= ?nv 2.0)) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (<= ?nv 2.3)) then (bind ?ok PARCIAL)
+     else (if (and (eq ?nivel MUY_RECOMENDABLE) (<= ?nv 2.0)) then (bind ?ok SI)
+     else (if (and (eq ?nivel MUY_RECOMENDABLE) (<= ?nv 2.3)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel MEDIO) (<= ?nv 1.5)) then (bind ?ok SI)
      else (if (and (eq ?nivel MEDIO) (<= ?nv 1.8)) then (bind ?ok PARCIAL)
      else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)
@@ -374,7 +374,7 @@
 ;;; 5. CLASIFICACIÓN FINAL
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule HEURISTICA::bloquear-presupuesto
+(defrule HEURISTICA::bloquear-presupuesto-ciudad
     (declare (salience 0))
     ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok NO) (desventajas $?d) (grado nil))
 =>
@@ -384,9 +384,59 @@
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
 )
 
-(defrule HEURISTICA::bloquear-accesibilidad
+(defrule HEURISTICA::bloquear-presupuesto-Alojamiento
     (declare (salience 0))
-    ?cand <- (object (is-a CandidatoCiudad) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
+    ?cand <- (object (is-a AlojamientoCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
+=>
+    (send ?cand put-grado NADA)
+    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
+)
+
+(defrule HEURISTICA::bloquear-presupuesto-Transporte
+    (declare (salience 0))
+    ?cand <- (object (is-a TransporteCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
+=>
+    (send ?cand put-grado NADA)
+    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
+)
+
+(defrule HEURISTICA::bloquear-presupuesto-PuntoDeInteres
+    (declare (salience 0))
+    ?cand <- (object (is-a PuntoDeInteresCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
+=>
+    (send ?cand put-grado NADA)
+    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
+)
+
+(defrule HEURISTICA::bloquear-accesibilidad-Transporte
+    (declare (salience 0))
+    ?cand <- (object (is-a TransporteCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
+=>
+    (send ?cand put-grado NADA)
+    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
+    (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
+)
+
+(defrule HEURISTICA::bloquear-accesibilidad-Alojamiento
+    (declare (salience 0))
+    ?cand <- (object (is-a AlojamientoCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
+=>
+    (send ?cand put-grado NADA)
+    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
+    (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
+        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
+)
+
+(defrule HEURISTICA::bloquear-accesibilidad-PuntoDeInteres
+    (declare (salience 0))
+    ?cand <- (object (is-a PuntoDeInteresCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
 =>
     (send ?cand put-grado NADA)
     (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
@@ -408,12 +458,12 @@
     ?cand <- (object (is-a CandidatoCiudad)
                      (presupuesto_ok SI)
                      ;; (transporte_ok SI)
-                     (accesibilidad_ok SI)
+                     ;(accesibilidad_ok SI)
                      (tematica_ok SI)
                      (ventajas $?v&:(> (length$ ?v) 0))
                      (grado nil))
 =>
-    (send ?cand put-grado ALTO)
+    (send ?cand put-grado MUY_RECOMENDABLE)
     (send ?cand put-motivo "Cumple todas restricciones y preferencias optimas")
 )
 
@@ -422,26 +472,26 @@
     ?cand <- (object (is-a CandidatoCiudad)
                      (presupuesto_ok SI)
                      ; (transporte_ok SI)
-                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
+                     ;(accesibilidad_ok SI)
                      (grado nil))
 =>
-    (send ?cand put-grado MEDIO)
+    (send ?cand put-grado ADECUADO)
     (send ?cand put-motivo "Cumple todas restricciones")
 )
 
-(defrule HEURISTICA::clasificar-parcial-presupuesto
+(defrule HEURISTICA::clasificar-poco-recomendable-presupuesto
     (declare (salience -3))
     ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok PARCIAL) (grado nil))
 =>
-    (send ?cand put-grado BAJO)
+    (send ?cand put-grado POCO_ADECUADO)
     (send ?cand put-motivo "Presupuesto algo ajustado")
 )
 
-(defrule HEURISTICA::clasificar-parcial-tematica
+(defrule HEURISTICA::clasificar-poco-recomendable-tematica
     (declare (salience -3))
     ?cand <- (object (is-a CandidatoCiudad) (tematica_ok PARCIAL) (grado nil))
 =>
-    (send ?cand put-grado BAJO)
+    (send ?cand put-grado POCO_ADECUADO)
     (send ?cand put-motivo "Tematica parcialmente compatible")
 )
 
@@ -449,7 +499,7 @@
     (declare (salience -4))
     ?cand <- (object (is-a CandidatoCiudad) (tematica_ok NO) (grado nil))
 =>
-    (send ?cand put-grado NADA)
+    (send ?cand put-grado NO_RECOMENDABLE)
     (send ?cand put-motivo "No encaja con el perfil tematico")
 )
 

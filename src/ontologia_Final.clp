@@ -371,8 +371,8 @@
     ;;; Valoracion global del encaje de la ciudad
     (slot grado
         (type SYMBOL)
-        (allowed-symbols ALTO MEDIO BAJO NADA nil) ; permitimos nil porque es valor auxiliar durante ejecucion
-        (default MEDIO)
+        (allowed-symbols MUY_RECOMENDABLE ADECUADO POCO_ADECUADO NO_RECOMENDABLE nil) ; permitimos nil porque es valor auxiliar durante ejecucion
+        (default nil)
         (create-accessor read-write))
 
     ;;; Explicacion resumida del por que de la valoracion
@@ -383,21 +383,21 @@
     ;;; Indica si la ciudad encaja en el presupuesto del usuario
     (slot presupuesto_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default NO)
         (create-accessor read-write))
 
     ;;; Indica si la tematica de la ciudad encaja con la preferencia del usuario
     (slot tematica_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default NO)
         (create-accessor read-write))
 
     ;;; Indica si existe transporte adecuado hacia o desde esta ciudad
     (slot transporte_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default NO)
         (create-accessor read-write))
 
@@ -433,9 +433,9 @@
         (allowed-symbols SI NO)
         (default SI)
         (create-accessor read-write))
-    (slot precio_ok
+    (slot presupuesto_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default SI)
         (create-accessor read-write))
     (multislot desventajas
@@ -443,6 +443,12 @@
         (create-accessor read-write))
     (multislot ventajas
         (type STRING)
+        (create-accessor read-write))
+    ;;; Valoracion global del encaje de la ciudad
+    (slot grado
+        (type SYMBOL)
+        (allowed-symbols ALTO MEDIO BAJO NADA nil) ; permitimos nil porque es valor auxiliar durante ejecucion
+        (default nil)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
@@ -471,9 +477,9 @@
         (allowed-symbols SI NO)
         (default SI)
         (create-accessor read-write))
-    (slot precio_ok
+    (slot presupuesto_ok
         (type SYMBOL) ;; SI, NO
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default SI)
         (create-accessor read-write))
     (slot odiado
@@ -486,6 +492,12 @@
         (create-accessor read-write))
     (multislot ventajas
         (type STRING)
+        (create-accessor read-write))
+    ;;; Valoracion global del encaje de la ciudad
+    (slot grado
+        (type SYMBOL)
+        (allowed-symbols ALTO MEDIO BAJO NADA nil) ; permitimos nil porque es valor auxiliar durante ejecucion
+        (default nil)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
@@ -509,9 +521,9 @@
         (allowed-symbols SI NO)
         (default SI)
         (create-accessor read-write))
-    (slot precio_ok
+    (slot presupuesto_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI PARCIAL NO)
         (default SI)
         (create-accessor read-write))
     (multislot desventajas
@@ -519,6 +531,12 @@
         (create-accessor read-write))
     (multislot ventajas
         (type STRING)
+        (create-accessor read-write))
+    ;;; Valoracion global del encaje de la ciudad
+    (slot grado
+        (type SYMBOL)
+        (allowed-symbols ALTO MEDIO BAJO NADA nil) ; permitimos nil porque es valor auxiliar durante ejecucion
+        (default nil)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
