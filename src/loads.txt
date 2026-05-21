@@ -1,11 +1,15 @@
 (clear)
 
 (load "main.clp")
-(load "ontologia_v3.clp")
-(load "instancias_v3.clp")
+(load "ontologia_Final.clp")
+(load "instancias_Alojamiento.clp")
+(load "instancias_Ciudad.clp")
+(load "instancias_PDI.clp")
+(load "instancias_Transporte.clp")
 (load "modulo-preguntas.clp")
 (load "modulo-abstraccion.clp")
 (load "modulo-heuristica.clp")
+
 (load "modulo-refinamiento.clp")
 (load "modulo-salida.clp")
 

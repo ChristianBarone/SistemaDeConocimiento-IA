@@ -1,3 +1,5 @@
+- Fer ventajas i desventajas be (per ara que compili)
+- Que pugui preguntar per tot (i potser que no ho pregunti tot)
 - Que doni dos resultats (NO PODEN COINCIDIR CIUTATS). Potser caldrà retocar CandidatoCiudad
 - Definir el nombre mínim i màxim de dies per ciutat.
 	- Caldria multiplicar la ountuació assignada a cada ciutat pel nombre de dies d'estada. Recompensar estades en ciutats bones.
@@ -10,3 +12,4 @@
 	- Si l'usuari prioritza l'allotjament, penalitzar els hotels amb poques estrelles.
 - Aplicar la valoració segons la temporada.
 	- Penalitzar aquelles ciutats amb una puntuació baixa per a l'estació de l'any corresponent; per exemple, una ciutat de platja a l'hivern o una ciutat d'interior o de muntanya a l'estiu.
+- Canviar sistema acompanyants: nº adults, nº nens i inferir si Solo, Pareja, Familia_Con_Ninos o Amigos (preguntar per a desambiguar)

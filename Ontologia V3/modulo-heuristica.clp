@@ -250,6 +250,7 @@
     (slot-insert$ ?cand ventajas 1 "Espacios naturales")
 )
 
+;; Pot ser q no funcioni be la restriccio de Estrelles
 (defrule HEURISTICA::ventaja-hotel
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))

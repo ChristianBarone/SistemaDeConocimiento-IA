@@ -77,9 +77,35 @@
 =>
     (printout t crlf "-- PRESUPUESTO Y DURACION --" crlf)
 
-    (printout t "Presupuesto maximo (euros) [500]: ")
+    (printout t "Presupuesto maximo orientativo (euros) [500]: ")
     (bind ?resp (readline))
     (bind ?pres (if (eq ?resp "") then 500 else (string-to-field ?resp)))
+
+    (printout t "¿Cuánto quieres ahorrar?" crlf
+                "(1.Me la bufa 2.No importa mucho 3.Lo justo 4.Bastante 5.Mucho [3]: ")
+    (bind ?respuesta (readline))
+    (bind ?opcion (if (eq ?respuesta "") then 3 else (string-to-field ?respuesta)))
+
+    (bind ?desviacion
+        (if (eq ?opcion 2) then 2
+        else (if (eq ?opcion 3) then 3
+        else (if (eq ?opcion 4) then 4
+        else (if (eq ?opcion 5) then 5
+        else 1)))))
+    (send ?u put-grado_ahorro ?desviacion)
+
+    (printout t "¿Te importa mucho la calidad de los alojamientos?" crlf
+                "(1.Me la bufa 2.No importa mucho 3.Lo justo 4.Bastante 5.Mucho [3]: ")
+    (bind ?respuesta (readline))
+    (bind ?opcion (if (eq ?respuesta "") then 3 else (string-to-field ?respuesta)))
+
+    (bind ?prioridad
+        (if (eq ?opcion 2) then 2
+        else (if (eq ?opcion 3) then 3
+        else (if (eq ?opcion 4) then 4
+        else (if (eq ?opcion 5) then 5
+        else 1)))))
+    (send ?u put-prioridad_alojamiento ?prioridad)
 
     (printout t "Dias minimo [3]: ")
     (bind ?resp (readline))
@@ -175,14 +201,16 @@
     ?u <- (object (is-a Usuario) (name [usuario1]))
 =>
     (printout t crlf "-- TRANSPORTE --" crlf)
-    (printout t "Algun transporte que quieras evitar? (1.Ninguno 2.Avion 3.Tren 4.Autobus) [1]: ")
+    (printout t "Algun transporte que quieras evitar? (1.Ninguno 2.Avion 3.Tren 4.Autobus 5.Coche alquilado) [1]: ")
     (bind ?resp (readline))
     (bind ?op (if (eq ?resp "") then 1 else (string-to-field ?resp)))
 
     (bind ?transp
-        (if (eq ?op 2) then "Avion"
-        else (if (eq ?op 3) then "Tren"
-        else (if (eq ?op 4) then "Autobus" else "Ninguno"))))
+        (if (eq ?op 2) then AVION
+        else (if (eq ?op 3) then TREN
+        else (if (eq ?op 4) then AUTOBUS
+        else (if (eq ?op 5) then COCHE_ALQUILER
+        else NINGUNO)))))
 
     (send ?u put-transporte_odiado ?transp)
     (modify ?f (fase FIN))

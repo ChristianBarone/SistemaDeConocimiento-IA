@@ -321,7 +321,7 @@
         (type SYMBOL) ;; SI, NO
         (default FALSE)
         (create-accessor read-write))
-     (multislot desventajas
+    (multislot desventajas
         (type STRING)
         (create-accessor read-write))
     (multislot ventajas
