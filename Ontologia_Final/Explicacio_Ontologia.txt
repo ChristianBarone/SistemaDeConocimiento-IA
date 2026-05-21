@@ -22,6 +22,7 @@ Resumen de clases del sistema y atributos
     - popularidad: nivel de interés turístico o relevancia general del lugar, en una escala de 1 a 5.
     - tematica_adecuada: temática con la que mejor encaja ese punto de interés.
 
+
 - Alojamiento: representa el lugar donde se hospeda el usuario durante el viaje.
   Atributos:
     - categoria: tipo de alojamiento, como APARTAMENTO, HOSTAL o HOTEL.

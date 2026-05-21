@@ -1,5 +1,5 @@
 - Que doni dos resultats (NO PODEN COINCIDIR CIUTATS). Potser caldrà retocar CandidatoCiudad
-- Definir el nombre mínim i màxim de dies per ciutat.
+- Aplicar el nombre mínim i màxim de dies per ciutat.
 	- Caldria multiplicar la ountuació assignada a cada ciutat pel nombre de dies d'estada. Recompensar estades en ciutats bones.
 - Aplicar/esborrar nivel de vida
 - Incorporar la preferència de transport, no únicament com a restricció.
