@@ -89,6 +89,14 @@
     (bind ?resp (readline))
     (bind ?dmax (if (eq ?resp "") then 7 else (string-to-field ?resp)))
 
+    (printout t "Del 1 al 5, grado de ahorro [3]: ")
+    (bind ?resp (readline))
+    (bind ?ahorro (if (eq ?resp "") then 3 else (string-to-field ?resp)))
+
+    (printout t "Del 1 al 5, prioridad de calidad de alojamiento [3]: ")
+    (bind ?resp (readline))
+    (bind ?cal_aloj (if (eq ?resp "") then 3 else (string-to-field ?resp)))
+
     ; Ajuste simple de consistencia
     (if (> ?dmin ?dmax) then
         (bind ?aux ?dmin)
@@ -98,6 +106,8 @@
     (send ?u put-presupuesto_max (float ?pres))
     (send ?u put-dias_min (integer ?dmin))
     (send ?u put-dias_max (integer ?dmax))
+    (send ?u put-grado-ahorro (integer ?ahorro))
+    (send ?u put-prioridad-alojamiento (integer ?cal_aloj))
     (modify ?f (fase CIUDADES))
 )
 
