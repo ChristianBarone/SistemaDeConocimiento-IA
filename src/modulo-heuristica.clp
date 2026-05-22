@@ -60,40 +60,88 @@
 
 (defrule HEURISTICA::restriccion-presupuesto-ciudad
     (nivel-presupuesto ?nivel)
+    (perfil-presupuesto ?perfil)
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
     (object (is-a Ciudad) (name ?ciu) (nivel_de_vida ?nv))
 =>
     (bind ?ok NO)
-    (if (eq ?nivel LUJO) then (bind ?ok SI)
-     else (if (eq ?nivel ALTO) then
-        (if (<= ?nv 2.3) then (bind ?ok SI)
-         else (if (<= ?nv 3.0) then (bind ?ok PARCIAL)))
-     else (if (eq ?nivel MEDIO) then
-        (if (<= ?nv 1.9) then (bind ?ok SI)
-         else (if (<= ?nv 2.4) then (bind ?ok PARCIAL)))
-     else (if (eq ?nivel BAJO) then
-        (if (<= ?nv 1.4) then (bind ?ok SI)
-         else (if (<= ?nv 1.8) then (bind ?ok PARCIAL)))))))
+
+    ; SACRIFICAR LOCALIZACION SI ES EXIGENTE
+    (if (eq ?perfil EXIGENTE) then
+        (switch ?nivel
+            (case LUJO then (bind ?ok SI))
+
+            (case ALTO then
+                (if (<= ?nv 1.8) then (bind ?ok SI)
+                 else (if (<= ?nv 2.5) then (bind ?ok PARCIAL))))
+
+            (case MEDIO then
+                (if (<= ?nv 1.4) then (bind ?ok SI)
+                 else (if (<= ?nv 1.9) then (bind ?ok PARCIAL))))
+
+            (case BAJO then
+                (if (<= ?nv 1.1) then (bind ?ok SI)
+                 else (if (<= ?nv 1.5) then (bind ?ok PARCIAL))))
+        )
+    else
+        (switch ?nivel
+            (case LUJO then (bind ?ok SI))
+
+            (case ALTO then
+                (if (<= ?nv 2.3) then (bind ?ok SI)
+                 else (if (<= ?nv 3.0) then (bind ?ok PARCIAL))))
+
+            (case MEDIO then
+                (if (<= ?nv 1.9) then (bind ?ok SI)
+                 else (if (<= ?nv 2.4) then (bind ?ok PARCIAL))))
+
+            (case BAJO then
+                (if (<= ?nv 1.4) then (bind ?ok SI)
+                 else (if (<= ?nv 1.8) then (bind ?ok PARCIAL))))
+        )
+    )
+
     (send ?cand put-presupuesto_ok ?ok)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-alojamiento
     (nivel-presupuesto ?nivel)
+    (perfil-presupuesto ?perfil)
     ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
     (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
 =>
+    ; AJUSTE DEL PRECIO DEPENDIENDO DE PERFIL_PRESUPUESTO
+    (bind ?ajuste 0)
+    (switch ?perfil
+        ; Bajamos precio para ahorrar
+        (case MOCHILERO then (bind ?ajuste -10))
+        ; Subimos precio alojamiento pero ya estamos en un sitio barato
+        (case EXIGENTE then (bind ?ajuste 15))
+        ; Subimos precio alojamiento pero no le importa gastar
+        (case PREMIUM then (bind ?ajuste 15))
+    )
+
+    (bind ?precio-evaluado (+ ?precio ?ajuste))
+
     (bind ?ok NO)
-    (if (eq ?nivel LUJO) then
-        (if (>= ?precio 91) then (bind ?ok SI))
-     else (if (eq ?nivel ALTO) then
-        (if (and (>= ?precio 46) (<= ?precio 130)) then (bind ?ok SI)
-         else (if (and (>= ?precio 131) (<= ?precio 180)) then (bind ?ok PARCIAL)))
-     else (if (eq ?nivel MEDIO) then
-        (if (and (>= ?precio 31) (<= ?precio 75)) then (bind ?ok SI)
-         else (if (or (<= ?precio 30) (and (>= ?precio 76) (<= ?precio 110))) then (bind ?ok PARCIAL)))
-     else (if (eq ?nivel BAJO) then
-        (if (<= ?precio 30) then (bind ?ok SI)
-         else (if (<= ?precio 60) then (bind ?ok PARCIAL)))))))
+
+    (switch ?nivel
+        (case LUJO then
+            (if (>= ?precio-evaluado 91) then (bind ?ok SI)))
+
+        (case ALTO then
+            (if (and (>= ?precio-evaluado 46) (<= ?precio-evaluado 130)) then (bind ?ok SI)
+             else (if (and (>= ?precio-evaluado 131) (<= ?precio-evaluado 180)) then (bind ?ok PARCIAL))))
+
+        (case MEDIO then
+            (if (and (>= ?precio-evaluado 31) (<= ?precio-evaluado 75)) then (bind ?ok SI)
+             else (if (or (<= ?precio-evaluado 30) (and (>= ?precio-evaluado 76) (<= ?precio-evaluado 110))) then (bind ?ok PARCIAL))))
+
+        (case BAJO then
+            (if (<= ?precio-evaluado 30) then (bind ?ok SI)
+             else (if (<= ?precio-evaluado 60) then (bind ?ok PARCIAL))))
+    )
+
     (send ?cand put-presupuesto_ok ?ok)
 )
 
@@ -103,16 +151,23 @@
     (object (is-a Transporte) (name ?trans) (precio ?precio))
 =>
     (bind ?ok NO)
-    (if (eq ?nivel LUJO) then
-        (if (>= ?precio 26) then (bind ?ok SI))
-     else (if (eq ?nivel ALTO) then
-        (if (and (>= ?precio 16) (<= ?precio 55)) then (bind ?ok SI)
-         else (if (or (<= ?precio 15) (>= ?precio 56)) then (bind ?ok PARCIAL)))
-     else (if (eq ?nivel MEDIO) then
-        (if (<= ?precio 40) then (bind ?ok SI))
-     else (if (eq ?nivel BAJO) then
-        (if (<= ?precio 15) then (bind ?ok SI)
-         else (if (<= ?precio 35) then (bind ?ok PARCIAL)))))))
+
+    (switch ?nivel
+        (case LUJO then
+            (if (>= ?precio 26) then (bind ?ok SI)))
+
+        (case ALTO then
+            (if (and (>= ?precio 16) (<= ?precio 55)) then (bind ?ok SI)
+             else (if (or (<= ?precio 15) (>= ?precio 56)) then (bind ?ok PARCIAL))))
+
+        (case MEDIO then
+            (if (<= ?precio 40) then (bind ?ok SI)))
+
+        (case BAJO then
+            (if (<= ?precio 15) then (bind ?ok SI)
+             else (if (<= ?precio 35) then (bind ?ok PARCIAL))))
+    )
+
     (send ?cand put-presupuesto_ok ?ok)
 )
 

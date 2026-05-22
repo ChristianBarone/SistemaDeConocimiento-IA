@@ -5,7 +5,7 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 1. NIVEL DE PRESUPUESTO POR DÍA
+;;; 1A. NIVEL DE PRESUPUESTO POR DÍA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; SI presupuesto/dias_max > 200 ENTONCES nivel-presupuesto = LUJO
@@ -58,6 +58,55 @@
                  (send ?u get-dias_max)) 50))
 =>
     (assert (nivel-presupuesto BAJO))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1B. EXIGENCIA DE AHORRO Y CALIDAD DE ALOJAMIENTO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; SI grado_ahorro >= 4 y prioridad_alojamiento <= 3 ENTONCES perfil-presupuesto = MOCHILERO
+(defrule ABSTRACCION::perfil-mochilero
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (>= (send ?u get-grado_ahorro) 4)
+               (<= (send ?u get-prioridad_alojamiento) 3)))
+=>
+    (assert (perfil-presupuesto MOCHILERO))
+)
+
+; SI grado_ahorro >= 3 y prioridad_alojamiento >= 4 ENTONCES perfil-presupuesto = EXIGENTE
+(defrule ABSTRACCION::perfil-exigente
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (>= (send ?u get-grado_ahorro) 3)
+               (>= (send ?u get-prioridad_alojamiento) 4)))
+=>
+    (assert (perfil-presupuesto EXIGENTE))
+)
+
+; SI grado_ahorro <= 2 y prioridad_alojamiento >= 4 ENTONCES perfil-presupuesto = PREMIUM
+(defrule ABSTRACCION::perfil-premium
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (<= (send ?u get-grado_ahorro) 2)
+               (>= (send ?u get-prioridad_alojamiento) 4)))
+=>
+    (assert (perfil-presupuesto PREMIUM))
+)
+
+; Resto de combinaciones: perfil-presupuesto = EQUILIBRADO
+(defrule ABSTRACCION::perfil-equilibrado-por-defecto
+    (declare (salience 8)) ;; Menor salience para que actúe como "catch-all"
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+=>
+    (assert (perfil-presupuesto EQUILIBRADO))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
