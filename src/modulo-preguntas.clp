@@ -61,8 +61,18 @@
         else (if (eq ?op2 3) then "Familia_Con_Ninos"
         else (if (eq ?op2 4) then "Amigos" else "Solo"))))
 
+    (printout t "En cual temporada viajas? (1.Primavera 2.Verano 3.Otoño 4.Invierno) [1]: ")
+    (bind ?resp (readline))
+    (bind ?op3 (if (eq ?resp "") then 1 else (string-to-field ?resp)))
+
+    (bind ?tempor
+        (if (eq ?op3 2) then "VERANO"
+        else (if (eq ?op3 3) then "OTONO"
+        else (if (eq ?op3 4) then "INVIERNO" else "PRIMAVERA"))))
+
     (send ?u put-motivo_viaje ?motivo)
     (send ?u put-acompanyants ?acomp)
+    (send ?u put-temporada_viaje ?tempor)
     (modify ?f (fase PRESUPUESTO))
 )
 
