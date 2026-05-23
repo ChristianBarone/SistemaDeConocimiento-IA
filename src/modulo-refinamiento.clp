@@ -30,6 +30,7 @@
 
 (deftemplate REFINAMIENTO::viaje-seleccionado
     (slot id (type INSTANCE))
+    (slot ranking (type INTEGER))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -351,6 +352,7 @@
                 (send ?cand put-motivo
                       "RESTRICCION: Accesibilidad insuficiente para movilidad reducida")))
 
+    (assert (viajes-restantes-por-elegir 2))
     (assert (estado-refinamiento (fase AJUSTES_APLICADOS)))
 )
 
@@ -399,29 +401,56 @@
 ;;; 4. ELEGIR EL MEJOR VIAJE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule REFINAMIENTO::elegir-mejor-viaje
+(defrule REFINAMIENTO::elegir-mejores-viajes
     (declare (salience -10))
     (estado-refinamiento (fase AJUSTES_APLICADOS))
-    (not (viaje-seleccionado (id ?)))
+    ?f <- (viajes-restantes-por-elegir ?restantes&:(> ?restantes 0))
+
     ?trip <- (object (is-a ViajeCandidato)
                      (valido TRUE)
+                     (seleccionado FALSE)
                      (puntuacion ?p))
+
     (not (object (is-a ViajeCandidato)
                  (valido TRUE)
+                 (seleccionado FALSE)
                  (puntuacion ?p2&:(> ?p2 ?p))))
 =>
     (send ?trip put-seleccionado TRUE)
-    (assert (viaje-seleccionado (id ?trip)))
+    (bind ?rank (- 3 ?restantes)) ;; Calcula 1 para el primero, 2 para el segundo
+    (assert (viaje-seleccionado (id ?trip) (ranking ?rank)))
 
-    ; opcional: crear también un Viaje final para consumo posterior
     (bind ?ciudades (send ?trip get-incluyeCiudad))
-    (if (instance-existp [viaje-final])
-        then
-            (unmake-instance [viaje-final]))
-    (make-instance viaje-final of Viaje
+    (bind ?nombre-viaje (sym-cat viaje-final- ?rank))
+    (if (instance-existp ?nombre-viaje) then (unmake-instance ?nombre-viaje))
+    (make-instance ?nombre-viaje of Viaje
         (incluyeCiudad ?ciudades)
         (durada_dias (send ?trip get-durada_dias))
         (precio_total (float (send ?trip get-precio_total))))
+
+    (retract ?f)
+    (assert (viajes-restantes-por-elegir (- ?restantes 1)))
+)
+
+(defrule REFINAMIENTO::finalizar-seleccion-viajes-insuficientes
+    (declare (salience -15))
+    (estado-refinamiento (fase AJUSTES_APLICADOS))
+    ?f <- (viajes-restantes-por-elegir ?restantes&:(> ?restantes 0))
+    (not (object (is-a ViajeCandidato) (valido TRUE) (seleccionado FALSE)))
+=>
+    (retract ?f)
+    (assert (viajes-restantes-por-elegir 0))
+)
+
+(defrule REFINAMIENTO::pasar-a-salida
+    (declare (salience -20))
+    (estado-refinamiento (fase AJUSTES_APLICADOS))
+    (viajes-restantes-por-elegir 0)
+    (viaje-seleccionado (ranking 1))
+    (not (estado-refinamiento (fase COMPLETADO)))
+=>
+    (assert (estado-refinamiento (fase COMPLETADO)))
+    (focus SALIDA)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -448,7 +477,7 @@
     (declare (salience -25))
     (estado-refinamiento (fase AJUSTES_APLICADOS))
     (not (estado-refinamiento (fase COMPLETADO)))
-    (not (object (is-a ViajeCandidato) (valido TRUE)))
+    (not (viaje-seleccionado (ranking 1)))
 =>
     (printout t crlf "No se ha podido construir ningun viaje valido con las restricciones actuales." crlf crlf)
     (assert (estado-refinamiento (fase COMPLETADO)))

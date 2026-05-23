@@ -2,6 +2,7 @@
     (import MAIN ?ALL)
     (import HEURISTICA ?ALL)
     (import REFINAMIENTO deftemplate estado-refinamiento)
+    (import REFINAMIENTO deftemplate viaje-seleccionado)
     (export ?ALL)
 )
 
@@ -135,11 +136,10 @@
             (printout t "  >> (Sin transporte directo disponible)" crlf))
 )
 
-(deffunction SALIDA::mostrar-itinerario ($?ciudades)
+(deffunction SALIDA::mostrar-itinerario (?diasTotales $?ciudades)
     (bind ?n (length$ ?ciudades))
     (if (= ?n 0) then (return))
 
-    (bind ?diasTotales (send [viaje-final] get-durada_dias))
     (bind ?diasPorCiudad (max 1 (integer (/ ?diasTotales ?n))))
 
     (printout t crlf "ITINERARIO PROPUESTO:" crlf)
@@ -148,6 +148,7 @@
         (mostrar-parada ?ciu ?diasPorCiudad)
     )
 )
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; REGLAS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -158,23 +159,43 @@
     (not (cabecera-mostrada))
 =>
     (assert (cabecera-mostrada))
+    (assert (itinerario-por-imprimir 1))
     (printout t crlf "==========================================" crlf)
-    (printout t "       TU ITINERARIO PERSONALIZADO" crlf)
+    (printout t "       TUS ITINERARIOS PERSONALIZADOS" crlf)
     (printout t "==========================================" crlf crlf)
 )
 
-(defrule SALIDA::mostrar-viaje-final
+(defrule SALIDA::mostrar-viajes-finales
     (declare (salience 90))
     (cabecera-mostrada)
-    ;; Extraemos el contenido del multislot incluyeCiudad en la variable $?ciudades
-    ?trip <- (object (is-a ViajeCandidato)
-                     (seleccionado TRUE)
-                     (valido TRUE)
-                     (incluyeCiudad $?ciudades))
+
+    ?ctrl <- (itinerario-por-imprimir ?rank)
+    (viaje-seleccionado (id ?trip) (ranking ?rank))
+    ?trip-obj <- (object (is-a ViajeCandidato) (incluyeCiudad $?ciudades))
+=>
+    (bind ?dias (send ?trip-obj get-durada_dias))
+
+    (printout t crlf "==========================================================" crlf)
+    (printout t " ITINERARIO RECOMENDADO OPTIMO #" ?rank crlf)
+    (printout t " Puntuacion : " (send ?trip-obj get-puntuacion) " puntos" crlf)
+    (printout t " Coste Total: " (integer (send ?trip-obj get-precio_total)) " EUR" crlf)
+    (printout t " Duracion   : " ?dias " dias" crlf)
+    (printout t "==========================================================" crlf)
+
+    ;; Enviamos los días calculados junto con la lista de ciudades
+    (mostrar-itinerario ?dias ?ciudades)
+
+    (retract ?ctrl)
+    (assert (itinerario-por-imprimir (+ ?rank 1)))
+)
+
+(defrule SALIDA::finalizar-bucle-impresion
+    (declare (salience 85))
+    (cabecera-mostrada)
+    (itinerario-por-imprimir ?rank)
+    (not (viaje-seleccionado (ranking ?rank)))
     (not (viaje-mostrado))
 =>
-    ;; ¡Ahora sí! Le pasamos la lista de ciudades pura a la función de impresión
-    (mostrar-itinerario ?ciudades)
     (assert (viaje-mostrado))
 )
 
@@ -182,17 +203,17 @@
     (declare (salience 80))
     (viaje-mostrado)
     (not (resumen-mostrado))
-    ?trip <- (object (is-a ViajeCandidato)
-                     (seleccionado TRUE)
-                     (valido TRUE))
+
+    (viaje-seleccionado (id ?trip) (ranking 1))
+    ?trip-obj <- (object (is-a ViajeCandidato))
 =>
     (printout t crlf "==========================================" crlf)
-    (printout t "           RESUMEN DE TU VIAJE" crlf)
+    (printout t "       RESUMEN DE TU VIAJE DESTACADO" crlf)
     (printout t "==========================================" crlf)
-    (printout t "Ciudades   : " (send ?trip get-n_ciudades) crlf)
-    (printout t "Duracion   : " (send ?trip get-durada_dias) " dias" crlf)
-    (printout t "Coste      : " (integer (send ?trip get-precio_total)) " EUR" crlf)
-    (printout t "Puntuacion : " (send ?trip get-puntuacion) crlf)
+    (printout t "Ciudades   : " (send ?trip-obj get-n_ciudades) crlf)
+    (printout t "Duracion   : " (send ?trip-obj get-durada_dias) " dias" crlf)
+    (printout t "Coste      : " (integer (send ?trip-obj get-precio_total)) " EUR" crlf)
+    (printout t "Puntuacion : " (send ?trip-obj get-puntuacion) crlf)
     (printout t "==========================================" crlf crlf)
     (assert (resumen-mostrado))
 )
@@ -202,9 +223,7 @@
     (estado-refinamiento (fase COMPLETADO))
     (cabecera-mostrada)
     (not (viaje-mostrado))
-    (not (object (is-a ViajeCandidato)
-                 (seleccionado TRUE)
-                 (valido TRUE)))
+    (not (viaje-seleccionado (ranking 1)))
     (not (resumen-mostrado))
 =>
     (printout t "No se ha podido generar un itinerario valido con las restricciones actuales." crlf crlf)
