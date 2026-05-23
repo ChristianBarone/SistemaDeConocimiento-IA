@@ -1,7 +1,8 @@
 - Que doni dos resultats (NO PODEN COINCIDIR CIUTATS). Potser caldrà retocar CandidatoCiudad
 - Aplicar el nombre mínim i màxim de dies per ciutat.
-	- Caldria multiplicar la ountuació assignada a cada ciutat pel nombre de dies d'estada. Recompensar estades en ciutats bones.
+	- Caldria multiplicar la puntuació assignada a cada ciutat pel nombre de dies d'estada. Recompensar estades en ciutats bones.
 - Aplicar/esborrar nivel de vida
+- Aplicar/esborrar ViajaCon?
 - Incorporar la preferència de transport, no únicament com a restricció.
 	- Penalitzar els desplaçaments amb mitjans de transport no preferits.
 	- Si no hi ha una preferència de transport definida, penalitzar els trajectes llargs, per exemple mitjançant un multiplicador negatiu basat en la durada.
