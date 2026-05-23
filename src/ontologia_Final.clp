@@ -444,6 +444,11 @@
         (allowed-symbols SI NO)
         (default SI)
         (create-accessor read-write))
+    (slot presupuesto_ok
+        (type SYMBOL)
+        (allowed-symbols SI NO PARCIAL)
+        (default NO)
+        (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)
         (default 0)
@@ -474,6 +479,11 @@
         (type SYMBOL) ;; SI, NO
         (allowed-symbols SI NO)
         (default SI)
+        (create-accessor read-write))
+    (slot presupuesto_ok
+        (type SYMBOL)
+        (allowed-symbols SI NO PARCIAL)
+        (default NO)
         (create-accessor read-write))
     (slot preferido
         (type SYMBOL)

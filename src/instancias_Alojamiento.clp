@@ -1,4 +1,4 @@
-(definstances instancias-ciudades
+(definstances instancias-alojamiento
 
 ([AptoCanales_Ams] of Alojamiento
    (categoria APARTAMENTO)

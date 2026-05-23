@@ -136,23 +136,66 @@
     (return ?res)
 )
 
+(deffunction REFINAMIENTO::normalizar-nombre (?valor)
+    (bind ?str (str-cat ?valor))
+    (if (and (str-index "[" ?str) (str-index "]" ?str))
+        then
+            (bind ?str (sub-string (+ (str-index "[" ?str) 1) (- (str-index "]" ?str) 1) ?str)))
+    (if (str-index "::" ?str)
+        then
+            (bind ?str (sub-string (+ (str-index "::" ?str) 2) (length$ ?str) ?str)))
+    (return (upcase ?str))
+)
+
 (deffunction REFINAMIENTO::hay-transporte-permitido (?origen ?destino)
     (bind ?prohibido (send [usuario1] get-transporte_odiado))
+    (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
+    (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
 
-    (if (or (eq ?prohibido "") (eq ?prohibido "Ninguno"))
-        then
-            (return (> (length$
-                        (find-all-instances ((?t Transporte))
-                            (and (eq (send ?t get-tieneOrigen) ?origen)
-                                 (eq (send ?t get-tieneFin) ?destino))))
-                       0)))
+    (printout t "--------------------------------------------------------" crlf)
+    (printout t "🔍 DEBUG VIAJE: Intentando conectar " ?origen " con " ?destino crlf)
+    (printout t "   Normalizados a: " ?norm-origen " -> " ?norm-destino crlf)
 
-    (return (> (length$
-                (find-all-instances ((?t Transporte))
-                    (and (eq (send ?t get-tieneOrigen) ?origen)
-                         (eq (send ?t get-tieneFin) ?destino)
-                         (neq (send ?t get-medio) ?prohibido))))
-               0))
+    ;; Buscamos las instancias de transporte
+    (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
+    (printout t "   [Ontología] Transportes totales encontrados: " (length$ ?transportes) crlf)
+
+    (loop-for-count (?i 1 (length$ ?transportes)) do
+        (bind ?t (nth$ ?i ?transportes))
+
+        (if (not (and (neq ?prohibido "")
+                      (neq ?prohibido "Ninguno")
+                      (eq (send ?t get-tipo) ?prohibido)))
+         then
+            (bind ?ori-slot (send ?t get-tieneOrigen))
+            (bind ?des-slot (send ?t get-tieneFin))
+
+            (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
+            (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
+
+            ;; Imprimimos los primeros 3 transportes para ver qué estructura interna tienen
+            (if (<= ?i 3) then
+                (printout t "   ↳ Evaluando " (instance-name ?t) " | Origen ontología: " ?ori-slot " | Destino ontología: " ?des-slot crlf)
+            )
+
+            (bind ?ori-ok FALSE)
+            (loop-for-count (?j 1 (length$ ?lista-ori)) do
+                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?norm-origen)
+                    then (bind ?ori-ok TRUE) (break)))
+
+            (bind ?des-ok FALSE)
+            (loop-for-count (?j 1 (length$ ?lista-des)) do
+                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-des)) ?norm-destino)
+                    then (bind ?des-ok TRUE) (break)))
+
+            (if (and ?ori-ok ?des-ok)
+                then
+                (printout t "   ✅ ¡CONEXIÓN ENCONTRADA EXTRAVAGANTE! Usando: " (instance-name ?t) crlf)
+                (return TRUE))
+        )
+    )
+    (printout t "   ❌ No hay ruta directa entre estas dos ciudades." crlf)
+    (return FALSE)
 )
 
 (deffunction REFINAMIENTO::puntos-grado (?g)
@@ -282,6 +325,8 @@
     (bind ?puntos (puntos-viaje ?ciudades))
     (bind ?valid (if (viaje-valido ?ciudades) then TRUE else FALSE))
     (bind ?alojs (lista-alojamientos ?ciudades))
+
+    (printout t "🔍 INTENTANDO: " ?ciudades " | Ciudades: " ?n " | Coste: " ?precio " | Valido? " ?valid crlf)
 
     (return
         (make-instance (gensym*) of ViajeCandidato

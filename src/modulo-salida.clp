@@ -81,19 +81,37 @@
 )
 
 (deffunction SALIDA::buscar-transporte (?origen ?destino ?odio)
-    (bind ?lista
-        (find-all-instances ((?trans Transporte))
-            (and (eq (send ?trans get-tieneOrigen) ?origen)
-                 (eq (send ?trans get-tieneFin) ?destino)
-                 (or (eq ?odio "")
-                     (eq ?odio "Ninguno")
-                     (neq (send ?trans get-medio) ?odio)))))
+    (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
+    (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
+    (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
 
-    (if (> (length$ ?lista) 0)
-        then
-            (return (nth$ 1 ?lista))
-        else
-            (return FALSE))
+    (loop-for-count (?i 1 (length$ ?transportes)) do
+        (bind ?t (nth$ ?i ?transportes))
+        (bind ?medio (send ?t get-medio))
+
+        (if (not (and (neq ?odio "") (neq ?odio "Ninguno") (eq ?medio ?odio)))
+         then
+            (bind ?ori-slot (send ?t get-tieneOrigen))
+            (bind ?des-slot (send ?t get-tieneFin))
+
+            (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
+            (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
+
+            (bind ?ori-ok FALSE)
+            (loop-for-count (?j 1 (length$ ?lista-ori)) do
+                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?norm-origen)
+                    then (bind ?ori-ok TRUE) (break)))
+
+            (bind ?des-ok FALSE)
+            (loop-for-count (?j 1 (length$ ?lista-des)) do
+                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-des)) ?norm-destino)
+                    then (bind ?des-ok TRUE) (break)))
+
+            (if (and ?ori-ok ?des-ok)
+                then (return ?t))
+        )
+    )
+    (return FALSE)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
