@@ -116,8 +116,8 @@
     (send ?u put-presupuesto_max (float ?pres))
     (send ?u put-dias_min (integer ?dmin))
     (send ?u put-dias_max (integer ?dmax))
-    (send ?u put-grado-ahorro (integer ?ahorro))
-    (send ?u put-prioridad-alojamiento (integer ?cal_aloj))
+    (send ?u put-grado_ahorro (integer ?ahorro))
+    (send ?u put-prioridad_alojamiento (integer ?cal_aloj))
     (modify ?f (fase CIUDADES))
 )
 
@@ -208,6 +208,23 @@
     (modify ?f (fase FIN))
 )
 
+(defrule PREGUNTAS::solicitar-transporte
+    ?f <- (fase-entrada (fase TRANSPORTE))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+=>
+    (printout t "Algun transporte que prefieras? (1.Ninguno 2.Avion 3.Tren 4.Autobus) [1]: ")
+    (bind ?resp (readline))
+    (bind ?op (if (eq ?resp "") then 1 else (string-to-field ?resp)))
+
+    (bind ?transp
+        (if (eq ?op 2) then "Avion"
+        else (if (eq ?op 3) then "Tren"
+        else (if (eq ?op 4) then "Autobus" else "Ninguno"))))
+
+    (send ?u put-transporte_preferido ?transp)
+    (modify ?f (fase FIN))
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; FINALIZACIÓN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -220,13 +237,17 @@
     (printout t crlf "=== RESUMEN ===" crlf)
     (printout t "Motivo: " (send ?u get-motivo_viaje) crlf)
     (printout t "Acompanantes: " (send ?u get-acompanyants) crlf)
+    (printout t "Temporada: " (send ?u get-temporada_viaje) crlf)
     (printout t "Presupuesto: " (send ?u get-presupuesto_max) " euros" crlf)
     (printout t "Duracion: " (send ?u get-dias_min) "-" (send ?u get-dias_max) " dias" crlf)
+    (printout t "Ahorro: " (send ?u get-grado_ahorro) crlf)
+    (printout t "Calidad: " (send ?u get-prioridad_alojamiento) crlf)
     (printout t "Ciudades: " (send ?u get-ciudades_min) "-" (send ?u get-ciudades_max) crlf)
     (printout t "Cultura: " (send ?u get-nivel_cultural) crlf)
     (printout t "Explorador: " (send ?u get-explorador) crlf)
     (printout t "Movilidad reducida: " (send ?u get-movilidad_reducida) crlf)
     (printout t "Transporte evitado: " (send ?u get-transporte_odiado) crlf)
+    (printout t "Transporte preferido: " (send ?u get-transporte_preferido) crlf)
     (printout t crlf "Buscando viaje..." crlf crlf)
 
     (retract ?f)

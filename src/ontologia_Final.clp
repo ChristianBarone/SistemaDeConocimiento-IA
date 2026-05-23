@@ -17,9 +17,9 @@
     (multislot tienePOI
         (type INSTANCE)
         (create-accessor read-write))
-    ; (slot clima_habitual
-    ;     (type STRING)
-    ;     (create-accessor read-write))
+    (slot clima_habitual
+        (type STRING)
+        (create-accessor read-write))
     (slot cluster_tematico
         (type INSTANCE)
         (allowed-classes Tematica)
@@ -332,13 +332,13 @@
 
     (slot valido
         (type SYMBOL)
-        (allowed-symbols SI NO)
-        (default NO)
+        (allowed-symbols TRUE FALSE)
+        (default FALSE)
         (create-accessor read-write))
     (slot seleccionado
         (type SYMBOL)
-        (allowed-symbols SI NO)
-        (default NO)
+        (allowed-symbols TRUE FALSE)
+        (default FALSE)
         (create-accessor read-write))
 )
 
@@ -363,6 +363,12 @@
         (type STRING)
         (create-accessor read-write))
 
+    (slot accesibilidad_ok
+        (type SYMBOL)
+        (allowed-symbols SI NO)
+        (default SI)
+        (create-accessor read-write))
+
     ;;; Numero de dias recomendados para permanecer en la ciudad
     (slot durada_estada
         (type INTEGER)
@@ -371,8 +377,8 @@
     ;;; Valoracion global del encaje de la ciudad
     (slot grado
         (type SYMBOL)
-        (allowed-symbols ALTO MEDIO BAJO)
-        (default MEDIO)
+        (allowed-symbols nil MUY_RECOMENDABLE ADECUADO PARCIALMENTE_ADECUADO NO_RECOMENDABLE)
+        (default nil)
         (create-accessor read-write))
 
     ;;; Explicacion resumida del por que de la valoracion
@@ -383,14 +389,14 @@
     ;;; Indica si la ciudad encaja en el presupuesto del usuario
     (slot presupuesto_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI NO PARCIAL)
         (default NO)
         (create-accessor read-write))
 
     ;;; Indica si la tematica de la ciudad encaja con la preferencia del usuario
     (slot tematica_ok
         (type SYMBOL)
-        (allowed-symbols SI NO)
+        (allowed-symbols SI NO PARCIAL)
         (default NO)
         (create-accessor read-write))
 
@@ -398,7 +404,7 @@
     (slot transporte_ok
         (type SYMBOL)
         (allowed-symbols SI NO)
-        (default NO)
+        (default SI)
         (create-accessor read-write))
 
     ;;; Marca si existe una incompatibilidad fuerte que descarte la ciudad
@@ -469,10 +475,15 @@
         (allowed-symbols SI NO)
         (default SI)
         (create-accessor read-write))
-    (slot odiado
-        (type SYMBOL) ;; SI, NO
+    (slot preferido
+        (type SYMBOL)
         (allowed-symbols SI NO)
-        (default SI)
+        (default NO)
+        (create-accessor read-write))
+    (slot odiado
+        (type SYMBOL)
+        (allowed-symbols SI NO)
+        (default NO)
         (create-accessor read-write))
     (slot puntuacion
         (type INTEGER)

@@ -15,18 +15,23 @@
         then
             (return FALSE))
 
-    (bind ?mejor (nth$ 1 ?lista))
-    (bind ?precioMejor (float (send ?mejor get-precio_noche)))
+    (bind ?mejor FALSE)
+    (bind ?precioMejor 999999.0)
 
-    (loop-for-count (?i 2 (length$ ?lista)) do
+    (loop-for-count (?i 1 (length$ ?lista)) do
         (bind ?a (nth$ ?i ?lista))
-        (bind ?p (float (send ?a get-precio_noche)))
-        (if (< ?p ?precioMejor)
+        (if (instance-existp ?a)
             then
-                (bind ?mejor ?a)
-                (bind ?precioMejor ?p))
+                (bind ?p_raw (send ?a get-precio_noche))
+                (if (numberp ?p_raw)
+                    then
+                        (bind ?p (float ?p_raw))
+                        (if (< ?p ?precioMejor)
+                            then
+                                (bind ?mejor ?a)
+                                (bind ?precioMejor ?p)))
+        )
     )
-
     (return ?mejor)
 )
 
@@ -94,18 +99,23 @@
 ;;; FUNCIONES DE PRESENTACION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(deffunction SALIDA::mostrar-parada (?ciu ?pos ?dias)
-    (bind ?aloj (mejor-alojamiento ?ciu))
-    (bind ?nombreHotel
-        (if (eq ?aloj FALSE)
-            then "Sin alojamiento asignado"
-            else (send ?aloj get-nombre)))
-    (bind ?precio (coste-parada ?ciu ?dias))
+(deffunction SALIDA::mostrar-parada (?ciu ?dias)
+    (if (not (instance-existp ?ciu))
+        then
+            (printout t "  - [Error: Instancia de ciudad invalida o no encontrada]" crlf)
+            (return))
 
-    (printout t "PARADA " ?pos ": " (send ?ciu get-nombre) " (" ?dias " dias)" crlf)
-    (printout t "  * ALOJAMIENTO : " ?nombreHotel crlf)
-    (printout t "  * COSTE PARADA: " (integer ?precio) " EUR" crlf)
-    (printout t "------------------------------------------" crlf)
+    (printout t "  - Ciudad: " (send ?ciu get-nombre) " (" ?dias " dias)" crlf)
+    (bind ?aloj (mejor-alojamiento ?ciu))
+
+    (if (neq ?aloj FALSE)
+        then
+            (bind ?p_raw (send ?aloj get-precio_noche))
+            (bind ?precio (if (numberp ?p_raw) then (float ?p_raw) else 0.0))
+            (printout t "    Alojamiento recomendado: " (send ?aloj get-nombre)
+                        " (" ?precio " EUR/noche)" crlf)
+        else
+            (printout t "    Alojamiento recomendado: No hay alojamientos disponibles registrados." crlf))
 )
 
 (deffunction SALIDA::mostrar-trayecto (?ciuOri ?ciuDest ?odio)
@@ -125,27 +135,19 @@
             (printout t "  >> (Sin transporte directo disponible)" crlf))
 )
 
-(deffunction SALIDA::mostrar-itinerario (?trip)
-    (bind ?ciudades (send ?trip get-incluyeCiudad))
-    (bind ?nCiudades (send ?trip get-n_ciudades))
-    (bind ?diasTotales (send ?trip get-durada_dias))
-    (bind ?odio (send [usuario1] get-transporte_odiado))
+(deffunction SALIDA::mostrar-itinerario ($?ciudades)
+    (bind ?n (length$ ?ciudades))
+    (if (= ?n 0) then (return))
 
-    (if (> ?nCiudades 0)
-        then
-            (bind ?dias1 (dias-en-parada ?diasTotales ?nCiudades 1))
-            (mostrar-parada (nth$ 1 ?ciudades) 1 ?dias1)
+    (bind ?diasTotales (send [viaje-final] get-durada_dias))
+    (bind ?diasPorCiudad (max 1 (integer (/ ?diasTotales ?n))))
 
-            (if (> ?nCiudades 1)
-                then
-                    (loop-for-count (?i 2 ?nCiudades) do
-                        (bind ?ori (nth$ (- ?i 1) ?ciudades))
-                        (bind ?des (nth$ ?i ?ciudades))
-                        (bind ?diasI (dias-en-parada ?diasTotales ?nCiudades ?i))
-                        (mostrar-trayecto ?ori ?des ?odio)
-                        (mostrar-parada ?des ?i ?diasI))))
+    (printout t crlf "ITINERARIO PROPUESTO:" crlf)
+    (loop-for-count (?i 1 ?n) do
+        (bind ?ciu (nth$ ?i ?ciudades))
+        (mostrar-parada ?ciu ?diasPorCiudad)
+    )
 )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; REGLAS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -164,12 +166,15 @@
 (defrule SALIDA::mostrar-viaje-final
     (declare (salience 90))
     (cabecera-mostrada)
+    ;; Extraemos el contenido del multislot incluyeCiudad en la variable $?ciudades
     ?trip <- (object (is-a ViajeCandidato)
                      (seleccionado TRUE)
-                     (valido TRUE))
+                     (valido TRUE)
+                     (incluyeCiudad $?ciudades))
     (not (viaje-mostrado))
 =>
-    (mostrar-itinerario ?trip)
+    ;; ¡Ahora sí! Le pasamos la lista de ciudades pura a la función de impresión
+    (mostrar-itinerario ?ciudades)
     (assert (viaje-mostrado))
 )
 

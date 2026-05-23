@@ -45,7 +45,7 @@
    (tematica_adecuada [tema-romantico])
 )
 
-([PaseoGondolas_Ven] of Ocio
+([PaseoGondolas_Ven] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 17.8)
@@ -99,7 +99,7 @@
    (tematica_adecuada [tema-cultural])
 )
 
-([MercadoOpera_Vie] of Ocio
+([MercadoOpera_Vie] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 11.6)
@@ -126,7 +126,7 @@
    (tematica_adecuada [tema-familiar])
 )
 
-([AcuarioPetrin_Pra] of Ocio
+([AcuarioPetrin_Pra] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 21.8)
@@ -144,7 +144,7 @@
    (tematica_adecuada [tema-familiar])
 )
 
-([BarrioGuell_Bcn] of Ocio
+([BarrioGuell_Bcn] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -207,7 +207,7 @@
    (tematica_adecuada [tema-cultural])
 )
 
-([MercadoPonteVecchio_Flo] of Ocio
+([MercadoPonteVecchio_Flo] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 11.2)
@@ -216,7 +216,7 @@
    (tematica_adecuada [tema-cultural])
 )
 
-([BarrioTempleBar_Dub] of Ocio
+([BarrioTempleBar_Dub] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -252,7 +252,7 @@
    (tematica_adecuada [tema-ocio])
 )
 
-([BarrioRetiro_Mad] of Ocio
+([BarrioRetiro_Mad] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -315,7 +315,7 @@
    (tematica_adecuada [tema-cultural])
 )
 
-([MercadoResidenz_Mun] of Ocio
+([MercadoResidenz_Mun] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 11.8)
@@ -333,7 +333,7 @@
    (tematica_adecuada [tema-descanso])
 )
 
-([PaseoMatisse_Niz] of Ocio
+([PaseoMatisse_Niz] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -369,7 +369,7 @@
    (tematica_adecuada [tema-romantico])
 )
 
-([PaseoLouvre_Par] of Ocio
+([PaseoLouvre_Par] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 17.8)
@@ -423,7 +423,7 @@
    (tematica_adecuada [tema-cultural])
 )
 
-([MercadoTrastevere_Rom] of Ocio
+([MercadoTrastevere_Rom] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 11.4)
@@ -441,7 +441,7 @@
    (tematica_adecuada [tema-aventura])
 )
 
-([TelefericoAlpino_Inn] of Ocio
+([TelefericoAlpino_Inn] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible PARCIAL)
    (precio_PI 25.4)
@@ -477,7 +477,7 @@
    (tematica_adecuada [tema-descanso])
 )
 
-([PaseoMadeira_Fun] of Ocio
+([PaseoMadeira_Fun] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -522,7 +522,7 @@
    (tematica_adecuada [tema-familiar])
 )
 
-([AcuarioOceanografic_Val] of Ocio
+([AcuarioOceanografic_Val] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 21.8)
@@ -558,7 +558,7 @@
    (tematica_adecuada [tema-familiar])
 )
 
-([AcuarioJardines_Cop] of Ocio
+([AcuarioJardines_Cop] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 22.8)
@@ -585,7 +585,7 @@
    (tematica_adecuada [tema-descanso])
 )
 
-([PaseoSerralves_Opo] of Ocio
+([PaseoSerralves_Opo] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 0.0)
@@ -630,7 +630,7 @@
    (tematica_adecuada [tema-familiar])
 )
 
-([AcuarioDragon_Lju] of Ocio
+([AcuarioDragon_Lju] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 21.6)
@@ -657,7 +657,7 @@
    (tematica_adecuada [tema-aventura])
 )
 
-([TelefericoFortaleza_Sal] of Ocio
+([TelefericoFortaleza_Sal] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible SI)
    (precio_PI 25.4)
@@ -693,7 +693,7 @@
    (tematica_adecuada [tema-aventura])
 )
 
-([TelefericoFiordo_Ber] of Ocio
+([TelefericoFiordo_Ber] of PuntoDeInteres
    (tipo RECREATIVO)
    (accesible PARCIAL)
    (precio_PI 25.6)

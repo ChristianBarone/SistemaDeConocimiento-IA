@@ -74,8 +74,7 @@
                (<= (send ?u get-prioridad_alojamiento) 3)))
 =>
     ; Bajamos precio para ahorrar
-    (bind ?valor-ajuste -10)
-    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (ajuste-ahorro -10))
     (assert (perfil-presupuesto MOCHILERO))
 )
 
@@ -89,8 +88,7 @@
                (>= (send ?u get-prioridad_alojamiento) 4)))
 =>
     ; Subimos precio alojamiento porque estaremos en un sitio barato
-    (bind ?valor-ajuste 15)
-    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (ajuste-ahorro 10))
     (assert (perfil-presupuesto EXIGENTE))
 )
 
@@ -104,8 +102,7 @@
                (>= (send ?u get-prioridad_alojamiento) 4)))
 =>
     ; Subimos precio alojamiento pero no le importa gastar
-    (bind ?valor-ajuste 15)
-    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (ajuste-ahorro 25))
     (assert (perfil-presupuesto PREMIUM))
 )
 
@@ -281,7 +278,6 @@
 (defrule ABSTRACCION::popularidad-baja
     (declare (salience 10))
     (entrada-completada)
-    (not (ciudad-popularidad ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad ?p))
     (test (< ?p 3))
 =>
@@ -292,7 +288,6 @@
 (defrule ABSTRACCION::popularidad-media
     (declare (salience 10))
     (entrada-completada)
-    (not (ciudad-popularidad ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad 3))
 =>
     (assert (ciudad-popularidad MEDIA))
@@ -302,7 +297,6 @@
 (defrule ABSTRACCION::popularidad-alta
     (declare (salience 10))
     (entrada-completada)
-    (not (ciudad-popularidad ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad ?p))
     (test (> ?p 3))
 =>
@@ -312,7 +306,6 @@
 (defrule ABSTRACCION::primavera-baja
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-primavera ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
     (test (< ?v 3))
 =>
@@ -322,7 +315,6 @@
 (defrule ABSTRACCION::primavera-media
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-primavera ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera 3))
 =>
     (assert (ciudad-primavera MEDIA))
@@ -331,7 +323,6 @@
 (defrule ABSTRACCION::primavera-alta
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-primavera ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
     (test (> ?v 3))
 =>
@@ -341,7 +332,6 @@
 (defrule ABSTRACCION::verano-baja
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-verano ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
     (test (< ?v 3))
 =>
@@ -351,7 +341,6 @@
 (defrule ABSTRACCION::verano-media
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-verano ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano 3))
 =>
     (assert (ciudad-verano MEDIA))
@@ -360,7 +349,6 @@
 (defrule ABSTRACCION::verano-alta
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-verano ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
     (test (> ?v 3))
 =>
@@ -370,7 +358,6 @@
 (defrule ABSTRACCION::otono-baja
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-otono ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
     (test (< ?v 3))
 =>
@@ -380,7 +367,6 @@
 (defrule ABSTRACCION::otono-media
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-otono ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono 3))
 =>
     (assert (ciudad-otono MEDIA))
@@ -389,7 +375,6 @@
 (defrule ABSTRACCION::otono-alta
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-otono ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
     (test (> ?v 3))
 =>
@@ -399,7 +384,6 @@
 (defrule ABSTRACCION::invierno-baja
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-invierno ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
     (test (< ?v 3))
 =>
@@ -409,7 +393,6 @@
 (defrule ABSTRACCION::invierno-media
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-invierno ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno 3))
 =>
     (assert (ciudad-invierno MEDIA))
@@ -418,7 +401,6 @@
 (defrule ABSTRACCION::invierno-alta
     (declare (salience 9))
     (entrada-completada)
-    (not (ciudad-invierno ?)
     ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
     (test (> ?v 3))
 =>

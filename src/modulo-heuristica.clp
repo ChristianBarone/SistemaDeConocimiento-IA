@@ -42,7 +42,7 @@
     (entrada-completada)
     (object (is-a PuntoDeInteres) (name ?n))
 =>
-    (make-instance (sym-cat "Cand-" ?n) of PuntoDeinteresCandidato (puntodeinteres ?n))
+    (make-instance (sym-cat "Cand-" ?n) of PuntoDeInteresCandidato (puntodeinteres ?n))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -52,13 +52,15 @@
 (defrule HEURISTICA::restriccion-transporte-odiado
     (declare (salience 5))
     ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_odiado ?transp))
-    ?cand <- (object (is-a TransporteCandidato) (transporte ?transp))
+    ?cand <- (object (is-a TransporteCandidato) (transporte ?t))
+    (object (is-a Transporte) (name ?t) (tipo ?transp2))
+    (test (eq ?transp ?transp2))
 =>
-    (bind ?ok SI)
-    (send ?cand put-odiado ?ok)
+    (send ?cand put-odiado SI)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-ciudad
+    (declare (salience 5))
     (nivel-presupuesto ?nivel)
     (perfil-presupuesto ?perfil)
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
@@ -105,13 +107,23 @@
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-alojamiento
+    (declare (salience 5))
     (nivel-presupuesto ?nivel)
     (perfil-presupuesto ?perfil)
-    ?u <- (object (is-a Usuario) (ajuste_ahorro ?ajuste))
+    (ajuste-ahorro ?ajuste_ah)
+    ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_preferido ?transp))
     ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
     (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
 =>
-    (bind ?precio-evaluado (+ ?precio ?ajuste))
+    (bind ?ajuste_tr 0)
+    (switch ?transp
+        ; Mucho presupuesto para transporte, reducir presupuesto alojamiento
+        (case "Avion" then (bind ?ajuste_tr 15))
+        ; Poco presupuesto transporte, aumentar presupuesto alojamiento
+        (case "Autobus" then (bind ?ajuste_tr -15))
+    )
+
+    (bind ?precio-evaluado (+ ?precio ?ajuste_ah ?ajuste_tr))
     (bind ?ok NO)
 
     (switch ?nivel
@@ -135,6 +147,7 @@
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-transporte
+    (declare (salience 5))
     (nivel-presupuesto ?nivel)
     ?cand <- (object (is-a TransporteCandidato) (transporte ?trans) (odiado NO))
     (object (is-a Transporte) (name ?trans) (precio ?precio))
@@ -160,7 +173,25 @@
     (send ?cand put-presupuesto_ok ?ok)
 )
 
-(defrule HEURISTICA::restriccion-accesibilidad-
+(defrule HEURISTICA::validar-transporte-ciudad-exito
+    (declare (salience 2))
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (transporte_ok ~SI))
+
+    (object (is-a Transporte) (name ?t) (tieneFin ?ciu))
+
+    (object (is-a TransporteCandidato) (transporte ?t) (odiado NO))
+=>
+    (send ?cand put-transporte_ok SI)
+)
+
+(defrule HEURISTICA::validar-transporte-ciudad-fallo
+    (declare (salience 1))
+    ?cand <- (object (is-a CandidatoCiudad) (transporte_ok ~SI))
+=>
+    (send ?cand put-transporte_ok NO)
+)
+
+(defrule HEURISTICA::restriccion-accesibilidad
     (declare (salience 5))
     ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
@@ -183,6 +214,15 @@
     (if (eq ?t ?cluster) 
         then (send ?cand put-tematica_ok SI)
         else (send ?cand put-tematica_ok PARCIAL))
+)
+
+(defrule HEURISTICA::preferencia-transporte
+    (declare (salience 10))
+    ?u <- (object (is-a Usuario) (name [usuario1]) (transporte_preferido ?transp))
+    ?cand <- (object (is-a TransporteCandidato) (transporte ?t))
+    (object (is-a Transporte) (name ?t) (tipo ?transp))
+=>
+    (send ?cand put-preferido SI)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -267,7 +307,7 @@
 (defrule HEURISTICA::ventaja-museos
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tienePOI $? ?poi $?))
-    (object (name ?poi) (is-a Museo))
+    (object (name ?poi) (is-a PuntoDeInteres) (tipo MUSEO))
     (test (eq (member$ "Rica oferta cultural" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Rica oferta cultural")
@@ -276,7 +316,7 @@
 (defrule HEURISTICA::ventaja-parques
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tienePOI $? ?poi $?))
-    (object (name ?poi) (is-a Parque))
+    (object (name ?poi) (is-a PuntoDeInteres) (tipo PARQUE))
     (test (eq (member$ "Espacios naturales" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Espacios naturales")
@@ -285,7 +325,7 @@
 (defrule HEURISTICA::ventaja-hotel
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hotel))
+    (object (name ?aloj) (is-a Alojamiento) (categoria HOTEL))
     (test (eq (member$ "Hotel de calidad disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Hotel de calidad disponible")
@@ -294,7 +334,7 @@
 (defrule HEURISTICA::ventaja-hostal
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hostal))
+    (object (name ?aloj) (is-a Alojamiento) (categoria HOSTAL))
     (test (eq (member$ "Alojamiento economico disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Alojamiento economico disponible")
@@ -305,6 +345,14 @@
     (test (eq (member$ "Transporte conveniente" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Transporte conveniente")
+)
+
+(defrule HEURISTICA::ventaja-transporte-pref
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?nombre-ciudad) (ventajas $?v) (grado nil))
+   ?tc <- (object (is-a TransporteCandidato) (transporte ?trans) (preferido SI))
+   (test (eq (member$ "Transporte preferido" ?v) FALSE))
+=>
+   (modify-instance ?cand (ventajas (insert$ ?v 1 "Transporte preferido")))
 )
 
 (defrule HEURISTICA::desventaja-tematica-no-encaja
@@ -345,57 +393,57 @@
 
 ;;; INCOMPATIBILIDADES TEMÁTICAS
 
-;;; Usuario busca Descanso → ciudad de Aventura es incompatible
 (defrule HEURISTICA::incompatibilidad-descanso-aventura
-    (declare (salience 1))
-    (tematica-deducida Descanso)
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-    (object (name ?ciu) (cluster_tematico Aventura))
-    (test (eq (member$ "Incompatible: ciudad de aventura/riesgo" ?d) FALSE))
-=>
-    (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad de aventura/riesgo")
-    (send ?cand put-tematica_ok NO)
-    (send ?cand put-incompatibilidad_especifica SI)  ; ← flag
-)
+   (declare (salience 1))
+   (tematica-deducida Descanso)
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
 
-;;; Usuario busca Familiar → ciudad Romántica no es apta para niños
+   ;; Recuperamos la instancia de la ciudad y guardamos el puntero a su temática
+   (object (name ?ciu) (cluster_tematico ?tema))
+   ;; Validamos si el nombre de esa instancia es [Aventura]
+   (test (eq ?tema [Aventura]))
+
+   (test (eq (member$ "Incompatible: ciudad de aventura/riesgo" ?d) FALSE))
+   =>
+   (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad de aventura/riesgo")
+   (send ?cand put-tematica_ok NO)
+   (send ?cand put-incompatibilidad_especifica SI))
+
 (defrule HEURISTICA::incompatibilidad-familiar-romantico
-    (declare (salience 1))
-    (tematica-deducida Familiar)
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-    (object (name ?ciu) (cluster_tematico Romantico))
-    (test (eq (member$ "Incompatible: ciudad orientada a parejas" ?d) FALSE))
-=>
-    (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad orientada a parejas")
-    (send ?cand put-tematica_ok NO)
-    (send ?cand put-incompatibilidad_especifica SI)  ; ← flag
-)
+   (declare (salience 1))
+   (tematica-deducida Familiar)
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
+   (object (name ?ciu) (cluster_tematico ?tema))
+   (test (eq ?tema [Romantico]))
+   (test (eq (member$ "Incompatible: ciudad orientada a parejas" ?d) FALSE))
+   =>
+   (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad orientada a parejas")
+   (send ?cand put-tematica_ok NO)
+   (send ?cand put-incompatibilidad_especifica SI))
 
-;;; Usuario busca Cultural → ciudad de Descanso tiene poca oferta cultural
 (defrule HEURISTICA::incompatibilidad-cultural-descanso
-    (declare (salience 1))
-    (tematica-deducida Cultural)
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-    (object (name ?ciu) (cluster_tematico Descanso))
-    (test (eq (member$ "Oferta cultural limitada" ?d) FALSE))
-=>
-    (slot-insert$ ?cand desventajas 1 "Oferta cultural limitada")
-    (send ?cand put-tematica_ok NO)
-    (send ?cand put-incompatibilidad_especifica SI)  ; ← flag
-)
+   (declare (salience 1))
+   (tematica-deducida Cultural)
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
+   (object (name ?ciu) (cluster_tematico ?tema))
+   (test (eq ?tema [Descanso]))
+   (test (eq (member$ "Oferta cultural limitada" ?d) FALSE))
+   =>
+   (slot-insert$ ?cand desventajas 1 "Oferta cultural limitada")
+   (send ?cand put-tematica_ok NO)
+   (send ?cand put-incompatibilidad_especifica SI))
 
-;;; Usuario busca Romantico → ciudad de Aventura no encaja con ambiente romántico
 (defrule HEURISTICA::incompatibilidad-romantico-aventura
-    (declare (salience 1))
-    (tematica-deducida Romantico)
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-    (object (name ?ciu) (cluster_tematico Aventura))
-    (test (eq (member$ "Ambiente poco romantico" ?d) FALSE))
-=>
-    (slot-insert$ ?cand desventajas 1 "Ambiente poco romantico")
-    (send ?cand put-tematica_ok NO)
-    (send ?cand put-incompatibilidad_especifica SI)  ; ← flag
-)
+   (declare (salience 1))
+   (tematica-deducida Romantico)
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
+   (object (name ?ciu) (cluster_tematico ?tema))
+   (test (eq ?tema [Aventura]))
+   (test (eq (member$ "Ambiente poco romantico" ?d) FALSE))
+   =>
+   (slot-insert$ ?cand desventajas 1 "Ambiente poco romantico")
+   (send ?cand put-tematica_ok NO)
+   (send ?cand put-incompatibilidad_especifica SI))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 5. CLASIFICACIÓN FINAL

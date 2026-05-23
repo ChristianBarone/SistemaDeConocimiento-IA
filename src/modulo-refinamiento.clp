@@ -54,18 +54,24 @@
         then
             (return FALSE))
 
-    (bind ?mejor (nth$ 1 ?lista))
-    (bind ?precioMejor (float (send ?mejor get-precio_noche)))
+    (bind ?mejor FALSE)
+    (bind ?precioMejor 999999.0)
 
-    (loop-for-count (?i 2 (length$ ?lista)) do
+    (loop-for-count (?i 1 (length$ ?lista)) do
         (bind ?a (nth$ ?i ?lista))
-        (bind ?p (float (send ?a get-precio_noche)))
-        (if (< ?p ?precioMejor)
+        (if (instance-existp ?a)
             then
-                (bind ?mejor ?a)
-                (bind ?precioMejor ?p))
+                (bind ?p_raw (send ?a get-precio_noche))
+                ;; Comprobamos si el precio es un número válido
+                (if (numberp ?p_raw)
+                    then
+                        (bind ?p (float ?p_raw))
+                        (if (< ?p ?precioMejor)
+                            then
+                                (bind ?mejor ?a)
+                                (bind ?precioMejor ?p)))
+        )
     )
-
     (return ?mejor)
 )
 
@@ -91,9 +97,10 @@
         (if (eq ?aloj FALSE)
             then 0.0
             else (float (send ?aloj get-precio_noche))))
-    (bind ?nivelVida (float (send ?ciu get-nivel_de_vida)))
 
-    ; mismo estilo de estimación que en SALIDA
+    (bind ?nv_raw (send ?ciu get-nivel_de_vida))
+    (bind ?nivelVida (if (numberp ?nv_raw) then (float ?nv_raw) else 1.0))
+
     (return (+ (* (float ?diasPorCiudad) ?precioAloj)
                (* 25.0 ?nivelVida)))
 )
@@ -289,13 +296,18 @@
 
 (deffunction REFINAMIENTO::coste-minimo-candidato (?cand)
    (bind ?ciu (send ?cand get-ciudad))
-   (bind ?dias (max 1 (send ?cand get-durada_estada)))
+   (bind ?d_raw (send ?cand get-durada_estada))
+   (bind ?dias (if (numberp ?d_raw) then (max 1 ?d_raw) else 1))
+
    (bind ?aloj (mejor-alojamiento ?ciu))
    (bind ?precioAloj
       (if (eq ?aloj FALSE)
          then 0.0
          else (float (send ?aloj get-precio_noche))))
-   (bind ?nivelVida (float (send ?ciu get-nivel_de_vida)))
+
+   (bind ?nv_raw (send ?ciu get-nivel_de_vida))
+   (bind ?nivelVida (if (numberp ?nv_raw) then (float ?nv_raw) else 1.0))
+
    (return (+ (* (float ?dias) ?precioAloj)
               (* 25.0 ?nivelVida)))
 )
@@ -409,7 +421,7 @@
     (make-instance viaje-final of Viaje
         (incluyeCiudad ?ciudades)
         (durada_dias (send ?trip get-durada_dias))
-        (precio_total (integer (send ?trip get-precio_total))))
+        (precio_total (float (send ?trip get-precio_total))))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
