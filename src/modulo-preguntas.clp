@@ -182,7 +182,7 @@
     (send ?u put-nivel_cultural ?cultura)
     (send ?u put-explorador (integer ?expl))
     (send ?u put-movilidad_reducida ?movil)
-    (modify ?f (fase TRANSPORTE))
+    (modify ?f (fase ODIADO))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -190,8 +190,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Recoge el transporte que el usuario quiere evitar
-(defrule PREGUNTAS::solicitar-transporte
-    ?f <- (fase-entrada (fase TRANSPORTE))
+(defrule PREGUNTAS::solicitar-transporte-evitar
+    ?f <- (fase-entrada (fase ODIADO))
     ?u <- (object (is-a Usuario) (name [usuario1]))
 =>
     (printout t crlf "-- TRANSPORTE --" crlf)
@@ -205,11 +205,11 @@
         else (if (eq ?op 4) then "Autobus" else "Ninguno"))))
 
     (send ?u put-transporte_odiado ?transp)
-    (modify ?f (fase FIN))
+    (modify ?f (fase PREFERIDO))
 )
 
-(defrule PREGUNTAS::solicitar-transporte
-    ?f <- (fase-entrada (fase TRANSPORTE))
+(defrule PREGUNTAS::solicitar-transporte-preferir
+    ?f <- (fase-entrada (fase PREFERIDO))
     ?u <- (object (is-a Usuario) (name [usuario1]))
 =>
     (printout t "Algun transporte que prefieras? (1.Ninguno 2.Avion 3.Tren 4.Autobus) [1]: ")
