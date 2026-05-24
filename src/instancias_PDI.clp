@@ -2,7 +2,7 @@
 
 ([BarrioCanales_Ams] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 3)
    (popularidad 5)
@@ -20,7 +20,7 @@
 
 ([ParqueVondel_Ams] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 5)
@@ -29,7 +29,7 @@
 
 ([TorreAtenea_Ams] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 17.6)
    (gaudi_infants 3)
    (popularidad 5)
@@ -38,7 +38,7 @@
 
 ([MiradorLaguna_Ven] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible PARCIAL)
+   (accesible SI)
    (precio_PI 12.8)
    (gaudi_infants 4)
    (popularidad 5)
@@ -56,7 +56,7 @@
 
 ([PalacioDucal_Ven] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 20.8)
    (gaudi_infants 2)
    (popularidad 4)
@@ -65,7 +65,7 @@
 
 ([JardinSanMarco_Ven] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 3)
@@ -83,7 +83,7 @@
 
 ([CatedralBelvedere_Vie] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 15.6)
    (gaudi_infants 3)
    (popularidad 5)
@@ -101,7 +101,7 @@
 
 ([MercadoOpera_Vie] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 11.6)
    (gaudi_infants 2)
    (popularidad 3)
@@ -110,7 +110,7 @@
 
 ([ParqueCastillo_Pra] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible PARCIAL)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 4)
@@ -119,7 +119,7 @@
 
 ([MuseoReloj_Pra] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 11.8)
    (gaudi_infants 4)
    (popularidad 3)
@@ -146,7 +146,7 @@
 
 ([BarrioGuell_Bcn] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 3)
    (popularidad 3)
@@ -164,7 +164,7 @@
 
 ([ParqueBarceloneta_Bcn] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 4)
@@ -182,7 +182,7 @@
 
 ([MuseoUffizi_Flo] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 20.2)
    (gaudi_infants 4)
    (popularidad 4)
@@ -200,7 +200,7 @@
 
 ([JardinBoboli_Flo] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 2)
@@ -218,7 +218,7 @@
 
 ([BarrioTempleBar_Dub] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 3)
    (popularidad 5)
@@ -236,7 +236,7 @@
 
 ([ParquePhoenix_Dub] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 1)
@@ -254,7 +254,7 @@
 
 ([BarrioRetiro_Mad] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 3)
    (popularidad 4)
@@ -272,7 +272,7 @@
 
 ([ParqueGranVia_Mad] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 4)
@@ -290,7 +290,7 @@
 
 ([MuseoEnglishGarden_Mun] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 20.8)
    (gaudi_infants 4)
    (popularidad 4)
@@ -308,7 +308,7 @@
 
 ([JardinMarienplatz_Mun] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 3)
@@ -326,7 +326,7 @@
 
 ([JardinPromenade_Niz] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 5)
    (popularidad 3)
@@ -344,7 +344,7 @@
 
 ([MuseoCastleHill_Niz] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 14.4)
    (gaudi_infants 2)
    (popularidad 2)
@@ -362,7 +362,7 @@
 
 ([MiradorEiffel_Par] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 12.8)
    (gaudi_infants 4)
    (popularidad 5)
@@ -380,7 +380,7 @@
 
 ([PalacioLuxemburgo_Par] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 20.8)
    (gaudi_infants 2)
    (popularidad 2)
@@ -407,7 +407,7 @@
 
 ([CatedralVaticano_Rom] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible PARCIAL)
+   (accesible SI)
    (precio_PI 15.4)
    (gaudi_infants 3)
    (popularidad 5)
@@ -416,7 +416,7 @@
 
 ([JardinBorghese_Rom] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 2)
@@ -434,7 +434,7 @@
 
 ([SenderoNordkette_Inn] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 1)
@@ -443,7 +443,7 @@
 
 ([TelefericoAlpino_Inn] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible PARCIAL)
+   (accesible SI)
    (precio_PI 25.4)
    (gaudi_infants 5)
    (popularidad 2)
@@ -461,7 +461,7 @@
 
 ([MuseoAlpinoAmbras_Inn] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 17.4)
    (gaudi_infants 2)
    (popularidad 3)
@@ -479,7 +479,7 @@
 
 ([PaseoMadeira_Fun] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 4)
@@ -497,7 +497,7 @@
 
 ([FaroFarol_Fun] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 13.0)
    (gaudi_infants 3)
    (popularidad 1)
@@ -515,7 +515,7 @@
 
 ([MuseoCiencia_Val] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 11.8)
    (gaudi_infants 4)
    (popularidad 1)
@@ -533,7 +533,7 @@
 
 ([CastilloSerranos_Val] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 15.8)
    (gaudi_infants 4)
    (popularidad 3)
@@ -551,7 +551,7 @@
 
 ([MuseoNyhavn_Cop] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 12.8)
    (gaudi_infants 4)
    (popularidad 2)
@@ -569,7 +569,7 @@
 
 ([CastilloRosenborg_Cop] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 16.8)
    (gaudi_infants 4)
    (popularidad 3)
@@ -587,7 +587,7 @@
 
 ([PaseoSerralves_Opo] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 4)
@@ -605,7 +605,7 @@
 
 ([FaroClerigos_Opo] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 12.8)
    (gaudi_infants 3)
    (popularidad 5)
@@ -623,7 +623,7 @@
 
 ([MuseoCastillo_Lju] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 11.6)
    (gaudi_infants 4)
    (popularidad 1)
@@ -641,7 +641,7 @@
 
 ([CastilloCentral_Lju] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible PARCIAL)
+   (accesible SI)
    (precio_PI 15.6)
    (gaudi_infants 4)
    (popularidad 2)
@@ -650,7 +650,7 @@
 
 ([SenderoMirabell_Sal] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 5)
@@ -668,7 +668,7 @@
 
 ([FortalezaMozart_Sal] of PuntoDeInteres
    (tipo MONUMENTO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 13.4)
    (gaudi_infants 2)
    (popularidad 2)
@@ -686,7 +686,7 @@
 
 ([SenderoBryggen_Ber] of PuntoDeInteres
    (tipo PARQUE)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 0.0)
    (gaudi_infants 4)
    (popularidad 1)
@@ -695,7 +695,7 @@
 
 ([TelefericoFiordo_Ber] of PuntoDeInteres
    (tipo RECREATIVO)
-   (accesible PARCIAL)
+   (accesible SI)
    (precio_PI 25.6)
    (gaudi_infants 5)
    (popularidad 2)
@@ -713,7 +713,7 @@
 
 ([MuseoAlpinoHanseatico_Ber] of PuntoDeInteres
    (tipo MUSEO)
-   (accesible SI)
+   (accesible NO)
    (precio_PI 17.6)
    (gaudi_infants 2)
    (popularidad 4)

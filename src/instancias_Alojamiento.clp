@@ -4,7 +4,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Canales")
    (precio_noche 140.0)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 4)
 )
 
@@ -36,7 +36,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Rialto")
    (precio_noche 138.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -44,7 +44,7 @@
    (categoria HOSTAL)
    (nombre "Hostal SanMarco")
    (precio_noche 43.2)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -68,7 +68,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Opera")
    (precio_noche 155.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -76,7 +76,7 @@
    (categoria HOSTAL)
    (nombre "Hostal InnereStadt")
    (precio_noche 36.4)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -100,7 +100,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento PlazaVieja")
    (precio_noche 64.5)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -116,7 +116,7 @@
    (categoria HOTEL)
    (nombre "Hotel Castillo")
    (precio_noche 125.5)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 4)
 )
 
@@ -164,7 +164,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Duomo")
    (precio_noche 130.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -172,7 +172,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Arno")
    (precio_noche 38.8)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -180,7 +180,7 @@
    (categoria HOTEL)
    (nombre "Hotel Uffizi")
    (precio_noche 128.5)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -196,7 +196,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento TempleBar")
    (precio_noche 73.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -228,7 +228,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Retiro")
    (precio_noche 73.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -236,7 +236,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Sol")
    (precio_noche 30.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -260,7 +260,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Marienplatz")
    (precio_noche 155.0)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 4)
 )
 
@@ -268,7 +268,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Isar")
    (precio_noche 41.2)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -292,7 +292,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Promenade")
    (precio_noche 125.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -300,7 +300,7 @@
    (categoria HOSTAL)
    (nombre "Hostal VieuxNice")
    (precio_noche 41.6)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -308,7 +308,7 @@
    (categoria HOTEL)
    (nombre "Hotel Garibaldi")
    (precio_noche 146.0)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 4)
 )
 
@@ -324,7 +324,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Marais")
    (precio_noche 150.0)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 4)
 )
 
@@ -332,7 +332,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Montmartre")
    (precio_noche 39.2)
-   (accesible SI)
+   (accesible PARCIAL)
    (calidad 2)
 )
 
@@ -340,7 +340,7 @@
    (categoria HOTEL)
    (nombre "Hotel Latin")
    (precio_noche 173.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -356,7 +356,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Vaticano")
    (precio_noche 140.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -364,7 +364,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Trastevere")
    (precio_noche 41.6)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -388,7 +388,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Alpen")
    (precio_noche 135.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -396,7 +396,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Altstadt")
    (precio_noche 38.4)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -404,7 +404,7 @@
    (categoria HOTEL)
    (nombre "Hotel Nordkette")
    (precio_noche 105.6)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -428,7 +428,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Marina")
    (precio_noche 32.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 1)
 )
 
@@ -436,7 +436,7 @@
    (categoria HOTEL)
    (nombre "Hotel Lido")
    (precio_noche 103.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -452,7 +452,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Carmen")
    (precio_noche 110.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -460,7 +460,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Ruzafa")
    (precio_noche 31.2)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -468,7 +468,7 @@
    (categoria HOTEL)
    (nombre "Hotel Turia")
    (precio_noche 101.5)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -492,7 +492,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Centro")
    (precio_noche 39.2)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -516,7 +516,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Ribeira")
    (precio_noche 67.5)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -532,7 +532,7 @@
    (categoria HOTEL)
    (nombre "Hotel Cedofeita")
    (precio_noche 85.5)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -548,7 +548,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Centro")
    (precio_noche 50.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
@@ -556,7 +556,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Rio")
    (precio_noche 30.4)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -564,7 +564,7 @@
    (categoria HOTEL)
    (nombre "Hotel Castillo")
    (precio_noche 100.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -588,7 +588,7 @@
    (categoria HOSTAL)
    (nombre "Hostal Altstadt")
    (precio_noche 38.4)
-   (accesible SI)
+   (accesible NO)
    (calidad 2)
 )
 
@@ -612,7 +612,7 @@
    (categoria APARTAMENTO)
    (nombre "Apartamento Bryggen")
    (precio_noche 150.0)
-   (accesible SI)
+   (accesible NO)
    (calidad 4)
 )
 
@@ -628,7 +628,7 @@
    (categoria HOTEL)
    (nombre "Hotel Centro")
    (precio_noche 114.4)
-   (accesible SI)
+   (accesible NO)
    (calidad 3)
 )
 
