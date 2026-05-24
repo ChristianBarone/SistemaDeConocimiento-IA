@@ -225,6 +225,95 @@
     (send ?cand put-preferido SI)
 )
 
+(defrule HEURISTICA::preferencia-explorador-ciudad
+   ?u <- (object (is-a Usuario) (name [usuario1]) (explorador ?exp))
+   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (grado nil))
+   (object (is-a Ciudad) (name ?ciu) (popularidad ?pop))
+=>
+   (bind ?aj 0)
+
+   (if (>= ?exp 4) then
+      (if (<= ?pop 2) then (bind ?aj 8)
+       else (if (= ?pop 3) then (bind ?aj 0)
+       else (bind ?aj -8))))
+
+   (if (<= ?exp 2) then
+      (if (>= ?pop 4) then (bind ?aj 8)
+       else (if (= ?pop 3) then (bind ?aj 0)
+       else (bind ?aj -8))))
+
+   (if (= ?exp 3) then
+      (bind ?aj 0))
+
+   (send ?cand put-ajuste_explorador ?aj)
+)
+
+(defrule HEURISTICA::preferencia-explorador-poi
+   ?u <- (object (is-a Usuario) (name [usuario1]) (explorador ?exp))
+   ?cand <- (object (is-a PuntoDeInteresCandidato) (puntodeinteres ?poi))
+   (object (is-a PuntoDeInteres) (name ?poi) (popularidad ?pop))
+=>
+   (bind ?aj 0)
+
+   (if (>= ?exp 4) then
+      (if (<= ?pop 2) then (bind ?aj 2)
+       else
+       (if (>= ?pop 4) then (bind ?aj -2))))
+
+   (if (<= ?exp 2) then
+      (if (>= ?pop 4) then (bind ?aj 2)
+       else
+       (if (<= ?pop 2) then (bind ?aj -2))))
+
+   (if (= ?exp 3) then
+      (bind ?aj 0))
+
+   (send ?cand put-ajuste_explorador ?aj)
+)
+
+(defrule HEURISTICA::preferencia-calidad-alojamiento-alta
+    (declare (salience 0))
+    (exigencia-alojamiento ALTA)
+    ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?a))
+    (object (is-a Alojamiento) (name ?a) (calidad ?c))
+=>
+    (if (>= ?c 4)
+        then
+            (send ?cand put-aptitud_alojamiento ALTA)
+        else
+            (if (= ?c 3)
+                then (send ?cand put-aptitud_alojamiento MEDIA)
+                else (send ?cand put-aptitud_alojamiento BAJA)))
+)
+
+(defrule HEURISTICA::preferencia-calidad-alojamiento-media
+    (declare (salience 0))
+    (exigencia-alojamiento MEDIA)
+    ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?a))
+    (object (is-a Alojamiento) (name ?a) (calidad ?c))
+=>
+    (if (>= ?c 4)
+        then
+            (send ?cand put-aptitud_alojamiento ALTA)
+        else
+            (if (>= ?c 2)
+                then (send ?cand put-aptitud_alojamiento MEDIA)
+                else (send ?cand put-aptitud_alojamiento BAJA)))
+)
+
+(defrule HEURISTICA::preferencia-calidad-alojamiento-baja
+    (declare (salience 0))
+    (exigencia-alojamiento BAJA)
+    ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?a))
+    (object (is-a Alojamiento) (name ?a) (calidad ?c))
+=>
+    (if (>= ?c 3)
+        then
+            (send ?cand put-aptitud_alojamiento ALTA)
+        else
+            (send ?cand put-aptitud_alojamiento MEDIA))
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 4. AÑADIR VENTAJAS Y DESVENTAJAS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -345,14 +434,6 @@
     (test (eq (member$ "Transporte conveniente" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Transporte conveniente")
-)
-
-(defrule HEURISTICA::ventaja-transporte-pref
-   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?nombre-ciudad) (ventajas $?v) (grado nil))
-   ?tc <- (object (is-a TransporteCandidato) (transporte ?trans) (preferido SI))
-   (test (eq (member$ "Transporte preferido" ?v) FALSE))
-=>
-   (modify-instance ?cand (ventajas (insert$ ?v 1 "Transporte preferido")))
 )
 
 (defrule HEURISTICA::desventaja-tematica-no-encaja

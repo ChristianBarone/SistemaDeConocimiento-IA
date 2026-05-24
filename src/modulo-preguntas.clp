@@ -61,7 +61,7 @@
         else (if (eq ?op2 3) then "Familia_Con_Ninos"
         else (if (eq ?op2 4) then "Amigos" else "Solo"))))
 
-    (printout t "En cual temporada viajas? (1.Primavera 2.Verano 3.Otoño 4.Invierno) [1]: ")
+    (printout t "En cual temporada viajas? (1.Primavera 2.Verano 3.Otono 4.Invierno) [1]: ")
     (bind ?resp (readline))
     (bind ?op3 (if (eq ?resp "") then 1 else (string-to-field ?resp)))
 
@@ -99,9 +99,9 @@
     (bind ?resp (readline))
     (bind ?dmax (if (eq ?resp "") then 7 else (string-to-field ?resp)))
 
-    (printout t "Del 1 al 5, grado de ahorro [3]: ")
+    (printout t "Del 1 al 5, grado de ahorro [1]: ")
     (bind ?resp (readline))
-    (bind ?ahorro (if (eq ?resp "") then 3 else (string-to-field ?resp)))
+    (bind ?ahorro (if (eq ?resp "") then 1 else (string-to-field ?resp)))
 
     (printout t "Del 1 al 5, prioridad de calidad de alojamiento [3]: ")
     (bind ?resp (readline))
@@ -125,7 +125,7 @@
 ;;; PREGUNTAS DE CIUDADES
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Recoge el rango de ciudades a visitar
+; Recoge el rango de ciudades a visitar y días por ciudad
 (defrule PREGUNTAS::solicitar-ciudades
     ?f <- (fase-entrada (fase CIUDADES))
     ?u <- (object (is-a Usuario) (name [usuario1]))
@@ -146,8 +146,24 @@
         (bind ?cmin ?cmax)
         (bind ?cmax ?aux))
 
+    (printout t "Dias minimo en cada ciudad [1]: ")
+    (bind ?resp (readline))
+    (bind ?cdmin (if (eq ?resp "") then 1 else (string-to-field ?resp)))
+
+    (printout t "Dias maximo en cada ciudad [3]: ")
+    (bind ?resp (readline))
+    (bind ?cdmax (if (eq ?resp "") then 3 else (string-to-field ?resp)))
+
+    ; Ajuste simple de consistencia
+    (if (> ?cdmin ?cdmax) then
+        (bind ?aux ?cdmin)
+        (bind ?cdmin ?cdmax)
+        (bind ?cdmax ?aux))
+
     (send ?u put-ciudades_min (integer ?cmin))
     (send ?u put-ciudades_max (integer ?cmax))
+    (send ?u put-ciudad_dias_min (integer ?cdmin))
+    (send ?u put-ciudad_dias_max (integer ?cdmax))
     (modify ?f (fase PERFIL))
 )
 
@@ -243,6 +259,7 @@
     (printout t "Ahorro: " (send ?u get-grado_ahorro) crlf)
     (printout t "Calidad: " (send ?u get-prioridad_alojamiento) crlf)
     (printout t "Ciudades: " (send ?u get-ciudades_min) "-" (send ?u get-ciudades_max) crlf)
+    (printout t "Dias por ciudad: " (send ?u get-ciudad_dias_min) "-" (send ?u get-ciudad_dias_max) crlf)
     (printout t "Cultura: " (send ?u get-nivel_cultural) crlf)
     (printout t "Explorador: " (send ?u get-explorador) crlf)
     (printout t "Movilidad reducida: " (send ?u get-movilidad_reducida) crlf)

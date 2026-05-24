@@ -82,6 +82,12 @@
     (slot dias_min
         (type INTEGER)
         (create-accessor read-write))
+    (slot ciudad_dias_max
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot ciudad_dias_min
+        (type INTEGER)
+        (create-accessor read-write))
     (slot edad
         (type INTEGER)
         (create-accessor read-write))
@@ -459,6 +465,12 @@
         (type INTEGER)
         (default 0)
         (create-accessor read-write))
+        
+    (slot aptitud_alojamiento
+        (type SYMBOL)
+        (allowed-symbols ALTA MEDIA BAJA)
+        (default MEDIA)
+        (create-accessor read-write))
 )
 
 (defclass TransporteCandidato
@@ -532,4 +544,10 @@
         (type INTEGER)
         (default 0)
         (create-accessor read-write))
+    
+    (slot ajuste_explorador
+        (type INTEGER)
+        (default 0)
+        (create-accessor read-write))
+
 )

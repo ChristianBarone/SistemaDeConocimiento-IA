@@ -7,114 +7,6 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; FUNCIONES AUXILIARES
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(deffunction SALIDA::mejor-alojamiento (?ciu)
-    (bind ?lista (send ?ciu get-tieneAlojamiento))
-    (if (= (length$ ?lista) 0)
-        then
-            (return FALSE))
-
-    (bind ?mejor FALSE)
-    (bind ?precioMejor 999999.0)
-
-    (loop-for-count (?i 1 (length$ ?lista)) do
-        (bind ?a (nth$ ?i ?lista))
-        (if (instance-existp ?a)
-            then
-                (bind ?p_raw (send ?a get-precio_noche))
-                (if (numberp ?p_raw)
-                    then
-                        (bind ?p (float ?p_raw))
-                        (if (< ?p ?precioMejor)
-                            then
-                                (bind ?mejor ?a)
-                                (bind ?precioMejor ?p)))
-        )
-    )
-    (return ?mejor)
-)
-
-(deffunction SALIDA::dias-objetivo-viaje (?nCiudades)
-    (bind ?dmin (send [usuario1] get-dias_min))
-    (bind ?dmax (send [usuario1] get-dias_max))
-    (bind ?cmax (send [usuario1] get-ciudades_max))
-
-    (bind ?base (max 1 (integer (/ ?dmax (max 1 ?cmax)))))
-    (bind ?diasEstimados (* ?nCiudades ?base))
-
-    (if (< ?diasEstimados ?dmin)
-        then
-            (bind ?diasEstimados ?dmin))
-    (if (> ?diasEstimados ?dmax)
-        then
-            (bind ?diasEstimados ?dmax))
-    (if (< ?diasEstimados ?nCiudades)
-        then
-            (bind ?diasEstimados ?nCiudades))
-
-    (return ?diasEstimados)
-)
-
-(deffunction SALIDA::dias-en-parada (?diasTotales ?nCiudades ?posicion)
-    (bind ?base (integer (/ ?diasTotales ?nCiudades)))
-    (bind ?resto (- ?diasTotales (* ?base ?nCiudades)))
-
-    (if (<= ?posicion ?resto)
-        then
-            (return (+ ?base 1))
-        else
-            (return ?base))
-)
-
-(deffunction SALIDA::coste-parada (?ciu ?dias)
-    (bind ?aloj (mejor-alojamiento ?ciu))
-    (bind ?precioAloj
-        (if (eq ?aloj FALSE)
-            then 0.0
-            else (float (send ?aloj get-precio_noche))))
-    (bind ?nivelVida (float (send ?ciu get-nivel_de_vida)))
-
-    (return (+ (* (float ?dias) ?precioAloj)
-               (* 25.0 ?nivelVida)))
-)
-
-(deffunction SALIDA::buscar-transporte (?origen ?destino ?odio)
-    (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
-    (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
-    (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
-
-    (loop-for-count (?i 1 (length$ ?transportes)) do
-        (bind ?t (nth$ ?i ?transportes))
-        (bind ?medio (send ?t get-medio))
-
-        (if (not (and (neq ?odio "") (neq ?odio "Ninguno") (eq ?medio ?odio)))
-         then
-            (bind ?ori-slot (send ?t get-tieneOrigen))
-            (bind ?des-slot (send ?t get-tieneFin))
-
-            (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
-            (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
-
-            (bind ?ori-ok FALSE)
-            (loop-for-count (?j 1 (length$ ?lista-ori)) do
-                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?norm-origen)
-                    then (bind ?ori-ok TRUE) (break)))
-
-            (bind ?des-ok FALSE)
-            (loop-for-count (?j 1 (length$ ?lista-des)) do
-                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-des)) ?norm-destino)
-                    then (bind ?des-ok TRUE) (break)))
-
-            (if (and ?ori-ok ?des-ok)
-                then (return ?t))
-        )
-    )
-    (return FALSE)
-)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; FUNCIONES DE PRESENTACION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -125,7 +17,7 @@
             (return))
 
     (printout t "  - Ciudad: " (send ?ciu get-nombre) " (" ?dias " dias)" crlf)
-    (bind ?aloj (mejor-alojamiento ?ciu))
+    (bind ?aloj (REFINAMIENTO::mejor-alojamiento ?ciu))
 
     (if (neq ?aloj FALSE)
         then
@@ -138,12 +30,12 @@
 )
 
 (deffunction SALIDA::mostrar-trayecto (?ciuOri ?ciuDest ?odio)
-    (bind ?t (buscar-transporte ?ciuOri ?ciuDest ?odio))
+    (bind ?t (REFINAMIENTO::buscar-transporte-entre ?ciuOri ?ciuDest))
 
     (if (neq ?t FALSE)
         then
             (printout t "  >> "
-                        (send ?t get-medio)
+                        (send ?t get-tipo)
                         " | "
                         (send ?t get-duracion_horas)
                         "h | "
@@ -154,17 +46,17 @@
             (printout t "  >> (Sin transporte directo disponible)" crlf))
 )
 
-(deffunction SALIDA::mostrar-itinerario (?diasTotales $?ciudades)
-    (bind ?n (length$ ?ciudades))
-    (if (= ?n 0) then (return))
+(deffunction SALIDA::mostrar-itinerario (?diasTotales ?ciudades)
+   (bind ?n (length$ ?ciudades))
+   (if (= ?n 0) then (return))
 
-    (bind ?diasPorCiudad (max 1 (integer (/ ?diasTotales ?n))))
-
-    (printout t crlf "ITINERARIO PROPUESTO:" crlf)
-    (loop-for-count (?i 1 ?n) do
-        (bind ?ciu (nth$ ?i ?ciudades))
-        (mostrar-parada ?ciu ?diasPorCiudad)
-    )
+   (printout t crlf "ITINERARIO PROPUESTO" crlf)
+   (loop-for-count (?i 1 ?n)
+      do
+      (bind ?ciu (nth$ ?i ?ciudades))
+      (bind ?diasParada (REFINAMIENTO::dias-en-parada ?diasTotales ?n ?i))
+      (SALIDA::mostrar-parada ?ciu ?diasParada)
+   )
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

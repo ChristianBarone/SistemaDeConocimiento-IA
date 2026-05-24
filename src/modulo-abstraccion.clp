@@ -107,6 +107,40 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1C. EXIGENCIA DE ALOJAMIENTO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defrule ABSTRACCION::alojamiento-exigente
+    (declare (salience 9))
+    (entrada-completada)
+    (not (exigencia-alojamiento ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (>= (send ?u get-prioridad_alojamiento) 4))
+=>
+    (assert (exigencia-alojamiento ALTA))
+)
+
+(defrule ABSTRACCION::alojamiento-equilibrado
+    (declare (salience 8))
+    (entrada-completada)
+    (not (exigencia-alojamiento ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (= (send ?u get-prioridad_alojamiento) 3))
+=>
+    (assert (exigencia-alojamiento MEDIA))
+)
+
+(defrule ABSTRACCION::alojamiento-flexible
+    (declare (salience 8))
+    (entrada-completada)
+    (not (exigencia-alojamiento ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (<= (send ?u get-prioridad_alojamiento) 2))
+=>
+    (assert (exigencia-alojamiento BAJA))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 2. TEMÁTICA DEL VIAJE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

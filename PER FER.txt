@@ -10,3 +10,17 @@
 	- Si l'usuari prioritza l'allotjament, penalitzar els hotels amb poques estrelles.
 - Aplicar la valoració segons la temporada.
 	- Penalitzar aquelles ciutats amb una puntuació baixa per a l'estació de l'any corresponent; per exemple, una ciutat de platja a l'hivern o una ciutat d'interior o de muntanya a l'estiu.
+
+
+| Apartat                                                         | Estat actualitzat                                   |
+| --------------------------------------------------------------- | --------------------------------------------------- |
+| Dos resultats, no poden coincidir ciutats                       | No acabat     
+| Nombre mínim i màxim de dies per ciutat                         | FET, NO TESTED               
+| Multiplicar puntuació per dies d’estada                         | FET, NO TESTED         
+| Aplicar/esborrar nivell de vida                                 | Fet
+| Preferència de transport com a criteri, no només restricció     | FET, NO TESTED 
+| Penalitzar trajectes llargs            						  | FET, NO TESTED 
+| Grau de perfil explorador a ciutat o POIs                       | FET, NO TESTED
+| Grau de prioritat de l’hotel                                    | No clarament fet modulo-heuristica.clp              |
+| Penalitzar hotels amb poques estrelles si prioritza allotjament | No fet modulo-heuristica.clp                        |
+| Valoració segons temporada                                      | Fet
