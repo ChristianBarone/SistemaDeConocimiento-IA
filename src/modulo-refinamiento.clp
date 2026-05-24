@@ -158,7 +158,7 @@
    (if (> ?minFactible ?maxFactible)
       then (return FALSE))
 
-   (return ?maxFactible)
+   (return ?minFactible)
 )
 
 (deffunction REFINAMIENTO::dias-en-parada (?diasTotales ?nCiudades ?posicion)
@@ -241,92 +241,65 @@
     (return (upcase ?str))
 )
 
-(deffunction REFINAMIENTO::hay-transporte-permitido (?origen ?destino)
-    (bind ?prohibido (send [usuario1] get-transporte_odiado))
-    (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
-    (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
+(deffunction REFINAMIENTO::transporte-conecta-ciudades (?c1 ?c2)
+   (bind ?prohibido (send [usuario1] get-transporte_odiado))
+   (bind ?n1 (REFINAMIENTO::normalizar-nombre ?c1))
+   (bind ?n2 (REFINAMIENTO::normalizar-nombre ?c2))
+   (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
 
-    ;; Buscamos las instancias de transporte
-    (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
+   (loop-for-count (?i 1 (length$ ?transportes)) do
+      (bind ?t (nth$ ?i ?transportes))
 
-    (loop-for-count (?i 1 (length$ ?transportes)) do
-        (bind ?t (nth$ ?i ?transportes))
-
-        (if (not (and (neq ?prohibido "")
-                      (neq ?prohibido "Ninguno")
-                      (eq (send ?t get-tipo) ?prohibido)))
+      (if (or (eq ?prohibido nil)
+              (eq ?prohibido "")
+              (eq ?prohibido Ninguno)
+              (eq ?prohibido "Ninguno")
+              (neq (send ?t get-tipo) ?prohibido))
          then
             (bind ?ori-slot (send ?t get-tieneOrigen))
             (bind ?des-slot (send ?t get-tieneFin))
-
             (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
             (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
 
-            ;; Una sola línea por transporte analizado
+            (bind ?directo FALSE)
+            (bind ?inverso FALSE)
 
-            (bind ?ori-ok FALSE)
             (loop-for-count (?j 1 (length$ ?lista-ori)) do
-                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?norm-origen)
-                    then (bind ?ori-ok TRUE) (break)))
+               (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?n1)
+                  then
+                     (loop-for-count (?k 1 (length$ ?lista-des)) do
+                        (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?k ?lista-des)) ?n2)
+                           then
+                              (bind ?directo TRUE)
+                              (break)))
+                     (if ?directo then (break))))
 
-            (bind ?des-ok FALSE)
-            (loop-for-count (?j 1 (length$ ?lista-des)) do
-                (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-des)) ?norm-destino)
-                    then (bind ?des-ok TRUE) (break)))
+            (loop-for-count (?j 1 (length$ ?lista-ori)) do
+               (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?n2)
+                  then
+                     (loop-for-count (?k 1 (length$ ?lista-des)) do
+                        (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?k ?lista-des)) ?n1)
+                           then
+                              (bind ?inverso TRUE)
+                              (break)))
+                     (if ?inverso then (break))))
 
-            (if (and ?ori-ok ?des-ok)
-                then
-                (printout t "    Conexion encontrada: " ?origen " -> " ?destino crlf)
-                (return TRUE))
-        )
-    )
-    (return FALSE)
-)
-
-(deffunction REFINAMIENTO::buscar-transporte-entre (?origen ?destino)
-   (bind ?prohibido (send [usuario1] get-transporte_odiado))
-   (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
-   (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
-   (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
-
-   (loop-for-count (?i 1 (length$ ?transportes))
-      do
-      (bind ?t (nth$ ?i ?transportes))
-
-      (if (not (and (neq ?prohibido nil)
-                    (neq ?prohibido Ninguno)
-                    (eq (send ?t get-tipo) ?prohibido)))
-         then
-         (bind ?ori-slot (send ?t get-tieneOrigen))
-         (bind ?des-slot (send ?t get-tieneFin))
-
-         (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
-         (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
-
-         (bind ?ori-ok FALSE)
-         (loop-for-count (?j 1 (length$ ?lista-ori))
-            do
-            (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-ori)) ?norm-origen)
+            (if (or ?directo ?inverso)
                then
-               (bind ?ori-ok TRUE)
-               (break))
-         )
-
-         (bind ?des-ok FALSE)
-         (loop-for-count (?j 1 (length$ ?lista-des))
-            do
-            (if (eq (REFINAMIENTO::normalizar-nombre (nth$ ?j ?lista-des)) ?norm-destino)
-               then
-               (bind ?des-ok TRUE)
-               (break))
-         )
-
-         (if (and ?ori-ok ?des-ok)
-            then (return ?t))
-      )
+                  (return ?t)))
    )
 
    (return FALSE)
+)
+
+(deffunction REFINAMIENTO::hay-transporte-permitido (?origen ?destino)
+   (if (eq (REFINAMIENTO::transporte-conecta-ciudades ?origen ?destino) FALSE)
+      then (return FALSE)
+      else (return TRUE))
+)
+
+(deffunction REFINAMIENTO::buscar-transporte-entre (?origen ?destino)
+   (return (REFINAMIENTO::transporte-conecta-ciudades ?origen ?destino))
 )
 
 (deffunction REFINAMIENTO::bonus-transporte-favorito (?transporte)
@@ -595,11 +568,6 @@
    (bind ?puntos (REFINAMIENTO::puntos-viaje ?ciudades))
    (bind ?valid (if (REFINAMIENTO::viaje-valido-final ?ciudades) then TRUE else FALSE))
 
-   (printout t "INTENTANDO " ?ciudades
-               " Ciudades: " ?n
-               " Coste: " ?precio
-               " Valido? " ?valid crlf)
-
    (if (not ?valid) then
       (return FALSE))
 
@@ -647,7 +615,7 @@
    (bind ?presMax (float (send [usuario1] get-presupuesto_max)))
    (bind ?mov_red (send [usuario1] get-movilidad_reducida))
 
-   (if (or (eq ?g NORECOMENDABLE)
+   (if (or (eq ?g NO_RECOMENDABLE)
            (eq ?p NO)
            (eq ?t NO)
            (and (eq ?mov_red TRUE) (eq ?a NO))
@@ -716,12 +684,12 @@
              (REFINAMIENTO::ultimo-elemento ?ciudades)
              ?nuevaCiudad))
    (test (REFINAMIENTO::viaje-parcial-expandible
-             (create$ ?ciudades ?nuevaCiudad)))
+             (create$ $?ciudades ?nuevaCiudad)))
    (not (ruta-parcial (ciudades $?ciudades ?nuevaCiudad)))
 =>
-   (assert (ruta-parcial (ciudades ?ciudades ?nuevaCiudad)))
+   (assert (ruta-parcial (ciudades $?ciudades ?nuevaCiudad)))
 
-   (crear-instancia-viaje-candidato (create$ ?ciudades ?nuevaCiudad))
+   (crear-instancia-viaje-candidato (create$ $?ciudades ?nuevaCiudad))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -829,37 +797,6 @@
     (viaje-seleccionado (ranking 1))
     (not (estado-refinamiento (fase COMPLETADO)))
 =>
-    (assert (estado-refinamiento (fase COMPLETADO)))
-    (focus SALIDA)
-)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 5. MOSTRAR RESUMEN DEL REFINAMIENTO
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defrule REFINAMIENTO::mostrar-viaje-elegido
-    (declare (salience -20))
-    ?sel <- (viaje-seleccionado (id ?trip))
-    (not (estado-refinamiento (fase COMPLETADO)))
-=>
-    (printout t crlf "Viaje seleccionado tras refinamiento:" crlf)
-    (printout t "  Ciudades : " (send ?trip get-incluyeCiudad) crlf)
-    (printout t "  nCiudades: " (send ?trip get-n_ciudades) crlf)
-    (printout t "  Duracion : " (send ?trip get-durada_dias) " dias" crlf)
-    (printout t "  Coste    : " (integer (send ?trip get-precio_total)) " EUR" crlf)
-    (printout t "  Puntuacion: " (send ?trip get-puntuacion) crlf crlf)
-
-    (assert (estado-refinamiento (fase COMPLETADO)))
-    (focus SALIDA)
-)
-
-(defrule REFINAMIENTO::sin-soluciones-validas
-    (declare (salience -25))
-    (estado-refinamiento (fase AJUSTES_APLICADOS))
-    (not (estado-refinamiento (fase COMPLETADO)))
-    (not (viaje-seleccionado (ranking 1)))
-=>
-    (printout t crlf "No se ha podido construir ningun viaje valido con las restricciones actuales." crlf crlf)
     (assert (estado-refinamiento (fase COMPLETADO)))
     (focus SALIDA)
 )
