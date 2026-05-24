@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <urn:absolute:www.sbc.upc.edu/viatges> .
+@base <urn:absolute:www.sbc.upc.edu/viatges#> .
 
 <urn:absolute:www.sbc.upc.edu/viatges> rdf:type owl:Ontology .
 
@@ -97,7 +97,7 @@
                                                          rdfs:subPropertyOf owl:topObjectProperty ;
                                                          rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
                                                          rdfs:range <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ;
-                                                         rdfs:label "tieneFin"^^xsd:string .
+                                                         rdfs:label "tieneFin" .
 
 
 ###  http://webprotege.stanford.edu/alojamiento
@@ -197,7 +197,7 @@
                                                          rdfs:subPropertyOf owl:topDataProperty ;
                                                          rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
                                                          rdfs:range xsd:boolean ;
-                                                         rdfs:label "accesible_transporte"^^xsd:string .
+                                                         rdfs:label "accesible_transporte" .
 
 
 ###  http://webprotege.stanford.edu/accesibilidad_ok
@@ -217,7 +217,7 @@
                                                            <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> ,
                                                            <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
                                                rdfs:range xsd:boolean ;
-                                               rdfs:label "accesible"^^xsd:string .
+                                               rdfs:label "accesible" .
 
 
 ###  http://webprotege.stanford.edu/ajuste_ahorro
@@ -397,7 +397,7 @@
                                              rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad> ,
                                                          <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> ;
                                              rdfs:range xsd:integer ;
-                                             rdfs:label "popularidad"^^xsd:string .
+                                             rdfs:label "popularidad" .
 
 
 ###  http://webprotege.stanford.edu/precio_PDI
@@ -406,7 +406,7 @@
                                             rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> ,
                                                         <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
                                             rdfs:range xsd:float ;
-                                            rdfs:label "precio"^^xsd:string .
+                                            rdfs:label "precio" .
 
 
 ###  http://webprotege.stanford.edu/precio_ok
@@ -500,7 +500,7 @@
                                       rdfs:subPropertyOf owl:topDataProperty ;
                                       rdfs:domain <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Transporte> ;
                                       rdfs:range <http://webprotege.stanford.edu/%7BAUTOBUSAVIONCOCHE_ALQUILERTREN%7D> ;
-                                      rdfs:label "tipo_transporte"^^xsd:string .
+                                      rdfs:label "tipo_transporte" .
 
 
 ###  http://webprotege.stanford.edu/tipo_PDI
@@ -705,27 +705,31 @@
 
 ###  http://webprotege.stanford.edu/CandidatoCiudad
 <http://webprotege.stanford.edu/CandidatoCiudad> rdf:type owl:Class ;
+                                                 rdfs:comment "Representa una Ciudad candidata de un Viaje" ;
                                                  rdfs:label "CandidatoCiudad" .
 
 
 ###  http://webprotege.stanford.edu/PuntoDeInteresCandidato
 <http://webprotege.stanford.edu/PuntoDeInteresCandidato> rdf:type owl:Class ;
+                                                         rdfs:comment "Representa un punto de interés candidato a un Viaje" ;
                                                          rdfs:label "PuntoDeInteresCandidato" .
 
 
 ###  http://webprotege.stanford.edu/TransporteCandidato
 <http://webprotege.stanford.edu/TransporteCandidato> rdf:type owl:Class ;
+                                                     rdfs:comment "Representa un transporte candidato a un viaje." ;
                                                      rdfs:label "TransporteCandidato" .
 
 
 ###  http://webprotege.stanford.edu/ViajeCandidato
 <http://webprotege.stanford.edu/ViajeCandidato> rdf:type owl:Class ;
+                                                rdfs:comment "Representa una propuesta de viaje generada por el sistema que agrupa ciudades, alojamientos y puntos de interés junto a sus datos." ;
                                                 rdfs:label "ViajeCandidato" .
 
 
 ###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento
 <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Alojamiento> rdf:type owl:Class ;
-                                                                                     rdfs:comment "Descriu el tipus d'allotjament utilitzat al viatge i les seves característiques"^^xsd:string .
+                                                                                     rdfs:comment "Descriu el tipus d'allotjament utilitzat al viatge i les seves característiques" .
 
 
 ###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#Ciudad
@@ -735,10 +739,10 @@
 
 ###  http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres
 <http://www.semanticweb.org/moval/ontologies/2026/4/untitled-ontology-5#PuntoDeInteres> rdf:type owl:Class ;
-                                                                                        <http://webprotege.stanford.edu/R7IkrWpf9f9ARguxr4SYo1G> "symbol"^^xsd:string ;
-                                                                                        <http://webprotege.stanford.edu/R8eJY1CZtVn59lFH5Qkb66P> "symbol"^^xsd:string ;
-                                                                                        <http://webprotege.stanford.edu/R91ToF15DkAyqnRe0YSEM8C> "float"^^xsd:string ;
-                                                                                        <http://webprotege.stanford.edu/RBIGpKZvw2uCxUJZ0baCX1I> "integer"^^xsd:string ;
+                                                                                        <http://webprotege.stanford.edu/R7IkrWpf9f9ARguxr4SYo1G> "symbol" ;
+                                                                                        <http://webprotege.stanford.edu/R8eJY1CZtVn59lFH5Qkb66P> "symbol" ;
+                                                                                        <http://webprotege.stanford.edu/R91ToF15DkAyqnRe0YSEM8C> "float" ;
+                                                                                        <http://webprotege.stanford.edu/RBIGpKZvw2uCxUJZ0baCX1I> "integer" ;
                                                                                         rdfs:comment "Descriu els diferents punts d'interes que es poden visitar dins del viatge." .
 
 
@@ -757,4 +761,4 @@
        rdfs:comment "Representa l'objecte del viatge final proposat." .
 
 
-###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
