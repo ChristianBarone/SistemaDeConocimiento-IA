@@ -106,34 +106,75 @@
 
 (defrule HEURISTICA::restriccion-presupuesto-ciudad
     (nivel-presupuesto ?nivel)
+    (perfil-presupuesto ?perfil)
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
     (object (is-a Ciudad) (name ?ciu) (nivel_de_vida ?nv))
 =>
     (bind ?ok NO)
-    (if (eq ?nivel LUJO) then (bind ?ok SI)
-     else (if (and (eq ?nivel MUY_RECOMENDABLE) (<= ?nv 2.0)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MUY_RECOMENDABLE) (<= ?nv 2.3)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel MEDIO) (<= ?nv 1.5)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (<= ?nv 1.8)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel BAJO) (<= ?nv 1.0)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?nv 1.3)) then (bind ?ok PARCIAL))))))))
+
+    ; SACRIFICAR LOCALIZACION SI ES EXIGENTE
+    (if (eq ?perfil EXIGENTE) then
+        (switch ?nivel
+            (case LUJO then (bind ?ok SI))
+
+            (case ALTO then
+                (if (<= ?nv 1.8) then (bind ?ok SI)
+                 else (if (<= ?nv 2.5) then (bind ?ok PARCIAL))))
+
+            (case MEDIO then
+                (if (<= ?nv 1.4) then (bind ?ok SI)
+                 else (if (<= ?nv 1.9) then (bind ?ok PARCIAL))))
+
+            (case BAJO then
+                (if (<= ?nv 1.1) then (bind ?ok SI)
+                 else (if (<= ?nv 1.5) then (bind ?ok PARCIAL))))
+        )
+    else
+        (switch ?nivel
+            (case LUJO then (bind ?ok SI))
+
+            (case ALTO then
+                (if (<= ?nv 2.3) then (bind ?ok SI)
+                 else (if (<= ?nv 3.0) then (bind ?ok PARCIAL))))
+
+            (case MEDIO then
+                (if (<= ?nv 1.9) then (bind ?ok SI)
+                 else (if (<= ?nv 2.4) then (bind ?ok PARCIAL))))
+
+            (case BAJO then
+                (if (<= ?nv 1.4) then (bind ?ok SI)
+                 else (if (<= ?nv 1.8) then (bind ?ok PARCIAL))))
+        )
+    )
     (send ?cand put-presupuesto_ok ?ok)
 )
 
 (defrule HEURISTICA::restriccion-presupuesto-alojamiento
     (nivel-presupuesto ?nivel)
+    (perfil-presupuesto ?perfil)
+    ?u <- (object (is-a Usuario) (ajuste_ahorro ?ajuste))
     ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
     (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
 =>
+    (bind ?precio-evaluado (+ ?precio ?ajuste))
     (bind ?ok NO)
-    (if (and (eq ?nivel LUJO) (>= ?precio 350)) then (bind ?ok SI)
-     else (if (and (eq ?nivel LUJO) (>= ?precio 250)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 65) (<= ?precio 350)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 30) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 15) (<= ?precio 100)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 35)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok PARCIAL)))))))))
+
+    (switch ?nivel
+        (case LUJO then
+            (if (>= ?precio-evaluado 91) then (bind ?ok SI)))
+
+        (case ALTO then
+            (if (and (>= ?precio-evaluado 46) (<= ?precio-evaluado 130)) then (bind ?ok SI)
+             else (if (and (>= ?precio-evaluado 131) (<= ?precio-evaluado 180)) then (bind ?ok PARCIAL))))
+
+        (case MEDIO then
+            (if (and (>= ?precio-evaluado 31) (<= ?precio-evaluado 75)) then (bind ?ok SI)
+             else (if (or (<= ?precio-evaluado 30) (and (>= ?precio-evaluado 76) (<= ?precio-evaluado 110))) then (bind ?ok PARCIAL))))
+
+        (case BAJO then
+            (if (<= ?precio-evaluado 30) then (bind ?ok SI)
+             else (if (<= ?precio-evaluado 60) then (bind ?ok PARCIAL))))
+    )
     (send ?cand put-presupuesto_ok ?ok)
 )
 
@@ -143,14 +184,21 @@
     (object (is-a Transporte) (tipo ?trans) (precio ?precio))
 =>
     (bind ?ok NO)
-    (if (and (eq ?nivel LUJO) (>= ?precio 300)) then (bind ?ok SI)
-     else (if (and (eq ?nivel LUJO) (>= ?precio 200)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 80) (<= ?precio 320)) then (bind ?ok SI)
-     else (if (and (eq ?nivel ALTO) (>= ?precio 65) (<= ?precio 350)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 30) (<= ?precio 90)) then (bind ?ok SI)
-     else (if (and (eq ?nivel MEDIO) (>= ?precio 15) (<= ?precio 100)) then (bind ?ok PARCIAL)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 35)) then (bind ?ok SI)
-     else (if (and (eq ?nivel BAJO) (<= ?precio 50)) then (bind ?ok PARCIAL)))))))))
+    (switch ?nivel
+        (case LUJO then
+            (if (>= ?precio 26) then (bind ?ok SI)))
+
+        (case ALTO then
+            (if (and (>= ?precio 16) (<= ?precio 55)) then (bind ?ok SI)
+             else (if (or (<= ?precio 15) (>= ?precio 56)) then (bind ?ok PARCIAL))))
+
+        (case MEDIO then
+            (if (<= ?precio 40) then (bind ?ok SI)))
+
+        (case BAJO then
+            (if (<= ?precio 15) then (bind ?ok SI)
+             else (if (<= ?precio 35) then (bind ?ok PARCIAL))))
+    )
     (send ?cand put-presupuesto_ok ?ok)
 )
 
@@ -189,6 +237,163 @@
     ;  else (send ?cand put-tematica_ok PARCIAL))))
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 4. AÑADIR VENTAJAS Y DESVENTAJAS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defrule HEURISTICA::ventaja-tematica-perfecta
+    ?cand <- (object (is-a CandidatoCiudad) (tematica_ok SI) (ventajas $?v) (grado nil))
+    (test (eq (member$ "Tematica perfecta" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Tematica perfecta")
+)
+
+(defrule HEURISTICA::calcular-idoneidad-climatica
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (desventajas $?d) (grado nil))
+    (ciudad-primavera ?c ?nivel-prim)
+    (ciudad-verano ?c ?nivel-ver)
+    (ciudad-otono ?c ?nivel-oto)
+    (ciudad-invierno ?c ?nivel-inv)
+    ?u <- (object (is-a Usuario) (name [usuario1]) (temporada_viaje ?temporada))
+    (test (eq (member$ "Temporada ideal" ?v) FALSE))
+    (test (eq (member$ "Temporada no optima" ?d) FALSE))
+    (test (eq (member$ "Mala temporada" ?d) FALSE))
+=>
+    (bind ?etiqueta nil)
+    (bind ?es-ventaja FALSE)
+    (bind ?nivel-evaluado MEDIA)
+
+    (switch ?temporada
+        (case "PRIMAVERA" then (bind ?nivel-evaluado ?nivel-prim))
+        (case "VERANO"    then (bind ?nivel-evaluado ?nivel-ver))
+        (case "OTONO"     then (bind ?nivel-evaluado ?nivel-oto))
+        (case "INVIERNO"  then (bind ?nivel-evaluado ?nivel-inv))
+    )
+
+    (switch ?nivel-evaluado
+        (case BAJA  then (bind ?etiqueta "Mala temporada") (bind ?es-ventaja FALSE))
+        (case MEDIA then (bind ?etiqueta "Temporada no optima") (bind ?es-ventaja FALSE))
+        (case ALTA  then (bind ?etiqueta "Temporada ideal") (bind ?es-ventaja TRUE))
+    )
+
+    (if (eq ?es-ventaja TRUE)
+        then
+        (modify-instance ?cand (ventajas (insert$ ?v 1 ?etiqueta)))
+        else
+        (modify-instance ?cand (desventajas (insert$ ?d 1 ?etiqueta)))
+    )
+)
+
+(defrule HEURISTICA::ventaja-clima-calido
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (clima_habitual "Calido"))
+    (test (eq (member$ "Clima ideal" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Clima ideal")
+)
+
+(defrule HEURISTICA::ventaja-clima-templado
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (clima_habitual "Templado"))
+    (test (eq (member$ "Clima agradable" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Clima agradable")
+)
+
+(defrule HEURISTICA::ventaja-ciudad-economica
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (nivel_de_vida ?ndv&:(< ?ndv 1.1)))
+    (test (eq (member$ "Ciudad economica" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Ciudad economica")
+)
+
+(defrule HEURISTICA::ventaja-oferta-turistica
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (tienePOI $?pois&:(>= (length$ ?pois) 3)))
+    (test (eq (member$ "Gran oferta turistica" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Gran oferta turistica")
+)
+
+(defrule HEURISTICA::ventaja-museos
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (tienePOI $? ?poi $?))
+    (object (name ?poi) (is-a Museo))
+    (test (eq (member$ "Rica oferta cultural" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Rica oferta cultural")
+)
+
+(defrule HEURISTICA::ventaja-parques
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (tienePOI $? ?poi $?))
+    (object (name ?poi) (is-a Parque))
+    (test (eq (member$ "Espacios naturales" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Espacios naturales")
+)
+
+(defrule HEURISTICA::ventaja-hotel
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (tieneAlojamiento $? ?aloj $?))
+    (object (name ?aloj) (is-a Hotel))
+    (test (eq (member$ "Hotel de calidad disponible" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Hotel de calidad disponible")
+)
+
+(defrule HEURISTICA::ventaja-hostal
+    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
+    (object (name ?c) (tieneAlojamiento $? ?aloj $?))
+    (object (name ?aloj) (is-a Hostal))
+    (test (eq (member$ "Alojamiento economico disponible" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Alojamiento economico disponible")
+)
+
+(defrule HEURISTICA::ventaja-transporte-ok
+    ?cand <- (object (is-a CandidatoCiudad) (transporte_ok SI) (ventajas $?v) (grado nil))
+    (test (eq (member$ "Transporte conveniente" ?v) FALSE))
+=>
+    (slot-insert$ ?cand ventajas 1 "Transporte conveniente")
+)
+
+(defrule HEURISTICA::desventaja-tematica-no-encaja
+    ?cand <- (object (is-a CandidatoCiudad)
+                     (tematica_ok NO)
+                     (incompatibilidad_especifica NO) 
+                     (desventajas $?d)
+                     (grado nil))
+    (test (eq (member$ "Tematica no coincide" ?d) FALSE))
+=>
+    (slot-insert$ ?cand desventajas 1 "Tematica no coincide")
+)
+
+(defrule HEURISTICA::desventaja-tematica-parcial
+    ?cand <- (object (is-a CandidatoCiudad)
+                     (tematica_ok PARCIAL)
+                     (incompatibilidad_especifica NO) 
+                     (desventajas $?d)
+                     (grado nil))
+    (test (eq (member$ "Tematica parcialmente compatible" ?d) FALSE))
+=>
+    (slot-insert$ ?cand desventajas 1 "Tematica parcialmente compatible")
+)
+
+(defrule HEURISTICA::desventaja-precio-alto
+    ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok NO) (desventajas $?d) (grado nil))
+    (test (eq (member$ "Cara para el presupuesto" ?d) FALSE))
+=>
+    (slot-insert$ ?cand desventajas 1 "Cara para el presupuesto")
+)
+
+(defrule HEURISTICA::desventaja-precio-ajustado
+    ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok PARCIAL) (desventajas $?d) (grado nil))
+    (test (eq (member$ "Precio ajustado" ?d) FALSE))
+=>
+    (slot-insert$ ?cand desventajas 1 "Precio ajustado")
+)
 
 ;;; INCOMPATIBILIDADES TEMÁTICAS
 

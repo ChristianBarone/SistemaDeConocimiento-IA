@@ -5,7 +5,7 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 1. NIVEL DE PRESUPUESTO POR DÍA
+;;; 1A. NIVEL DE PRESUPUESTO POR DÍA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; SI presupuesto/dias_max > 200 ENTONCES nivel-presupuesto = LUJO
@@ -58,6 +58,55 @@
                  (send ?u get-dias_max)) 50))
 =>
     (assert (nivel-presupuesto BAJO))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1B. EXIGENCIA DE AHORRO Y CALIDAD DE ALOJAMIENTO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; SI grado_ahorro >= 4 y prioridad_alojamiento <= 3 ENTONCES perfil-presupuesto = MOCHILERO
+(defrule ABSTRACCION::perfil-mochilero
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (>= (send ?u get-grado_ahorro) 4)
+               (<= (send ?u get-prioridad_alojamiento) 3)))
+=>
+    ; Bajamos precio para ahorrar
+    (bind ?valor-ajuste -10)
+    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (perfil-presupuesto MOCHILERO))
+)
+
+; SI grado_ahorro >= 3 y prioridad_alojamiento >= 4 ENTONCES perfil-presupuesto = EXIGENTE
+(defrule ABSTRACCION::perfil-exigente
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (>= (send ?u get-grado_ahorro) 3)
+               (>= (send ?u get-prioridad_alojamiento) 4)))
+=>
+    ; Subimos precio alojamiento porque estaremos en un sitio barato
+    (bind ?valor-ajuste 15)
+    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (perfil-presupuesto EXIGENTE))
+)
+
+; SI grado_ahorro <= 2 y prioridad_alojamiento >= 4 ENTONCES perfil-presupuesto = PREMIUM
+(defrule ABSTRACCION::perfil-premium
+    (declare (salience 9))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+    ?u <- (object (is-a Usuario) (name [usuario1]))
+    (test (and (<= (send ?u get-grado_ahorro) 2)
+               (>= (send ?u get-prioridad_alojamiento) 4)))
+=>
+    ; Subimos precio alojamiento pero no le importa gastar
+    (bind ?valor-ajuste 15)
+    (send ?u put-ajuste_ahorro ?valor-ajuste)
+    (assert (perfil-presupuesto PREMIUM))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -225,7 +274,159 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 5. REGLAS POR DEFECTO (salience -5)
+;;; 5. CARACTERÍSTICAS DE CIUDADES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Si popularidad < 3 entonces popularidad = BAJA
+(defrule ABSTRACCION::popularidad-baja
+    (declare (salience 10))
+    (entrada-completada)
+    (not (ciudad-popularidad ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad ?p))
+    (test (< ?p 3))
+=>
+    (assert (ciudad-popularidad BAJA))
+)
+
+; Si popularidad = 3 entonces popularidad = MEDIA
+(defrule ABSTRACCION::popularidad-media
+    (declare (salience 10))
+    (entrada-completada)
+    (not (ciudad-popularidad ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad 3))
+=>
+    (assert (ciudad-popularidad MEDIA))
+)
+
+; Si popularidad > 3 entonces popularidad = ALTA
+(defrule ABSTRACCION::popularidad-alta
+    (declare (salience 10))
+    (entrada-completada)
+    (not (ciudad-popularidad ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (popularidad ?p))
+    (test (> ?p 3))
+=>
+    (assert (ciudad-popularidad ALTA))
+)
+
+(defrule ABSTRACCION::primavera-baja
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-primavera ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
+    (test (< ?v 3))
+=>
+    (assert (ciudad-primavera BAJA))
+)
+
+(defrule ABSTRACCION::primavera-media
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-primavera ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera 3))
+=>
+    (assert (ciudad-primavera MEDIA))
+)
+
+(defrule ABSTRACCION::primavera-alta
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-primavera ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
+    (test (> ?v 3))
+=>
+    (assert (ciudad-primavera ALTA))
+)
+
+(defrule ABSTRACCION::verano-baja
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-verano ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
+    (test (< ?v 3))
+=>
+    (assert (ciudad-verano BAJA))
+)
+
+(defrule ABSTRACCION::verano-media
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-verano ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano 3))
+=>
+    (assert (ciudad-verano MEDIA))
+)
+
+(defrule ABSTRACCION::verano-alta
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-verano ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
+    (test (> ?v 3))
+=>
+    (assert (ciudad-verano ALTA))
+)
+
+(defrule ABSTRACCION::otono-baja
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-otono ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
+    (test (< ?v 3))
+=>
+    (assert (ciudad-otono BAJA))
+)
+
+(defrule ABSTRACCION::otono-media
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-otono ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono 3))
+=>
+    (assert (ciudad-otono MEDIA))
+)
+
+(defrule ABSTRACCION::otono-alta
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-otono ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
+    (test (> ?v 3))
+=>
+    (assert (ciudad-otono ALTA))
+)
+
+(defrule ABSTRACCION::invierno-baja
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-invierno ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
+    (test (< ?v 3))
+=>
+    (assert (ciudad-invierno BAJA))
+)
+
+(defrule ABSTRACCION::invierno-media
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-invierno ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno 3))
+=>
+    (assert (ciudad-invierno MEDIA))
+)
+
+(defrule ABSTRACCION::invierno-alta
+    (declare (salience 9))
+    (entrada-completada)
+    (not (ciudad-invierno ?)
+    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
+    (test (> ?v 3))
+=>
+    (assert (ciudad-invierno ALTA))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 6. REGLAS POR DEFECTO (salience -5)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule ABSTRACCION::tematica-defecto
@@ -242,6 +443,14 @@
     (not (nivel-presupuesto ?))
 =>
     (assert (nivel-presupuesto MEDIO))
+)
+
+(defrule ABSTRACCION::perfil-presupuesto-defecto
+    (declare (salience -5))
+    (entrada-completada)
+    (not (perfil-presupuesto ?))
+=>
+    (assert (perfil-presupuesto EQUILIBRADO))
 )
 
 (defrule ABSTRACCION::perfil-defecto
