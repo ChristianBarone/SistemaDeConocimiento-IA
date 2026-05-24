@@ -10,23 +10,39 @@
 ;;; FUNCIONES DE PRESENTACION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(deffunction SALIDA::mostrar-pois-ciudad (?ciu)
+   (bind ?pois (send ?ciu get-tienePOI))
+
+   (if (= (length$ ?pois) 0)
+      then
+         (printout t "    POI: No hay puntos de interes registrados." crlf)
+      else
+         (loop-for-count (?i 1 (length$ ?pois))
+            do
+            (bind ?poi (nth$ ?i ?pois))
+            (printout t "    POI: " ?poi crlf)))
+)
+
 (deffunction SALIDA::mostrar-parada (?ciu ?dias)
-    (if (not (instance-existp ?ciu))
-        then
-            (printout t "  - [Error: Instancia de ciudad invalida o no encontrada]" crlf)
-            (return))
+   (if (not (instance-existp ?ciu))
+      then
+         (printout t "  - Error: instancia de ciudad invalida o no encontrada." crlf)
+         (return))
 
-    (printout t "  - Ciudad: " (send ?ciu get-nombre) " (" ?dias " dias)" crlf)
-    (bind ?aloj (REFINAMIENTO::mejor-alojamiento ?ciu))
+   (printout t "  - Ciudad: " (send ?ciu get-nombre) " (" ?dias " dias)" crlf)
 
-    (if (neq ?aloj FALSE)
-        then
-            (bind ?p_raw (send ?aloj get-precio_noche))
-            (bind ?precio (if (numberp ?p_raw) then (float ?p_raw) else 0.0))
-            (printout t "    Alojamiento recomendado: " (send ?aloj get-nombre)
-                        " (" ?precio " EUR/noche)" crlf)
-        else
-            (printout t "    Alojamiento recomendado: No hay alojamientos disponibles registrados." crlf))
+   (bind ?aloj (REFINAMIENTO::mejor-alojamiento ?ciu))
+   (if (neq ?aloj FALSE)
+      then
+         (bind ?praw (send ?aloj get-precio_noche))
+         (bind ?precio (if (numberp ?praw) then (float ?praw) else 0.0))
+         (printout t "    Alojamiento recomendado: "
+                     (send ?aloj get-nombre)
+                     " (" ?precio " EUR/noche)" crlf)
+      else
+         (printout t "    Alojamiento recomendado: No hay alojamientos disponibles registrados." crlf))
+
+   (SALIDA::mostrar-pois-ciudad ?ciu)
 )
 
 (deffunction SALIDA::mostrar-trayecto (?ciuOri ?ciuDest ?odio)
