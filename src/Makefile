@@ -101,8 +101,8 @@ shell:
 .PHONY: zip
 zip:
 	@echo "Creant l'arxiu zip de tota la carpeta..."
-	@zip -r ChristianBaroneLauraMorenoPauTurroAbrahamRuiz.zip . -x "*.zip"
-	@echo "Arxiu ChristianBaroneLauraMorenoPauTurroAbrahamRuiz.zip creat amb èxit."
+	@zip -r src.zip . -x "*.zip"
+	@echo "Arxiu src.zip creat amb èxit."
 
 # ------------------------------------------------------------
 # Neteja
