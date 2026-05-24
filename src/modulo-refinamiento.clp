@@ -23,6 +23,14 @@
     (slot ciudad (type INSTANCE))
 )
 
+(deftemplate REFINAMIENTO::ruta-parcial
+   (multislot ciudades))
+
+(deftemplate REFINAMIENTO::expansion-ruta-creada
+   (multislot base)
+   (slot ciudad (type INSTANCE))
+)
+
 (deftemplate REFINAMIENTO::expansion-creada
     (slot viaje (type INSTANCE))
     (slot ciudad (type INSTANCE))
@@ -175,6 +183,24 @@
               (* 25.0 ?nivelVida)))
 )
 
+(deffunction REFINAMIENTO::coste-viaje-parcial (?ciudades)
+   (bind ?n (length$ ?ciudades))
+   (if (= ?n 0) then (return 0.0))
+
+   (bind ?diasMinCiudad (send [usuario1] get-ciudad_dias_min))
+   (bind ?total 0.0)
+
+   (loop-for-count (?i 1 ?n)
+      do
+      (bind ?ciu (nth$ ?i ?ciudades))
+      (bind ?c (REFINAMIENTO::coste-ciudad ?ciu ?diasMinCiudad))
+      (if (>= ?c 999999.0) then (return 999999.0))
+      (bind ?total (+ ?total ?c))
+   )
+
+   (return ?total)
+)
+
 (deffunction REFINAMIENTO::coste-viaje (?ciudades)
    (bind ?n (length$ ?ciudades))
    (if (= ?n 0) then (return 0.0))
@@ -237,7 +263,6 @@
             (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
 
             ;; Una sola línea por transporte analizado
-            (printout t "  [Transporte] Evaluando: " (instance-name ?t) crlf)
 
             (bind ?ori-ok FALSE)
             (loop-for-count (?j 1 (length$ ?lista-ori)) do
@@ -461,28 +486,60 @@
    (return ?score)
 )
 
-(deffunction REFINAMIENTO::viaje-valido (?ciudades)
+(deffunction REFINAMIENTO::viaje-parcial-expandible (?ciudades)
+   (bind ?n (length$ ?ciudades))
+
+   (if (> ?n (send [usuario1] get-ciudades_max)) then (return FALSE))
+
+   (if (> (REFINAMIENTO::min-total-por-ciudades ?n)
+          (send [usuario1] get-dias_max))
+      then (return FALSE))
+
+   (loop-for-count (?i 1 ?n)
+      do
+      (bind ?ciu (nth$ ?i ?ciudades))
+      (if (eq (REFINAMIENTO::mejor-alojamiento ?ciu) FALSE)
+         then (return FALSE))
+   )
+
+   (if (> ?n 1) then
+      (loop-for-count (?i 2 ?n)
+         do
+         (bind ?ori (nth$ (- ?i 1) ?ciudades))
+         (bind ?des (nth$ ?i ?ciudades))
+         (if (not (REFINAMIENTO::hay-transporte-permitido ?ori ?des))
+            then (return FALSE))
+      )
+   )
+
+   (if (> (REFINAMIENTO::coste-viaje-parcial ?ciudades)
+          (float (send [usuario1] get-presupuesto_max)))
+      then (return FALSE))
+
+   (return TRUE)
+)
+(deffunction REFINAMIENTO::viaje-valido-final (?ciudades)
    (bind ?n (length$ ?ciudades))
    (bind ?dias (REFINAMIENTO::dias-objetivo-viaje ?n))
-   (bind ?precio (REFINAMIENTO::coste-viaje ?ciudades))
 
    (if (< ?n (send [usuario1] get-ciudades_min)) then (return FALSE))
    (if (> ?n (send [usuario1] get-ciudades_max)) then (return FALSE))
    (if (eq ?dias FALSE) then (return FALSE))
+
+   (bind ?precio (REFINAMIENTO::coste-viaje ?ciudades))
    (if (> ?precio (float (send [usuario1] get-presupuesto_max))) then (return FALSE))
 
    (loop-for-count (?i 1 ?n)
-    do
-    (bind ?ciu (nth$ ?i ?ciudades))
+      do
+      (bind ?ciu (nth$ ?i ?ciudades))
 
-    (if (eq (REFINAMIENTO::mejor-alojamiento ?ciu) FALSE)
-        then
-            (return FALSE))
+      (if (eq (REFINAMIENTO::mejor-alojamiento ?ciu) FALSE)
+         then (return FALSE))
 
-    (bind ?diasParada (REFINAMIENTO::dias-en-parada ?dias ?n ?i))
-    (if (< ?diasParada (send [usuario1] get-ciudad_dias_min)) then (return FALSE))
-    (if (> ?diasParada (send [usuario1] get-ciudad_dias_max)) then (return FALSE))
-    )
+      (bind ?diasParada (REFINAMIENTO::dias-en-parada ?dias ?n ?i))
+      (if (< ?diasParada (send [usuario1] get-ciudad_dias_min)) then (return FALSE))
+      (if (> ?diasParada (send [usuario1] get-ciudad_dias_max)) then (return FALSE))
+   )
 
    (if (> ?n 1) then
       (loop-for-count (?i 2 ?n)
@@ -536,27 +593,33 @@
    (bind ?dias (REFINAMIENTO::dias-objetivo-viaje ?n))
    (bind ?precio (REFINAMIENTO::coste-viaje ?ciudades))
    (bind ?puntos (REFINAMIENTO::puntos-viaje ?ciudades))
-   (bind ?valid (if (REFINAMIENTO::viaje-valido ?ciudades) then TRUE else FALSE))
+   (bind ?valid (if (REFINAMIENTO::viaje-valido-final ?ciudades) then TRUE else FALSE))
+
+   (printout t "INTENTANDO " ?ciudades
+               " Ciudades: " ?n
+               " Coste: " ?precio
+               " Valido? " ?valid crlf)
+
+   (if (not ?valid) then
+      (return FALSE))
+
    (bind ?alojs (REFINAMIENTO::lista-alojamientos ?ciudades))
    (bind ?pois (REFINAMIENTO::lista-pois-viaje ?ciudades))
 
-   (printout t "INTENTANDO " ?ciudades " Ciudades: " ?n " Coste: " ?precio " Valido? " ?valid crlf)
-
    (return
-    (make-instance (gensym) of ViajeCandidato
-        (incluyeCiudad ?ciudades)
-        (incluyeAlojamiento ?alojs)
-        (incluyePuntoDeInteres ?pois)
-        (n_ciudades ?n)
-        (durada_dias ?dias)
-        (precio_total ?precio)
-        (puntuacion ?puntos)
-        (valido ?valid)
-        (seleccionado FALSE)
-    )
+      (make-instance (gensym) of ViajeCandidato
+         (incluyeCiudad ?ciudades)
+         (incluyeAlojamiento ?alojs)
+         (incluyePuntoDeInteres ?pois)
+         (n_ciudades ?n)
+         (durada_dias ?dias)
+         (precio_total ?precio)
+         (puntuacion ?puntos)
+         (valido TRUE)
+         (seleccionado FALSE)
+      )
    )
 )
-
 (deffunction REFINAMIENTO::coste-minimo-candidato (?cand)
    (bind ?ciu (send ?cand get-ciudad))
    (bind ?d_raw (send ?cand get-durada_estada))
@@ -582,12 +645,12 @@
    (bind ?a (send ?cand get-accesibilidad_ok))
    (bind ?coste (coste-minimo-candidato ?cand))
    (bind ?presMax (float (send [usuario1] get-presupuesto_max)))
-   (bind ?mov_red (send [usuario1] get-movilidad_reducida))  ; <<< NUEVO
+   (bind ?mov_red (send [usuario1] get-movilidad_reducida))
 
-   (if (or (eq ?g NO_RECOMENDABLE)
+   (if (or (eq ?g NORECOMENDABLE)
            (eq ?p NO)
            (eq ?t NO)
-           (and (eq ?mov_red TRUE) (eq ?a NO))  ; <<< solo si movilidad reducida
+           (and (eq ?mov_red TRUE) (eq ?a NO))
            (> ?coste ?presMax))
       then (return TRUE)
       else (return FALSE))
@@ -617,45 +680,49 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 2. GENERAR VIAJES BASE
+;;; 2. GENERAR RUTAS BASE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule REFINAMIENTO::crear-viajes-base
+(defrule REFINAMIENTO::crear-rutas-base
    (declare (salience 80))
    (estado-refinamiento (fase AJUSTES_APLICADOS))
    ?cand <- (object (is-a CandidatoCiudad)
                     (ciudad ?ciu)
-                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO))
+                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO | POCO_ADECUADO))
    (test (not (candidato-descartable ?cand)))
    (not (viaje-base-creado (ciudad ?ciu)))
 =>
+   (assert (ruta-parcial (ciudades ?ciu)))
+   (assert (viaje-base-creado (ciudad ?ciu)))
+
    (crear-instancia-viaje-candidato (create$ ?ciu))
-   (assert (viaje-base-creado (ciudad ?ciu))))
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 3. EXPANDIR VIAJES CANDIDATOS
+;;; 3. EXPANDIR RUTAS PARCIALES
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule REFINAMIENTO::expandir-viajes
+(defrule REFINAMIENTO::expandir-rutas
    (declare (salience 60))
    (estado-refinamiento (fase AJUSTES_APLICADOS))
-   ?trip <- (object (is-a ViajeCandidato)
-                    (incluyeCiudad $?ciudades)
-                    (n_ciudades ?n)
-                    (precio_total ?p))
+   ?ruta <- (ruta-parcial (ciudades $?ciudades))
    ?cand <- (object (is-a CandidatoCiudad)
                     (ciudad ?nuevaCiudad)
-                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO))
+                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO | POCO_ADECUADO))
    (test (not (candidato-descartable ?cand)))
-   (test (< ?n (send [usuario1] get-ciudades_max)))
+   (test (< (length$ ?ciudades) (send [usuario1] get-ciudades_max)))
    (test (not (ciudad-en-lista ?nuevaCiudad ?ciudades)))
-   (test (hay-transporte-permitido (ultimo-elemento ?ciudades) ?nuevaCiudad))
-   (test (<= (+ ?p (coste-minimo-candidato ?cand))
-             (float (send [usuario1] get-presupuesto_max))))
-   (not (expansion-creada (viaje ?trip) (ciudad ?nuevaCiudad)))
+   (test (REFINAMIENTO::hay-transporte-permitido
+             (REFINAMIENTO::ultimo-elemento ?ciudades)
+             ?nuevaCiudad))
+   (test (REFINAMIENTO::viaje-parcial-expandible
+             (create$ ?ciudades ?nuevaCiudad)))
+   (not (ruta-parcial (ciudades $?ciudades ?nuevaCiudad)))
 =>
+   (assert (ruta-parcial (ciudades ?ciudades ?nuevaCiudad)))
+
    (crear-instancia-viaje-candidato (create$ ?ciudades ?nuevaCiudad))
-   (assert (expansion-creada (viaje ?trip) (ciudad ?nuevaCiudad))))
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 4. ELEGIR EL MEJOR VIAJE
