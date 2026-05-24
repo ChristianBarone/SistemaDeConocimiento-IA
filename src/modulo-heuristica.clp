@@ -195,10 +195,22 @@
     (declare (salience 5))
     ?u <- (object (is-a Usuario) (name [usuario1]) (movilidad_reducida ?mov))
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
+    (object (is-a Ciudad) (name ?ciu) (tieneAlojamiento $?alojs))
 =>
-    (if (eq ?mov FALSE)
-        then (send ?cand put-accesibilidad_ok SI)
-        else (send ?cand put-accesibilidad_ok PARCIAL)) 
+    (if (eq ?mov NO)
+        then
+            (send ?cand put-accesibilidad_ok SI)
+        else
+            (bind ?hay-accesible FALSE)
+            (loop-for-count (?i 1 (length$ ?alojs)) do
+                (bind ?a (nth$ ?i ?alojs))
+                (if (instance-existp ?a)
+                    then
+                        (if (eq (send ?a get-accesible) SI)
+                            then (bind ?hay-accesible TRUE))))
+            (if ?hay-accesible
+                then (send ?cand put-accesibilidad_ok SI)
+                else (send ?cand put-accesibilidad_ok NO)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

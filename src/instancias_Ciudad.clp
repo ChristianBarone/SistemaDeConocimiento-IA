@@ -1,8 +1,9 @@
 (definstances instancies_ciudad
+
 ([Amsterdam] of Ciudad
    (conectaCon [Paris] [Copenhague] [Praga] [Oporto])
-   (tieneAlojamiento [AptoCanales_Ams] [AptoJordaan_Ams] [HostalCentral_Ams] [HostalWest_Ams] [HotelAmsterdam_Ams])
-   (tienePOI [Museo_Van_Gogh_Ams] [Anne_Frank_Ams] [Vondelpark_Ams] [CasasCanales_Ams])
+   (tieneAlojamiento [AptoCanales_Ams] [HostalJordaan_Ams] [HotelMuseo_Ams] [HotelAmstel_Ams])
+   (tienePOI [BarrioCanales_Ams] [MuseoVanGogh_Ams] [ParqueVondel_Ams] [TorreAtenea_Ams])
    (cluster_tematico [tema-ocio])
    (nivel_de_vida 1.3)
    (nombre "Amsterdam")
@@ -15,8 +16,8 @@
 
 ([Venecia] of Ciudad
    (conectaCon [Florencia] [Roma] [Viena] [Salzburgo])
-   (tieneAlojamiento [AptoRialto_Ven] [AptoSanMarco_Ven] [HostalCannareggio_Ven] [HostalGhetto_Ven] [HotelDanieli_Ven])
-   (tienePOI [BasilicaSanMarco_Ven] [PalazoDucal_Ven] [MuseoCorrer_Ven] [PaseoGondolas_Ven])
+   (tieneAlojamiento [AptoRialto_Ven] [HostalSanMarco_Ven] [HotelLaguna_Ven] [HotelCannaregio_Ven])
+   (tienePOI [MiradorLaguna_Ven] [PaseoGondolas_Ven] [PalacioDucal_Ven] [JardinSanMarco_Ven])
    (cluster_tematico [tema-romantico])
    (nivel_de_vida 1.4)
    (nombre "Venecia")
@@ -29,8 +30,8 @@
 
 ([Viena] of Ciudad
    (conectaCon [Praga] [Munich] [Venecia] [Salzburgo] [Ljubljana])
-   (tieneAlojamiento [AptoOpera_Vie] [AptoInnerstadt_Vie] [HostalFreyung_Vie] [HostalWieden_Vie] [HotelSacher_Vie])
-   (tienePOI [OperaViena_Vie] [PalacioSchoenbrunn_Vie] [MuseoArteHistoria_Vie] [Prater_Vie])
+   (tieneAlojamiento [AptoOpera_Vie] [HostalInnereStadt_Vie] [HotelBelvedere_Vie] [HotelDanubio_Vie])
+   (tienePOI [MuseoSchoenbrunn_Vie] [CatedralBelvedere_Vie] [JardinPrater_Vie] [MercadoOpera_Vie])
    (cluster_tematico [tema-cultural])
    (nivel_de_vida 1.3)
    (nombre "Viena")
@@ -43,8 +44,8 @@
 
 ([Praga] of Ciudad
    (conectaCon [Viena] [Munich] [Amsterdam] [Ljubljana])
-   (tieneAlojamiento [AptoViejaPlaza_Pra] [AptoDeiusDecisis_Pra] [HostalMalaStraña_Pra] [HostalVieja_Pra] [HotelParizian_Pra])
-   (tienePOI [CastilloPraga_Pra] [PuenteCarlos_Pra] [Orloj_Pra] [MuseoJudioPraga_Pra])
+   (tieneAlojamiento [AptoPlazaVieja_Pra] [HostalMalaStrana_Pra] [HotelCastillo_Pra] [HotelVltava_Pra])
+   (tienePOI [ParqueCastillo_Pra] [MuseoReloj_Pra] [AcuarioPetrin_Pra] [CastilloZoo_Pra])
    (cluster_tematico [tema-familiar])
    (nivel_de_vida 0.9)
    (nombre "Praga")
@@ -57,8 +58,8 @@
 
 ([Barcelona] of Ciudad
    (conectaCon [Madrid] [Paris] [Valencia] [Niza] [Funchal])
-   (tieneAlojamiento [AptoEixample_Bcn] [HostalGotic_Bcn] [HotelW_Bcn])
-   (tienePOI [MuseoPicasso_Bcn] [ParqueGuell_Bcn] [SagradaFamilia_Bcn])
+   (tieneAlojamiento [AptoEixample_Bcn] [HostalBorn_Bcn] [HotelGracia_Bcn] [HotelBarceloneta_Bcn])
+   (tienePOI [BarrioGuell_Bcn] [MuseoPicasso_Bcn] [ParqueBarceloneta_Bcn] [SagradaFamilia_Bcn])
    (cluster_tematico [tema-ocio])
    (nivel_de_vida 1.1)
    (nombre "Barcelona")
@@ -71,8 +72,8 @@
 
 ([Florencia] of Ciudad
    (conectaCon [Roma] [Venecia] [Niza] [Ljubljana])
-   (tieneAlojamiento [AptoDuomo_Flo] [HostalArno_Flo] [HotelBrunelleschi_Flo])
-   (tienePOI [Duomo_Flo] [GaleriaUffizi_Flo] [JardinBoboli_Flo])
+   (tieneAlojamiento [AptoDuomo_Flo] [HostalArno_Flo] [HotelUffizi_Flo] [HotelOltrarno_Flo])
+   (tienePOI [MuseoUffizi_Flo] [CatedralDuomo_Flo] [JardinBoboli_Flo] [MercadoPonteVecchio_Flo])
    (cluster_tematico [tema-cultural])
    (nivel_de_vida 1.1)
    (nombre "Florencia")
@@ -85,8 +86,8 @@
 
 ([Dublin] of Ciudad
    (conectaCon [Amsterdam] [Paris] [Oporto] [Copenhague])
-   (tieneAlojamiento [AptoTemplebar_Dub] [AptoGeorgiana_Dub] [HostalSouthside_Dub] [HostalNorthside_Dub] [HotelMorrison_Dub])
-   (tienePOI [TrinityCollege_Dub] [CastilloDublin_Dub] [MuseoArqueologia_Dub] [TempleBar_Dub])
+   (tieneAlojamiento [AptoTempleBar_Dub] [HostalGeorgian_Dub] [HotelLiffey_Dub] [HotelDocklands_Dub])
+   (tienePOI [BarrioTempleBar_Dub] [MuseoTrinity_Dub] [ParquePhoenix_Dub] [TorreCastillo_Dub])
    (cluster_tematico [tema-ocio])
    (nivel_de_vida 1.0)
    (nombre "Dublin")
@@ -99,8 +100,8 @@
 
 ([Madrid] of Ciudad
    (conectaCon [Barcelona] [Valencia] [Paris] [Funchal] [Oporto])
-   (tieneAlojamiento [AptoRetiro_Mad] [HostalSol_Mad] [HotelRitz_Mad])
-   (tienePOI [MuseoPrado_Mad] [PalacioReal_Mad] [ParqueRetiro_Mad])
+   (tieneAlojamiento [AptoRetiro_Mad] [HostalSol_Mad] [HotelMalasana_Mad] [HotelLetras_Mad])
+   (tienePOI [BarrioRetiro_Mad] [MuseoPrado_Mad] [ParqueGranVia_Mad] [TorrePalacio_Mad])
    (cluster_tematico [tema-ocio])
    (nivel_de_vida 1.0)
    (nombre "Madrid")
@@ -113,8 +114,8 @@
 
 ([Munich] of Ciudad
    (conectaCon [Viena] [Praga] [Salzburgo] [Innsbruck] [Amsterdam])
-   (tieneAlojamiento [AptoMarienplatz_Mun] [HostalIsar_Mun] [HotelBayerischer_Mun])
-   (tienePOI [Ayuntamiento_Mun] [EnglishGarden_Mun] [MuseoBMW_Mun])
+   (tieneAlojamiento [AptoMarienplatz_Mun] [HostalIsar_Mun] [HotelSchwabing_Mun] [HotelAltstadt_Mun])
+   (tienePOI [MuseoEnglishGarden_Mun] [CatedralBMW_Mun] [JardinMarienplatz_Mun] [MercadoResidenz_Mun])
    (cluster_tematico [tema-cultural])
    (nivel_de_vida 1.4)
    (nombre "Munich")
@@ -127,8 +128,8 @@
 
 ([Niza] of Ciudad
    (conectaCon [Barcelona] [Florencia] [Paris] [Valencia] [Funchal])
-   (tieneAlojamiento [AptoPromenade_Niz] [HostalVieux_Niz] [HotelNegresco_Niz])
-   (tienePOI [MuseoMatisse_Niz] [ParqueColline_Niz] [PaseoIngleses_Niz])
+   (tieneAlojamiento [AptoPromenade_Niz] [HostalVieuxNice_Niz] [HotelGaribaldi_Niz] [HotelPuerto_Niz])
+   (tienePOI [JardinPromenade_Niz] [PaseoMatisse_Niz] [MuseoCastleHill_Niz] [FaroPuerto_Niz])
    (cluster_tematico [tema-descanso])
    (nivel_de_vida 1.2)
    (nombre "Niza")
@@ -141,8 +142,8 @@
 
 ([Paris] of Ciudad
    (conectaCon [Amsterdam] [Barcelona] [Madrid] [Roma] [Copenhague] [Oporto])
-   (tieneAlojamiento [AptoMarais_Paris] [HostalMontmartre_Paris] [HotelRitz_Paris])
-   (tienePOI [ArcoTriunfo_Paris] [MuseoLouvre_Paris] [TorreEiffel_Paris])
+   (tieneAlojamiento [AptoMarais_Par] [HostalMontmartre_Par] [HotelLatin_Par] [HotelSaintGermain_Par])
+   (tienePOI [MiradorEiffel_Par] [PaseoLouvre_Par] [PalacioLuxemburgo_Par] [JardinSena_Par])
    (cluster_tematico [tema-romantico])
    (nivel_de_vida 1.4)
    (nombre "Paris")
@@ -155,8 +156,8 @@
 
 ([Roma] of Ciudad
    (conectaCon [Florencia] [Venecia] [Paris] [Ljubljana])
-   (tieneAlojamiento [AptoVaticano_Roma] [HostalTrastevere_Roma] [HotelEden_Roma])
-   (tienePOI [Coliseo_Roma] [MuseosVaticanos_Roma] [VillaBorghese_Roma])
+   (tieneAlojamiento [AptoVaticano_Rom] [HostalTrastevere_Rom] [HotelNavona_Rom] [HotelMonti_Rom])
+   (tienePOI [MuseoColiseo_Rom] [CatedralVaticano_Rom] [JardinBorghese_Rom] [MercadoTrastevere_Rom])
    (cluster_tematico [tema-cultural])
    (nivel_de_vida 1.2)
    (nombre "Roma")
@@ -169,6 +170,8 @@
 
 ([Innsbruck] of Ciudad
    (conectaCon [Munich] [Salzburgo] [Viena] [Venecia] [Ljubljana])
+   (tieneAlojamiento [AptoAlpen_Inn] [HostalAltstadt_Inn] [HotelNordkette_Inn] [HotelInn_Inn])
+   (tienePOI [SenderoNordkette_Inn] [TelefericoAlpino_Inn] [FortalezaInn_Inn] [MuseoAlpinoAmbras_Inn])
    (cluster_tematico [tema-aventura])
    (nivel_de_vida 1.2)
    (nombre "Innsbruck")
@@ -181,6 +184,8 @@
 
 ([Funchal] of Ciudad
    (conectaCon [Madrid] [Barcelona] [Niza] [Oporto])
+   (tieneAlojamiento [AptoMadeira_Fun] [HostalMarina_Fun] [HotelLido_Fun] [HotelJardin_Fun])
+   (tienePOI [JardinLido_Fun] [PaseoMadeira_Fun] [MuseoBotanico_Fun] [FaroFarol_Fun])
    (cluster_tematico [tema-descanso])
    (nivel_de_vida 1.0)
    (nombre "Funchal")
@@ -193,6 +198,8 @@
 
 ([Valencia] of Ciudad
    (conectaCon [Barcelona] [Madrid] [Niza] [Oporto])
+   (tieneAlojamiento [AptoCarmen_Val] [HostalRuzafa_Val] [HotelTuria_Val] [HotelMalvarrosa_Val])
+   (tienePOI [ParqueTuria_Val] [MuseoCiencia_Val] [AcuarioOceanografic_Val] [CastilloSerranos_Val])
    (cluster_tematico [tema-familiar])
    (nivel_de_vida 0.9)
    (nombre "Valencia")
@@ -205,6 +212,8 @@
 
 ([Copenhague] of Ciudad
    (conectaCon [Amsterdam] [Paris] [Dublin] [Bergen])
+   (tieneAlojamiento [AptoNyhavn_Cop] [HostalCentro_Cop] [HotelTivoli_Cop] [HotelNorro_Cop])
+   (tienePOI [ParqueTivoli_Cop] [MuseoNyhavn_Cop] [AcuarioJardines_Cop] [CastilloRosenborg_Cop])
    (cluster_tematico [tema-familiar])
    (nivel_de_vida 1.4)
    (nombre "Copenhague")
@@ -217,6 +226,8 @@
 
 ([Oporto] of Ciudad
    (conectaCon [Madrid] [Valencia] [Dublin] [Funchal] [Paris] [Amsterdam])
+   (tieneAlojamiento [AptoRibeira_Opo] [HostalAliados_Opo] [HotelCedofeita_Opo] [HotelGaia_Opo])
+   (tienePOI [JardinRibeira_Opo] [PaseoSerralves_Opo] [MuseoAtlantico_Opo] [FaroClerigos_Opo])
    (cluster_tematico [tema-descanso])
    (nivel_de_vida 0.9)
    (nombre "Oporto")
@@ -229,6 +240,8 @@
 
 ([Ljubljana] of Ciudad
    (conectaCon [Viena] [Praga] [Roma] [Innsbruck] [Florencia])
+   (tieneAlojamiento [AptoCentro_Lju] [HostalRio_Lju] [HotelCastillo_Lju] [HotelTivoli_Lju])
+   (tienePOI [ParqueTivoli_Lju] [MuseoCastillo_Lju] [AcuarioDragon_Lju] [CastilloCentral_Lju])
    (cluster_tematico [tema-familiar])
    (nivel_de_vida 0.8)
    (nombre "Ljubljana")
@@ -241,6 +254,8 @@
 
 ([Salzburgo] of Ciudad
    (conectaCon [Munich] [Viena] [Innsbruck] [Venecia])
+   (tieneAlojamiento [AptoMozart_Sal] [HostalAltstadt_Sal] [HotelMirabell_Sal] [HotelAlpes_Sal])
+   (tienePOI [SenderoMirabell_Sal] [TelefericoFortaleza_Sal] [FortalezaMozart_Sal] [MuseoAlpinoAlpes_Sal])
    (cluster_tematico [tema-aventura])
    (nivel_de_vida 1.2)
    (nombre "Salzburgo")
@@ -253,6 +268,8 @@
 
 ([Bergen] of Ciudad
    (conectaCon [Copenhague] [Amsterdam])
+   (tieneAlojamiento [AptoBryggen_Ber] [HostalFiordo_Ber] [HotelCentro_Ber] [HotelFloyen_Ber])
+   (tienePOI [SenderoBryggen_Ber] [TelefericoFiordo_Ber] [FortalezaFloyen_Ber] [MuseoAlpinoHanseatico_Ber])
    (cluster_tematico [tema-aventura])
    (nivel_de_vida 1.3)
    (nombre "Bergen")

@@ -69,10 +69,9 @@
 
 (deffunction REFINAMIENTO::mejor-alojamiento (?ciu)
    (bind ?lista (send ?ciu get-tieneAlojamiento))
-   (if (= (length$ ?lista) 0)
-      then
-         (return FALSE))
+   (if (= (length$ ?lista) 0) then (return FALSE))
 
+   (bind ?mov_red (send [usuario1] get-movilidad_reducida))  ; <<< NUEVO
    (bind ?mejor FALSE)
    (bind ?mejorApt -1)
    (bind ?precioMejor 999999.0)
@@ -81,18 +80,23 @@
       (bind ?a (nth$ ?i ?lista))
       (if (instance-existp ?a)
          then
-            (bind ?apt (REFINAMIENTO::valor-aptitud-alojamiento
-                        (REFINAMIENTO::aptitud-de-alojamiento ?a)))
-            (bind ?p_raw (send ?a get-precio_noche))
-            (bind ?p (if (numberp ?p_raw) then (float ?p_raw) else 999999.0))
-
-            (if (or (> ?apt ?mejorApt)
-                    (and (= ?apt ?mejorApt) (< ?p ?precioMejor)))
+            ; <<< NUEVO: si hay movilidad reducida, solo considerar accesibles
+            (if (and (eq ?mov_red TRUE)
+                     (neq (send ?a get-accesible) SI))
                then
-                  (bind ?mejor ?a)
-                  (bind ?mejorApt ?apt)
-                  (bind ?precioMejor ?p)))
-   )
+                  ; saltar este alojamiento
+               else
+                  (bind ?apt (REFINAMIENTO::valor-aptitud-alojamiento
+                              (REFINAMIENTO::aptitud-de-alojamiento ?a)))
+                  (bind ?p_raw (send ?a get-precio_noche))
+                  (bind ?p (if (numberp ?p_raw) then (float ?p_raw) else 999999.0))
+
+                  (if (or (> ?apt ?mejorApt)
+                          (and (= ?apt ?mejorApt) (< ?p ?precioMejor)))
+                     then
+                        (bind ?mejor ?a)
+                        (bind ?mejorApt ?apt)
+                        (bind ?precioMejor ?p)))))
    (return ?mejor)
 )
 
@@ -586,16 +590,15 @@
    (bind ?a (send ?cand get-accesibilidad_ok))
    (bind ?coste (coste-minimo-candidato ?cand))
    (bind ?presMax (float (send [usuario1] get-presupuesto_max)))
+   (bind ?mov_red (send [usuario1] get-movilidad_reducida))  ; <<< NUEVO
 
    (if (or (eq ?g NO_RECOMENDABLE)
            (eq ?p NO)
            (eq ?t NO)
-           (eq ?a NO)
+           (and (eq ?mov_red TRUE) (eq ?a NO))  ; <<< solo si movilidad reducida
            (> ?coste ?presMax))
-      then
-         (return TRUE)
-      else
-         (return FALSE))
+      then (return TRUE)
+      else (return FALSE))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -613,7 +616,7 @@
             (do-for-all-instances ((?cand CandidatoCiudad))
                 (eq (send ?cand get-accesibilidad_ok) PARCIAL)
                 (send ?cand put-accesibilidad_ok NO)
-                (send ?cand put-grado NO_RECOMENDABLE)
+                ; <<< ELIMINADO: (send ?cand put-grado NO_RECOMENDABLE)
                 (send ?cand put-motivo
                       "RESTRICCION: Accesibilidad insuficiente para movilidad reducida")))
 
