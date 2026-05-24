@@ -1,0 +1,67 @@
+==========================================
+       TUS ITINERARIOS PERSONALIZADOS
+==========================================
+
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #1
+ Puntuacion : 1587 puntos
+ Coste Total: 807 EUR
+ Duracion   : 7 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Funchal (3 dias)
+    Alojamiento recomendado: Hotel Lido (103.0 EUR/noche)
+    POI: [JardinLido_Fun]
+    POI: [PaseoMadeira_Fun]
+    POI: [MuseoBotanico_Fun]
+    POI: [FaroFarol_Fun]
+  - Ciudad: Oporto (2 dias)
+    Alojamiento recomendado: Hotel Cedofeita (85.5 EUR/noche)
+    POI: [JardinRibeira_Opo]
+    POI: [PaseoSerralves_Opo]
+    POI: [MuseoAtlantico_Opo]
+    POI: [FaroClerigos_Opo]
+  - Ciudad: Niza (2 dias)
+    Alojamiento recomendado: Apartamento Promenade (125.0 EUR/noche)
+    POI: [JardinPromenade_Niz]
+    POI: [PaseoMatisse_Niz]
+    POI: [MuseoCastleHill_Niz]
+    POI: [FaroPuerto_Niz]
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #2
+ Puntuacion : 794 puntos
+ Coste Total: 1068 EUR
+ Duracion   : 7 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Amsterdam (3 dias)
+    Alojamiento recomendado: Apartamento Canales (140.0 EUR/noche)
+    POI: [BarrioCanales_Ams]
+    POI: [MuseoVanGogh_Ams]
+    POI: [ParqueVondel_Ams]
+    POI: [TorreAtenea_Ams]
+  - Ciudad: Praga (2 dias)
+    Alojamiento recomendado: Hotel Castillo (125.5 EUR/noche)
+    POI: [ParqueCastillo_Pra]
+    POI: [MuseoReloj_Pra]
+    POI: [AcuarioPetrin_Pra]
+    POI: [CastilloZoo_Pra]
+  - Ciudad: Viena (2 dias)
+    Alojamiento recomendado: Apartamento Opera (155.0 EUR/noche)
+    POI: [MuseoSchoenbrunn_Vie]
+    POI: [CatedralBelvedere_Vie]
+    POI: [JardinPrater_Vie]
+    POI: [MercadoOpera_Vie]
+
+==========================================
+       RESUMEN DE TU VIAJE DESTACADO
+==========================================
+Ciudades   : 3
+Duracion   : 7 dias
+Coste      : 807 EUR
+Puntuacion : 1587
+==========================================
