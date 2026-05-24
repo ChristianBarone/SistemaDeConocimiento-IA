@@ -1,0 +1,62 @@
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #1
+ Puntuacion : 2364 puntos
+ Coste Total: 1121 EUR
+ Duracion   : 10 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Funchal (4 dias)
+    Alojamiento recomendado: Hotel Lido (103.0 EUR/noche)
+    POI: [JardinLido_Fun]
+    POI: [PaseoMadeira_Fun]
+    POI: [MuseoBotanico_Fun]
+    POI: [FaroFarol_Fun]
+  - Ciudad: Oporto (3 dias)
+    Alojamiento recomendado: Hotel Cedofeita (85.5 EUR/noche)
+    POI: [JardinRibeira_Opo]
+    POI: [PaseoSerralves_Opo]
+    POI: [MuseoAtlantico_Opo]
+    POI: [FaroClerigos_Opo]
+  - Ciudad: Niza (3 dias)
+    Alojamiento recomendado: Apartamento Promenade (125.0 EUR/noche)
+    POI: [JardinPromenade_Niz]
+    POI: [PaseoMatisse_Niz]
+    POI: [MuseoCastleHill_Niz]
+    POI: [FaroPuerto_Niz]
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #2
+ Puntuacion : 1081 puntos
+ Coste Total: 1277 EUR
+ Duracion   : 10 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Valencia (4 dias)
+    Alojamiento recomendado: Hotel Turia (101.5 EUR/noche)
+    POI: [ParqueTuria_Val]
+    POI: [MuseoCiencia_Val]
+    POI: [AcuarioOceanografic_Val]
+    POI: [CastilloSerranos_Val]
+  - Ciudad: Roma (3 dias)
+    Alojamiento recomendado: Apartamento Vaticano (140.0 EUR/noche)
+    POI: [MuseoColiseo_Rom]
+    POI: [CatedralVaticano_Rom]
+    POI: [JardinBorghese_Rom]
+    POI: [MercadoTrastevere_Rom]
+  - Ciudad: Praga (3 dias)
+    Alojamiento recomendado: Hotel Castillo (125.5 EUR/noche)
+    POI: [ParqueCastillo_Pra]
+    POI: [MuseoReloj_Pra]
+    POI: [AcuarioPetrin_Pra]
+    POI: [CastilloZoo_Pra]
+
+==========================================
+       RESUMEN DE TU VIAJE DESTACADO
+==========================================
+Ciudades   : 3
+Duracion   : 10 dias
+Coste      : 1121 EUR
+Puntuacion : 2364
+==========================================
