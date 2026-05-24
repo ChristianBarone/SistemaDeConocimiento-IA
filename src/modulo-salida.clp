@@ -165,8 +165,8 @@
     (declare (salience 90))
     (cabecera-mostrada)
     ?trip <- (object (is-a ViajeCandidato)
-                     (seleccionado TRUE)
-                     (valido TRUE))
+                     (seleccionado SI)
+                     (valido SI))
     (not (viaje-mostrado))
 =>
     (mostrar-itinerario ?trip)
@@ -178,8 +178,8 @@
     (viaje-mostrado)
     (not (resumen-mostrado))
     ?trip <- (object (is-a ViajeCandidato)
-                     (seleccionado TRUE)
-                     (valido TRUE))
+                     (seleccionado SI)
+                     (valido SI))
 =>
     (printout t crlf "==========================================" crlf)
     (printout t "           RESUMEN DE TU VIAJE" crlf)
@@ -198,8 +198,8 @@
     (cabecera-mostrada)
     (not (viaje-mostrado))
     (not (object (is-a ViajeCandidato)
-                 (seleccionado TRUE)
-                 (valido TRUE)))
+                 (seleccionado SI)
+                 (valido SI)))
     (not (resumen-mostrado))
 =>
     (printout t "No se ha podido generar un itinerario valido con las restricciones actuales." crlf crlf)

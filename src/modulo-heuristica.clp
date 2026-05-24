@@ -378,8 +378,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
     (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
 )
@@ -388,8 +388,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a AlojamientoCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
     (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
 )
@@ -398,8 +398,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a TransporteCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
     (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
 )
@@ -408,8 +408,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a PuntoDeInteresCandidato) (presupuesto_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
     (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
 )
@@ -418,8 +418,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a TransporteCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
     (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
 )
@@ -428,8 +428,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a AlojamientoCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
     (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
 )
@@ -438,8 +438,8 @@
     (declare (salience 0))
     ?cand <- (object (is-a PuntoDeInteresCandidato) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
 =>
-    (send ?cand put-grado NADA)
-    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
+    (send ?cand put-grado NO_RECOMENDABLE)
+    ;(send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
     (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
 )
@@ -448,7 +448,7 @@
     (declare (salience 0))
     ?cand <- (object (is-a TransporteCandidato) (odiado SI) (desventajas $?v))
 =>
-    (send ?cand put-motivo "RESTRICCIÓN: Requiere transporte odiado")
+    ;(send ?cand put-motivo "RESTRICCIÓN: Requiere transporte odiado")
     (if (eq (member$ "RESTRICCIÓN: Transporte odiado" ?v) FALSE) then
         (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Transporte odiado"))
 )

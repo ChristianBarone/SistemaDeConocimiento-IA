@@ -1,16 +1,22 @@
 (clear)
 
-(load "main.clp")
 (load "ontologia_Final.clp")
 (load "instancias_Alojamiento.clp")
 (load "instancias_Ciudad.clp")
 (load "instancias_PDI.clp")
 (load "instancias_Transporte.clp")
+(load "main.clp")
 (load "modulo-preguntas.clp")
 (load "modulo-abstraccion.clp")
 (load "modulo-heuristica.clp")
 (load "modulo-refinamiento.clp")
 (load "modulo-salida.clp")
+(reset)
+
+(run 1330)
+; (send [AptoVaticano_Roma] get-nombre)
+; (send [HotelEden_Roma] get-nombre)
+(agenda)
 
 ;;; 3. INICIO AUTOMÁTICO
 (reset)

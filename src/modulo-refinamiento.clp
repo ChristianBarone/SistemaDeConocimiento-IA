@@ -50,11 +50,13 @@
 
 (deffunction REFINAMIENTO::mejor-alojamiento (?ciu)
     (bind ?lista (send ?ciu get-tieneAlojamiento))
+    (printout t "lengt = " (length$ ?lista) crlf)
     (if (= (length$ ?lista) 0)
         then
             (return FALSE))
 
     (bind ?mejor (nth$ 1 ?lista))
+    (printout t "mejor = " ?mejor "   precio = " (send ?mejor get-precio_noche) crlf)
     (bind ?precioMejor (float (send ?mejor get-precio_noche)))
 
     (loop-for-count (?i 2 (length$ ?lista)) do
@@ -178,7 +180,7 @@
     (bind ?score (+ ?score (puntos-grado (send ?cand get-grado))))
     (bind ?score (+ ?score (puntos-tematica (send ?cand get-tematica_ok))))
     (bind ?score (+ ?score (puntos-presupuesto (send ?cand get-presupuesto_ok))))
-    (bind ?score (+ ?score (puntos-accesibilidad (send ?cand get-accesibilidad_ok))))
+    ;(bind ?score (+ ?score (puntos-accesibilidad (send ?cand get-accesibilidad_ok))))
 
     (if (eq (send ?cand get-transporte_ok) SI)
         then (bind ?score (+ ?score 10))
@@ -272,7 +274,7 @@
     (bind ?dias (dias-objetivo-viaje ?n))
     (bind ?precio (coste-viaje ?ciudades))
     (bind ?puntos (puntos-viaje ?ciudades))
-    (bind ?valid (if (viaje-valido ?ciudades) then TRUE else FALSE))
+    (bind ?valid (if (viaje-valido ?ciudades) then SI else NO))
     (bind ?alojs (lista-alojamientos ?ciudades))
 
     (return
@@ -304,14 +306,14 @@
    (bind ?g (send ?cand get-grado))
    (bind ?p (send ?cand get-presupuesto_ok))
    (bind ?t (send ?cand get-transporte_ok))
-   (bind ?a (send ?cand get-accesibilidad_ok))
+   ;(bind ?a (send ?cand get-accesibilidad_ok))
    (bind ?coste (coste-minimo-candidato ?cand))
    (bind ?presMax (float (send [usuario1] get-presupuesto_max)))
 
    (if (or (eq ?g NO_RECOMENDABLE)
            (eq ?p NO)
            (eq ?t NO)
-           (eq ?a NO)
+           ;(eq ?a NO)
            (> ?coste ?presMax))
       then
          (return TRUE)
@@ -330,14 +332,14 @@
     (printout t crlf "--- Refinamiento completado ---" crlf)
 
     ; si hay movilidad reducida, PARCIAL deja de ser aceptable
-    (if (eq (send [usuario1] get-movilidad_reducida) TRUE)
-        then
-            (do-for-all-instances ((?cand CandidatoCiudad))
-                (eq (send ?cand get-accesibilidad_ok) PARCIAL)
-                (send ?cand put-accesibilidad_ok NO)
-                (send ?cand put-grado NO_RECOMENDABLE)
-                (send ?cand put-motivo
-                      "RESTRICCION: Accesibilidad insuficiente para movilidad reducida")))
+    ; (if (eq (send [usuario1] get-movilidad_reducida) TRUE)
+    ;     then
+    ;         (do-for-all-instances ((?cand CandidatoCiudad))
+    ;             (eq (send ?cand get-accesibilidad_ok) PARCIAL)
+    ;             (send ?cand put-accesibilidad_ok NO)
+    ;             (send ?cand put-grado NO_RECOMENDABLE)
+    ;             (send ?cand put-motivo
+    ;                   "RESTRICCION: Accesibilidad insuficiente para movilidad reducida")))
 
     (assert (estado-refinamiento (fase AJUSTES_APLICADOS)))
 )
@@ -355,6 +357,7 @@
    (test (not (candidato-descartable ?cand)))
    (not (viaje-base-creado (ciudad ?ciu)))
 =>
+   ;;(printout t " ------- Creando viaje base ------- " crlf)
    (crear-instancia-viaje-candidato ?ciu)
    (assert (viaje-base-creado (ciudad ?ciu))))
 
@@ -392,10 +395,10 @@
     (estado-refinamiento (fase AJUSTES_APLICADOS))
     (not (viaje-seleccionado (id ?)))
     ?trip <- (object (is-a ViajeCandidato)
-                     (valido TRUE)
+                     (valido SI)
                      (puntuacion ?p))
     (not (object (is-a ViajeCandidato)
-                 (valido TRUE)
+                 (valido SI)
                  (puntuacion ?p2&:(> ?p2 ?p))))
 =>
     (send ?trip put-seleccionado TRUE)
@@ -436,7 +439,7 @@
     (declare (salience -25))
     (estado-refinamiento (fase AJUSTES_APLICADOS))
     (not (estado-refinamiento (fase COMPLETADO)))
-    (not (object (is-a ViajeCandidato) (valido TRUE)))
+    (not (object (is-a ViajeCandidato) (valido SI)))
 =>
     (printout t crlf "No se ha podido construir ningun viaje valido con las restricciones actuales." crlf crlf)
     (assert (estado-refinamiento (fase COMPLETADO)))

@@ -1,4 +1,4 @@
-(definstances instancias-ciudades
+(definstances instancias-PDI
 
 ([BarrioCanales_Ams] of PuntoDeInteres
    (tipo RECREATIVO)

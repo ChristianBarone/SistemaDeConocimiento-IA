@@ -1,4 +1,4 @@
-(definstances instancias-ciudades
+(definstances instancias-transporte
 
 ([Trans_Amsterdam_Paris] of Transporte
    (tieneOrigen [Amsterdam])

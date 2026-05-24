@@ -1,4 +1,4 @@
-(definstances instances
+(definstances instancias-ciudad
 ([Amsterdam] of Ciudad
    (conectaCon [Paris] [Copenhague] [Praga] [Oporto])
    (tieneAlojamiento [AptoCanales_Ams] [AptoJordaan_Ams] [HostalCentral_Ams] [HostalWest_Ams] [HotelAmsterdam_Ams])
