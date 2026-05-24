@@ -97,7 +97,9 @@
 
     ?ctrl <- (itinerario-por-imprimir ?rank)
     (viaje-seleccionado (id ?trip) (ranking ?rank))
-    ?trip-obj <- (object (is-a ViajeCandidato) (incluyeCiudad $?ciudades))
+    ?trip-obj <- (object (is-a ViajeCandidato)
+                         (incluyeCiudad $?ciudades))
+    (test (eq ?trip-obj ?trip))
 =>
     (bind ?dias (send ?trip-obj get-durada_dias))
 
@@ -108,7 +110,6 @@
     (printout t " Duracion   : " ?dias " dias" crlf)
     (printout t "==========================================================" crlf)
 
-    ;; Enviamos los días calculados junto con la lista de ciudades
     (mostrar-itinerario ?dias ?ciudades)
 
     (retract ?ctrl)
@@ -132,6 +133,7 @@
 
     (viaje-seleccionado (id ?trip) (ranking 1))
     ?trip-obj <- (object (is-a ViajeCandidato))
+    (test (eq ?trip-obj ?trip))
 =>
     (printout t crlf "==========================================" crlf)
     (printout t "       RESUMEN DE TU VIAJE DESTACADO" crlf)

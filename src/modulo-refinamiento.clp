@@ -333,9 +333,10 @@
 )
 
 (deffunction REFINAMIENTO::puntos-grado (?g)
-    (if (eq ?g MUY_RECOMENDABLE) then (return 60))
-    (if (eq ?g ADECUADO) then (return 35))
-    (if (eq ?g PARCIALMENTE_ADECUADO) then (return 12))
+    (if (eq ?g MUY_RECOMENDABLE) then (return 150))
+    (if (eq ?g RECOMENDABLE) then (return 80))
+    (if (eq ?g ADECUADO) then (return 40))
+    (if (eq ?g POCO_ADECUADO) then (return -25))
     (return -100)
 )
 
@@ -607,7 +608,6 @@
 =>
     (printout t crlf "--- Refinamiento completado ---" crlf)
 
-    ; si hay movilidad reducida, PARCIAL deja de ser aceptable
     (if (eq (send [usuario1] get-movilidad_reducida) TRUE)
         then
             (do-for-all-instances ((?cand CandidatoCiudad))
@@ -630,7 +630,7 @@
    (estado-refinamiento (fase AJUSTES_APLICADOS))
    ?cand <- (object (is-a CandidatoCiudad)
                     (ciudad ?ciu)
-                    (grado MUY_RECOMENDABLE | ADECUADO))
+                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO))
    (test (not (candidato-descartable ?cand)))
    (not (viaje-base-creado (ciudad ?ciu)))
 =>
@@ -644,13 +644,13 @@
 (defrule REFINAMIENTO::expandir-viajes
    (declare (salience 60))
    (estado-refinamiento (fase AJUSTES_APLICADOS))
-    ?trip <- (object (is-a ViajeCandidato)
+   ?trip <- (object (is-a ViajeCandidato)
                     (incluyeCiudad $?ciudades)
                     (n_ciudades ?n)
                     (precio_total ?p))
    ?cand <- (object (is-a CandidatoCiudad)
                     (ciudad ?nuevaCiudad)
-                    (grado MUY_RECOMENDABLE | ADECUADO))
+                    (grado MUY_RECOMENDABLE | RECOMENDABLE | ADECUADO))
    (test (not (candidato-descartable ?cand)))
    (test (< ?n (send [usuario1] get-ciudades_max)))
    (test (not (ciudad-en-lista ?nuevaCiudad ?ciudades)))
@@ -666,41 +666,88 @@
 ;;; 4. ELEGIR EL MEJOR VIAJE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule REFINAMIENTO::elegir-mejores-viajes
-    (declare (salience -10))
-    (estado-refinamiento (fase AJUSTES_APLICADOS))
-    ?f <- (viajes-restantes-por-elegir ?restantes&:(> ?restantes 0))
+(deffunction REFINAMIENTO::comparten-ciudad (?lista1 ?lista2)
+   (loop-for-count (?i 1 (length$ ?lista1)) do
+      (if (neq (member$ (nth$ ?i ?lista1) ?lista2) FALSE)
+         then
+            (return TRUE))
+   )
+   (return FALSE)
+)
 
-    ?trip <- (object (is-a ViajeCandidato)
-                     (valido TRUE)
-                     (seleccionado FALSE)
-                     (puntuacion ?p))
+(defrule REFINAMIENTO::elegir-primer-viaje
+   (declare (salience -10))
+   (estado-refinamiento (fase AJUSTES_APLICADOS))
+   ?f <- (viajes-restantes-por-elegir 2)
 
-    (not (object (is-a ViajeCandidato)
-                 (valido TRUE)
-                 (seleccionado FALSE)
-                 (puntuacion ?p2&:(> ?p2 ?p))))
+   ?trip <- (object (is-a ViajeCandidato)
+                    (valido TRUE)
+                    (seleccionado FALSE)
+                    (puntuacion ?p))
+
+   (not (object (is-a ViajeCandidato)
+                (valido TRUE)
+                (seleccionado FALSE)
+                (puntuacion ?p2&:(> ?p2 ?p))))
 =>
-    (send ?trip put-seleccionado TRUE)
-    (bind ?rank (- 3 ?restantes)) ;; Calcula 1 para el primero, 2 para el segundo
-    (assert (viaje-seleccionado (id ?trip) (ranking ?rank)))
+   (send ?trip put-seleccionado TRUE)
+   (assert (viaje-seleccionado (id ?trip) (ranking 1)))
 
-    (bind ?ciudades (send ?trip get-incluyeCiudad))
-    (bind ?nombre-viaje (sym-cat viaje-final- ?rank))
-    (if (instance-existp ?nombre-viaje) then (unmake-instance ?nombre-viaje))
-    (bind ?ciudades (send ?trip get-incluyeCiudad))
-    (bind ?pois (send ?trip get-incluyePuntoDeInteres))
-    (bind ?nombre-viaje (sym-cat viaje-final- ?rank))
-    (if (instance-existp ?nombre-viaje) then (unmake-instance ?nombre-viaje))
+   (bind ?ciudades (send ?trip get-incluyeCiudad))
+   (if (instance-existp viaje-final-1) then (unmake-instance viaje-final-1))
+   (make-instance viaje-final-1 of Viaje
+      (incluyeCiudad ?ciudades)
+      (durada_dias (send ?trip get-durada_dias))
+      (precio_total (float (send ?trip get-precio_total))))
 
-    (make-instance ?nombre-viaje of Viaje
-        (incluyeCiudad ?ciudades)
-        (incluyePI ?pois)
-        (durada_dias (send ?trip get-durada_dias))
-        (precio_total (float (send ?trip get-precio_total))))
+   (retract ?f)
+   (assert (viajes-restantes-por-elegir 1))
+)
 
-    (retract ?f)
-    (assert (viajes-restantes-por-elegir (- ?restantes 1)))
+(defrule REFINAMIENTO::invalidar-viajes-solapados-con-primero
+   (declare (salience -9))
+   (estado-refinamiento (fase AJUSTES_APLICADOS))
+   (viaje-seleccionado (id ?trip1) (ranking 1))
+
+   ?trip <- (object (is-a ViajeCandidato)
+                    (valido TRUE)
+                    (seleccionado FALSE)
+                    (incluyeCiudad $?ciudadesTrip))
+
+   (test (REFINAMIENTO::comparten-ciudad
+             (create$ ?ciudadesTrip)
+             (create$ (send ?trip1 get-incluyeCiudad))))
+=>
+   (send ?trip put-valido FALSE)
+)
+
+(defrule REFINAMIENTO::elegir-segundo-viaje
+   (declare (salience -10))
+   (estado-refinamiento (fase AJUSTES_APLICADOS))
+   ?f <- (viajes-restantes-por-elegir 1)
+
+   ?trip <- (object (is-a ViajeCandidato)
+                    (valido TRUE)
+                    (seleccionado FALSE)
+                    (puntuacion ?p))
+
+   (not (object (is-a ViajeCandidato)
+                (valido TRUE)
+                (seleccionado FALSE)
+                (puntuacion ?p2&:(> ?p2 ?p))))
+=>
+   (send ?trip put-seleccionado TRUE)
+   (assert (viaje-seleccionado (id ?trip) (ranking 2)))
+
+   (bind ?ciudades (send ?trip get-incluyeCiudad))
+   (if (instance-existp viaje-final-2) then (unmake-instance viaje-final-2))
+   (make-instance viaje-final-2 of Viaje
+      (incluyeCiudad ?ciudades)
+      (durada_dias (send ?trip get-durada_dias))
+      (precio_total (float (send ?trip get-precio_total))))
+
+   (retract ?f)
+   (assert (viajes-restantes-por-elegir 0))
 )
 
 (defrule REFINAMIENTO::finalizar-seleccion-viajes-insuficientes

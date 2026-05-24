@@ -205,15 +205,24 @@
 ;;; 3. EVALUAR PREFERENCIAS (OPCIONALES)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(deffunction HEURISTICA::tema-instancia (?tema)
+   (return (symbol-to-instance-name (sym-cat tema- (lowcase ?tema))))
+)
+
 (defrule HEURISTICA::preferencia-tematica
-    (declare (salience 0))
-    (tematica-deducida ?t)
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu))
-    (object (name ?ciu) (cluster_tematico ?cluster))
-=>
-    (if (eq ?t ?cluster) 
-        then (send ?cand put-tematica_ok SI)
-        else (send ?cand put-tematica_ok PARCIAL))
+   (declare (salience 0))
+   (tematica-deducida ?t)
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (ciudad ?ciu))
+   (object (is-a Ciudad)
+           (name ?ciu)
+           (cluster_tematico ?cluster))
+   =>
+   (if (eq ?cluster (HEURISTICA::tema-instancia ?t))
+      then
+         (send ?cand put-tematica_ok SI)
+      else
+         (send ?cand put-tematica_ok PARCIAL))
 )
 
 (defrule HEURISTICA::preferencia-transporte
@@ -477,137 +486,201 @@
 (defrule HEURISTICA::incompatibilidad-descanso-aventura
    (declare (salience 1))
    (tematica-deducida Descanso)
-   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-
-   ;; Recuperamos la instancia de la ciudad y guardamos el puntero a su temática
-   (object (name ?ciu) (cluster_tematico ?tema))
-   ;; Validamos si el nombre de esa instancia es [Aventura]
-   (test (eq ?tema [Aventura]))
-
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (ciudad ?ciu)
+                    (desventajas $?d)
+                    (grado nil))
+   (object (is-a Ciudad)
+           (name ?ciu)
+           (cluster_tematico ?tema))
+   (test (eq ?tema [tema-aventura]))
    (test (eq (member$ "Incompatible: ciudad de aventura/riesgo" ?d) FALSE))
-   =>
+=>
    (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad de aventura/riesgo")
    (send ?cand put-tematica_ok NO)
-   (send ?cand put-incompatibilidad_especifica SI))
+   (send ?cand put-incompatibilidad_especifica SI)
+)
 
 (defrule HEURISTICA::incompatibilidad-familiar-romantico
    (declare (salience 1))
    (tematica-deducida Familiar)
-   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-   (object (name ?ciu) (cluster_tematico ?tema))
-   (test (eq ?tema [Romantico]))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (ciudad ?ciu)
+                    (desventajas $?d)
+                    (grado nil))
+   (object (is-a Ciudad)
+           (name ?ciu)
+           (cluster_tematico ?tema))
+   (test (eq ?tema [tema-romantico]))
    (test (eq (member$ "Incompatible: ciudad orientada a parejas" ?d) FALSE))
-   =>
+=>
    (slot-insert$ ?cand desventajas 1 "Incompatible: ciudad orientada a parejas")
    (send ?cand put-tematica_ok NO)
-   (send ?cand put-incompatibilidad_especifica SI))
+   (send ?cand put-incompatibilidad_especifica SI)
+)
 
 (defrule HEURISTICA::incompatibilidad-cultural-descanso
    (declare (salience 1))
    (tematica-deducida Cultural)
-   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-   (object (name ?ciu) (cluster_tematico ?tema))
-   (test (eq ?tema [Descanso]))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (ciudad ?ciu)
+                    (desventajas $?d)
+                    (grado nil))
+   (object (is-a Ciudad)
+           (name ?ciu)
+           (cluster_tematico ?tema))
+   (test (eq ?tema [tema-descanso]))
    (test (eq (member$ "Oferta cultural limitada" ?d) FALSE))
-   =>
+=>
    (slot-insert$ ?cand desventajas 1 "Oferta cultural limitada")
    (send ?cand put-tematica_ok NO)
-   (send ?cand put-incompatibilidad_especifica SI))
+   (send ?cand put-incompatibilidad_especifica SI)
+)
 
 (defrule HEURISTICA::incompatibilidad-romantico-aventura
    (declare (salience 1))
    (tematica-deducida Romantico)
-   ?cand <- (object (is-a CandidatoCiudad) (ciudad ?ciu) (desventajas $?d) (grado nil))
-   (object (name ?ciu) (cluster_tematico ?tema))
-   (test (eq ?tema [Aventura]))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (ciudad ?ciu)
+                    (desventajas $?d)
+                    (grado nil))
+   (object (is-a Ciudad)
+           (name ?ciu)
+           (cluster_tematico ?tema))
+   (test (eq ?tema [tema-aventura]))
    (test (eq (member$ "Ambiente poco romantico" ?d) FALSE))
-   =>
+=>
    (slot-insert$ ?cand desventajas 1 "Ambiente poco romantico")
    (send ?cand put-tematica_ok NO)
-   (send ?cand put-incompatibilidad_especifica SI))
+   (send ?cand put-incompatibilidad_especifica SI)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 5. CLASIFICACIÓN FINAL
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule HEURISTICA::bloquear-presupuesto
-    (declare (salience 0))
-    ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok NO) (desventajas $?d) (grado nil))
+   (declare (salience 0))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (presupuesto_ok NO)
+                    (desventajas $?d)
+                    (grado nil))
 =>
-    (send ?cand put-grado NO_RECOMENDABLE)
-    (send ?cand put-motivo "RESTRICCIÓN: Excede presupuesto maximo")
-    (if (eq (member$ "RESTRICCIÓN: Precio excesivo" ?d) FALSE) then
-        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Precio excesivo"))
+   (send ?cand put-grado NO_RECOMENDABLE)
+   (send ?cand put-motivo "RESTRICCION: Excede presupuesto maximo")
+   (if (eq (member$ "RESTRICCION: Precio excesivo" ?d) FALSE)
+      then
+      (slot-insert$ ?cand desventajas 1 "RESTRICCION: Precio excesivo"))
 )
 
 (defrule HEURISTICA::bloquear-accesibilidad
-    (declare (salience 0))
-    ?cand <- (object (is-a CandidatoCiudad) (accesibilidad_ok NO) (desventajas $?d) (grado nil))
+   (declare (salience 0))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (accesibilidad_ok NO)
+                    (desventajas $?d)
+                    (grado nil))
 =>
-    (send ?cand put-grado NO_RECOMENDABLE)
-    (send ?cand put-motivo "RESTRICCIÓN: Sin accesibilidad adecuada")
-    (if (eq (member$ "RESTRICCIÓN: Sin accesibilidad" ?d) FALSE) then
-        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Sin accesibilidad"))
+   (send ?cand put-grado NO_RECOMENDABLE)
+   (send ?cand put-motivo "RESTRICCION: Sin accesibilidad adecuada")
+   (if (eq (member$ "RESTRICCION: Sin accesibilidad" ?d) FALSE)
+      then
+      (slot-insert$ ?cand desventajas 1 "RESTRICCION: Sin accesibilidad"))
 )
 
 (defrule HEURISTICA::bloquear-transporte
-    (declare (salience 0))
-    ?cand <- (object (is-a CandidatoCiudad) (transporte_ok NO) (desventajas $?d) (grado nil))
+   (declare (salience 0))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (transporte_ok NO)
+                    (desventajas $?d)
+                    (grado nil))
 =>
-    (send ?cand put-grado NO_RECOMENDABLE)
-    (send ?cand put-motivo "RESTRICCIÓN: Requiere transporte prohibido")
-    (if (eq (member$ "RESTRICCIÓN: Transporte prohibido" ?d) FALSE) then
-        (slot-insert$ ?cand desventajas 1 "RESTRICCIÓN: Transporte prohibido"))
+   (send ?cand put-grado NO_RECOMENDABLE)
+   (send ?cand put-motivo "RESTRICCION: Requiere transporte prohibido")
+   (if (eq (member$ "RESTRICCION: Transporte prohibido" ?d) FALSE)
+      then
+      (slot-insert$ ?cand desventajas 1 "RESTRICCION: Transporte prohibido"))
 )
 
 (defrule HEURISTICA::clasificar-muy-recomendable
-    (declare (salience -1))
-    ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto_ok SI)
-                     (transporte_ok SI)
-                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
-                     (tematica_ok SI)
-                     (ventajas $?v&:(> (length$ ?v) 0))
-                     (grado nil))
+   (declare (salience -1))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (presupuesto_ok SI)
+                    (transporte_ok SI)
+                    (accesibilidad_ok SI)
+                    (tematica_ok SI)
+                    (ventajas $?v)
+                    (desventajas $?d)
+                    (grado nil))
+   (test (>= (length$ ?v) 2))
+   (test (= (length$ ?d) 0))
 =>
-    (send ?cand put-grado MUY_RECOMENDABLE)
-    (send ?cand put-motivo "Cumple todas restricciones y preferencias optimas")
+   (send ?cand put-grado MUY_RECOMENDABLE)
+   (send ?cand put-motivo "Encaje excelente con el perfil del viaje")
+)
+
+(defrule HEURISTICA::clasificar-recomendable
+   (declare (salience -2))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (presupuesto_ok SI)
+                    (transporte_ok SI)
+                    (accesibilidad_ok ?acc)
+                    (tematica_ok SI)
+                    (ventajas $?v)
+                    (desventajas $?d)
+                    (grado nil))
+   (test (or (eq ?acc SI) (eq ?acc PARCIAL)))
+   (test (>= (length$ ?v) 3))
+   (test (<= (length$ ?d) 1))
+=>
+   (send ?cand put-grado RECOMENDABLE)
+   (send ?cand put-motivo "Muy buena opcion, con pocas pegas")
 )
 
 (defrule HEURISTICA::clasificar-adecuado
-    (declare (salience -2))
-    ?cand <- (object (is-a CandidatoCiudad)
-                     (presupuesto_ok SI)
-                     (transporte_ok SI)
-                     (accesibilidad_ok ?acc&:(or (eq ?acc SI) (eq ?acc PARCIAL)))
-                     (grado nil))
+   (declare (salience -3))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (presupuesto_ok ?p)
+                    (transporte_ok SI)
+                    (accesibilidad_ok ?acc)
+                    (tematica_ok ?tem)
+                    (ventajas $?v)
+                    (desventajas $?d)
+                    (grado nil))
+   (test (or (eq ?p SI) (eq ?p PARCIAL)))
+   (test (or (eq ?acc SI) (eq ?acc PARCIAL)))
+   (test (or (eq ?tem SI) (eq ?tem PARCIAL)))
+   (test (> (length$ ?v) (length$ ?d)))
 =>
-    (send ?cand put-grado ADECUADO)
-    (send ?cand put-motivo "Cumple todas restricciones")
+   (send ?cand put-grado ADECUADO)
+   (send ?cand put-motivo "Balance positivo entre ventajas e inconvenientes")
 )
 
-(defrule HEURISTICA::clasificar-parcial-presupuesto
-    (declare (salience -3))
-    ?cand <- (object (is-a CandidatoCiudad) (presupuesto_ok PARCIAL) (grado nil))
+(defrule HEURISTICA::clasificar-poco-adecuado
+   (declare (salience -4))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (presupuesto_ok ?p)
+                    (transporte_ok SI)
+                    (accesibilidad_ok ?acc)
+                    (tematica_ok ?tem)
+                    (ventajas $?v)
+                    (desventajas $?d)
+                    (grado nil))
+   (test (or (eq ?p SI) (eq ?p PARCIAL)))
+   (test (or (eq ?acc SI) (eq ?acc PARCIAL)))
+   (test (or (eq ?tem SI) (eq ?tem PARCIAL) (eq ?tem NO)))
+   (test (<= (length$ ?v) (length$ ?d)))
 =>
-    (send ?cand put-grado PARCIALMENTE_ADECUADO)
-    (send ?cand put-motivo "Presupuesto algo ajustado")
+   (send ?cand put-grado POCO_ADECUADO)
+   (send ?cand put-motivo "Pesan tanto o mas los inconvenientes que las ventajas")
 )
 
-(defrule HEURISTICA::clasificar-parcial-tematica
-    (declare (salience -3))
-    ?cand <- (object (is-a CandidatoCiudad) (tematica_ok PARCIAL) (grado nil))
+(defrule HEURISTICA::clasificar-resto-poco-adecuado
+   (declare (salience -5))
+   ?cand <- (object (is-a CandidatoCiudad)
+                    (grado nil))
 =>
-    (send ?cand put-grado PARCIALMENTE_ADECUADO)
-    (send ?cand put-motivo "Tematica parcialmente compatible")
-)
-
-(defrule HEURISTICA::clasificar-no-recomendable-total
-    (declare (salience -4))
-    ?cand <- (object (is-a CandidatoCiudad) (tematica_ok NO) (grado nil))
-=>
-    (send ?cand put-grado NO_RECOMENDABLE)
-    (send ?cand put-motivo "No encaja con el perfil tematico")
+   (send ?cand put-grado POCO_ADECUADO)
+   (send ?cand put-motivo "No destaca y presenta un encaje debil")
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

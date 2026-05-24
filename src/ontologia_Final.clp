@@ -383,7 +383,7 @@
     ;;; Valoracion global del encaje de la ciudad
     (slot grado
         (type SYMBOL)
-        (allowed-symbols nil MUY_RECOMENDABLE ADECUADO PARCIALMENTE_ADECUADO NO_RECOMENDABLE)
+        (allowed-symbols nil MUY_RECOMENDABLE RECOMENDABLE ADECUADO POCO_ADECUADO NO_RECOMENDABLE)
         (default nil)
         (create-accessor read-write))
 
@@ -465,7 +465,7 @@
         (type INTEGER)
         (default 0)
         (create-accessor read-write))
-        
+
     (slot aptitud_alojamiento
         (type SYMBOL)
         (allowed-symbols ALTA MEDIA BAJA)
