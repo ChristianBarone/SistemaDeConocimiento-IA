@@ -1,0 +1,55 @@
+==========================================
+       TUS ITINERARIOS PERSONALIZADOS
+==========================================
+
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #1
+ Puntuacion : 1015 puntos
+ Coste Total: 606 EUR
+ Duracion   : 6 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Valencia (3 dias)
+    Alojamiento recomendado: Hotel Turia (101.5 EUR/noche)
+    POI: [ParqueTuria_Val]
+    POI: [MuseoCiencia_Val]
+    POI: [AcuarioOceanografic_Val]
+    POI: [CastilloSerranos_Val]
+  - Ciudad: Oporto (3 dias)
+    Alojamiento recomendado: Hotel Cedofeita (85.5 EUR/noche)
+    POI: [JardinRibeira_Opo]
+    POI: [PaseoSerralves_Opo]
+    POI: [MuseoAtlantico_Opo]
+    POI: [FaroClerigos_Opo]
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #2
+ Puntuacion : 973 puntos
+ Coste Total: 725 EUR
+ Duracion   : 6 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Niza (3 dias)
+    Alojamiento recomendado: Apartamento Promenade (125.0 EUR/noche)
+    POI: [JardinPromenade_Niz]
+    POI: [PaseoMatisse_Niz]
+    POI: [MuseoCastleHill_Niz]
+    POI: [FaroPuerto_Niz]
+  - Ciudad: Ljubljana (3 dias)
+    Alojamiento recomendado: Hotel Castillo (100.0 EUR/noche)
+    POI: [ParqueTivoli_Lju]
+    POI: [MuseoCastillo_Lju]
+    POI: [AcuarioDragon_Lju]
+    POI: [CastilloCentral_Lju]
+
+==========================================
+       RESUMEN DE TU VIAJE DESTACADO
+==========================================
+Ciudades   : 2
+Duracion   : 6 dias
+Coste      : 606 EUR
+Puntuacion : 1015
+==========================================
