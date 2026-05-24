@@ -17,9 +17,9 @@
     (multislot tienePOI
         (type INSTANCE)
         (create-accessor read-write))
-    ; (slot clima_habitual
-    ;     (type STRING)
-    ;     (create-accessor read-write))
+    (slot clima_habitual
+        (type STRING)
+        (create-accessor read-write))
     (slot cluster_tematico
         (type SYMBOL)
         (allowed-symbols Ocio Cultural Romantico Descanso Familiar Aventura)

@@ -152,11 +152,11 @@
 (defrule HEURISTICA::restriccion-presupuesto-alojamiento
     (nivel-presupuesto ?nivel)
     (perfil-presupuesto ?perfil)
-    ?u <- (object (is-a Usuario) (ajuste_ahorro ?ajuste))
+    ?u <- (object (is-a Usuario) (grado_ahorro ?grado))
     ?cand <- (object (is-a AlojamientoCandidato) (alojamiento ?aloj))
     (object (is-a Alojamiento) (name ?aloj) (precio_noche ?precio))
 =>
-    (bind ?precio-evaluado (+ ?precio ?ajuste))
+    (bind ?precio-evaluado (+ ?precio ?grado))
     (bind ?ok NO)
 
     (switch ?nivel
@@ -316,19 +316,10 @@
     (slot-insert$ ?cand ventajas 1 "Gran oferta turistica")
 )
 
-(defrule HEURISTICA::ventaja-museos
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
-    (object (name ?c) (tienePOI $? ?poi $?))
-    (object (name ?poi) (is-a Museo))
-    (test (eq (member$ "Rica oferta cultural" ?v) FALSE))
-=>
-    (slot-insert$ ?cand ventajas 1 "Rica oferta cultural")
-)
-
 (defrule HEURISTICA::ventaja-parques
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tienePOI $? ?poi $?))
-    (object (name ?poi) (is-a Parque))
+    (object (name ?poi) (tipo PARQUE))
     (test (eq (member$ "Espacios naturales" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Espacios naturales")
@@ -337,7 +328,7 @@
 (defrule HEURISTICA::ventaja-hotel
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hotel))
+    (object (name ?aloj) (categoria HOTEL))
     (test (eq (member$ "Hotel de calidad disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Hotel de calidad disponible")
@@ -346,7 +337,7 @@
 (defrule HEURISTICA::ventaja-hostal
     ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (grado nil))
     (object (name ?c) (tieneAlojamiento $? ?aloj $?))
-    (object (name ?aloj) (is-a Hostal))
+    (object (name ?aloj) (categoria HOSTAL))
     (test (eq (member$ "Alojamiento economico disponible" ?v) FALSE))
 =>
     (slot-insert$ ?cand ventajas 1 "Alojamiento economico disponible")

@@ -1,4 +1,4 @@
-;;; Módulo de preguntas: recopila preferencias del usuario
+;; Módulo de preguntas: recopila preferencias del usuario
 
 (defmodule PREGUNTAS
     (import MAIN ?ALL)
@@ -142,8 +142,8 @@
     (send ?u put-presupuesto_max (float ?pres))
     (send ?u put-dias_min (integer ?dmin))
     (send ?u put-dias_max (integer ?dmax))
-    (send ?u put-grado-ahorro (integer ?ahorro))
-    (send ?u put-prioridad-alojamiento (integer ?cal_aloj))
+    (send ?u put-grado_ahorro (integer ?ahorro))
+    (send ?u put-prioridad_alojamiento (integer ?cal_aloj))
     (modify ?f (fase CIUDADES))
 )
 
