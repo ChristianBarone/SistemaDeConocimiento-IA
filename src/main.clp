@@ -9,10 +9,10 @@
 ;(load "modulo-salida.clp")
 
 
-;(reset)
+(reset)
 (defrule flujo-principal
    (declare (salience 10))
    =>
    (focus PREGUNTAS)
 )
-;(run)
+(run)
