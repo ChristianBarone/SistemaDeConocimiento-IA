@@ -9,6 +9,7 @@
 #   make test-nens           -> prova de família amb nens
 #   make test-impossibilitat -> prova de requisits impossibles
 #   make shell               -> shell interactiva amb tot carregat
+#   make zip                 -> crea un arxiu .zip amb tot el projecte
 #   make clean               -> esborra fitxers temporals
 # ============================================================
 
@@ -95,11 +96,20 @@ shell:
 	$(CLIPS) -f $(LOADS)
 
 # ------------------------------------------------------------
+# Comprimir projecte
+# ------------------------------------------------------------
+.PHONY: zip
+zip:
+	@echo "Creant l'arxiu zip de tota la carpeta..."
+	@zip -r ChristianBaroneLauraMorenoPauTurroAbrahamRuiz.zip . -x "*.zip"
+	@echo "Arxiu ChristianBaroneLauraMorenoPauTurroAbrahamRuiz.zip creat amb èxit."
+
+# ------------------------------------------------------------
 # Neteja
 # ------------------------------------------------------------
 .PHONY: clean
 clean:
-	@rm -f run.clp
+	@rm -f run.clp *.zip
 	@echo "Neteja completada."
 
 # ------------------------------------------------------------
@@ -115,7 +125,7 @@ help:
 	@echo "  make test-explorador     Prova d'usuari explorador (prova4)"
 	@echo "  make test-nens           Prova d'una família amb nens (prova5)"
 	@echo "  make test-impossibilitat Prova on els requisits són impossibles (prova6)"
-	@echo "  make shell               Shell de CLIPS amb tot carregat"
+	@echo "  make zip                 Crea un arxiu projecte_viatges.zip amb tota la carpeta"
 	@echo "  make clean               Esborra fitxers temporals"
 	@echo ""
 	@echo "  Si CLIPS no es troba, edita la variable CLIPS= al principi"
