@@ -1,0 +1,3 @@
+--- Refinamiento completado ---
+
+No se ha podido construir ningun viaje valido con las restricciones actuales.

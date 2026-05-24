@@ -45,7 +45,7 @@
     (declare (salience 9999))
     (object (is-a Usuario) (name [usuario1]))
 =>
-    (printout t crlf "=== CASO DE PRUEBA: ESTANDARD ===" crlf)
+    (printout t crlf "=== CASO DE PRUEBA: RESTRICCION TRANSPORTE ===" crlf)
     (printout t "Presupuesto: 3000 EUR | Dias: 5-10 | Ciudades: 1-3" crlf)
     (printout t "Temporada: PRIMAVERA | Movilidad reducida: SI" crlf crlf)
     (focus ABSTRACCION)

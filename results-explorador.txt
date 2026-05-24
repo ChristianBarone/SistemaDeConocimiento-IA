@@ -1,0 +1,73 @@
+==========================================
+       TUS ITINERARIOS PERSONALIZADOS
+==========================================
+
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #1
+ Puntuacion : 1668 puntos
+ Coste Total: 1361 EUR
+ Duracion   : 9 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Bergen (3 dias)
+    Alojamiento recomendado: Apartamento Bryggen (150.0 EUR/noche)
+    POI: [SenderoBryggen_Ber]
+    POI: [TelefericoFiordo_Ber]
+    POI: [FortalezaFloyen_Ber]
+    POI: [MuseoAlpinoHanseatico_Ber]
+  - Ciudad: Salzburgo (3 dias)
+    Alojamiento recomendado: Apartamento Mozart (138.0 EUR/noche)
+    POI: [SenderoMirabell_Sal]
+    POI: [TelefericoFortaleza_Sal]
+    POI: [FortalezaMozart_Sal]
+    POI: [MuseoAlpinoAlpes_Sal]
+  - Ciudad: Innsbruck (3 dias)
+    Alojamiento recomendado: Apartamento Alpen (135.0 EUR/noche)
+    POI: [SenderoNordkette_Inn]
+    POI: [TelefericoAlpino_Inn]
+    POI: [FortalezaInn_Inn]
+    POI: [MuseoAlpinoAmbras_Inn]
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #2
+ Puntuacion : 971 puntos
+ Coste Total: 1015 EUR
+ Duracion   : 9 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Oporto (3 dias)
+    Alojamiento recomendado: Hotel Cedofeita (85.5 EUR/noche)
+    POI: [JardinRibeira_Opo]
+    POI: [PaseoSerralves_Opo]
+    POI: [MuseoAtlantico_Opo]
+    POI: [FaroClerigos_Opo]
+  - Ciudad: Funchal (2 dias)
+    Alojamiento recomendado: Hotel Lido (103.0 EUR/noche)
+    POI: [JardinLido_Fun]
+    POI: [PaseoMadeira_Fun]
+    POI: [MuseoBotanico_Fun]
+    POI: [FaroFarol_Fun]
+  - Ciudad: Niza (2 dias)
+    Alojamiento recomendado: Apartamento Promenade (125.0 EUR/noche)
+    POI: [JardinPromenade_Niz]
+    POI: [PaseoMatisse_Niz]
+    POI: [MuseoCastleHill_Niz]
+    POI: [FaroPuerto_Niz]
+  - Ciudad: Valencia (2 dias)
+    Alojamiento recomendado: Hotel Turia (101.5 EUR/noche)
+    POI: [ParqueTuria_Val]
+    POI: [MuseoCiencia_Val]
+    POI: [AcuarioOceanografic_Val]
+    POI: [CastilloSerranos_Val]
+
+==========================================
+       RESUMEN DE TU VIAJE DESTACADO
+==========================================
+Ciudades   : 3
+Duracion   : 9 dias
+Coste      : 1361 EUR
+Puntuacion : 1668
+==========================================

@@ -1,0 +1,55 @@
+==========================================
+       TUS ITINERARIOS PERSONALIZADOS
+==========================================
+
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #1
+ Puntuacion : 2387 puntos
+ Coste Total: 1410 EUR
+ Duracion   : 10 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Praga (5 dias)
+    Alojamiento recomendado: Hotel Castillo (125.5 EUR/noche)
+    POI: [ParqueCastillo_Pra]
+    POI: [MuseoReloj_Pra]
+    POI: [AcuarioPetrin_Pra]
+    POI: [CastilloZoo_Pra]
+  - Ciudad: Copenhague (5 dias)
+    Alojamiento recomendado: Apartamento Nyhavn (145.0 EUR/noche)
+    POI: [ParqueTivoli_Cop]
+    POI: [MuseoNyhavn_Cop]
+    POI: [AcuarioJardines_Cop]
+    POI: [CastilloRosenborg_Cop]
+
+==========================================================
+ ITINERARIO RECOMENDADO OPTIMO #2
+ Puntuacion : 1684 puntos
+ Coste Total: 1030 EUR
+ Duracion   : 10 dias
+==========================================================
+
+ITINERARIO PROPUESTO
+  - Ciudad: Valencia (5 dias)
+    Alojamiento recomendado: Hotel Turia (101.5 EUR/noche)
+    POI: [ParqueTuria_Val]
+    POI: [MuseoCiencia_Val]
+    POI: [AcuarioOceanografic_Val]
+    POI: [CastilloSerranos_Val]
+  - Ciudad: Madrid (5 dias)
+    Alojamiento recomendado: Hotel Malasana (95.0 EUR/noche)
+    POI: [BarrioRetiro_Mad]
+    POI: [MuseoPrado_Mad]
+    POI: [ParqueGranVia_Mad]
+    POI: [TorrePalacio_Mad]
+
+==========================================
+       RESUMEN DE TU VIAJE DESTACADO
+==========================================
+Ciudades   : 2
+Duracion   : 10 dias
+Coste      : 1410 EUR
+Puntuacion : 2387
+==========================================
