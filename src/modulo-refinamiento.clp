@@ -220,13 +220,8 @@
     (bind ?norm-origen (REFINAMIENTO::normalizar-nombre ?origen))
     (bind ?norm-destino (REFINAMIENTO::normalizar-nombre ?destino))
 
-    (printout t "--------------------------------------------------------" crlf)
-    (printout t "  DEBUG VIAJE: Intentando conectar " ?origen " con " ?destino crlf)
-    (printout t "   Normalizados a: " ?norm-origen " -> " ?norm-destino crlf)
-
     ;; Buscamos las instancias de transporte
     (bind ?transportes (find-all-instances ((?t Transporte)) TRUE))
-    (printout t "   [Ontologia] Transportes totales encontrados: " (length$ ?transportes) crlf)
 
     (loop-for-count (?i 1 (length$ ?transportes)) do
         (bind ?t (nth$ ?i ?transportes))
@@ -241,10 +236,8 @@
             (bind ?lista-ori (if (multifieldp ?ori-slot) then ?ori-slot else (create$ ?ori-slot)))
             (bind ?lista-des (if (multifieldp ?des-slot) then ?des-slot else (create$ ?des-slot)))
 
-            ;; Imprimimos los primeros 3 transportes para ver qué estructura interna tienen
-            (if (<= ?i 3) then
-                (printout t "       Evaluando " (instance-name ?t) " | Origen ontologia: " ?ori-slot " | Destino ontologia: " ?des-slot crlf)
-            )
+            ;; Una sola línea por transporte analizado
+            (printout t "  [Transporte] Evaluando: " (instance-name ?t) crlf)
 
             (bind ?ori-ok FALSE)
             (loop-for-count (?j 1 (length$ ?lista-ori)) do
@@ -258,11 +251,10 @@
 
             (if (and ?ori-ok ?des-ok)
                 then
-                (printout t " CONEXION ENCONTRADA EXTRAVAGANTE! Usando: " (instance-name ?t) crlf)
+                (printout t "    Conexion encontrada: " ?origen " -> " ?destino crlf)
                 (return TRUE))
         )
     )
-    (printout t "  No hay ruta directa entre estas dos ciudades." crlf)
     (return FALSE)
 )
 

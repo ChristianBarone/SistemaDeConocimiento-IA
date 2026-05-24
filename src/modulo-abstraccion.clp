@@ -340,105 +340,105 @@
 (defrule ABSTRACCION::primavera-baja
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_primavera ?v))
     (test (< ?v 3))
 =>
-    (assert (ciudad-primavera BAJA))
+    (assert (ciudad-primavera ?ciudad BAJA))
 )
 
 (defrule ABSTRACCION::primavera-media
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera 3))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_primavera 3))
 =>
-    (assert (ciudad-primavera MEDIA))
+    (assert (ciudad-primavera ?ciudad MEDIA))
 )
 
 (defrule ABSTRACCION::primavera-alta
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_primavera ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_primavera ?v))
     (test (> ?v 3))
 =>
-    (assert (ciudad-primavera ALTA))
+    (assert (ciudad-primavera ?ciudad ALTA))
 )
 
 (defrule ABSTRACCION::verano-baja
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_verano ?v))
     (test (< ?v 3))
 =>
-    (assert (ciudad-verano BAJA))
+    (assert (ciudad-verano ?ciudad BAJA))
 )
 
 (defrule ABSTRACCION::verano-media
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano 3))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_verano 3))
 =>
-    (assert (ciudad-verano MEDIA))
+    (assert (ciudad-verano ?ciudad MEDIA))
 )
 
 (defrule ABSTRACCION::verano-alta
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_verano ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_verano ?v))
     (test (> ?v 3))
 =>
-    (assert (ciudad-verano ALTA))
+    (assert (ciudad-verano ?ciudad ALTA))
 )
 
 (defrule ABSTRACCION::otono-baja
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_otono ?v))
     (test (< ?v 3))
 =>
-    (assert (ciudad-otono BAJA))
+    (assert (ciudad-otono ?ciudad BAJA))
 )
 
 (defrule ABSTRACCION::otono-media
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono 3))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_otono 3))
 =>
-    (assert (ciudad-otono MEDIA))
+    (assert (ciudad-otono ?ciudad MEDIA))
 )
 
 (defrule ABSTRACCION::otono-alta
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_otono ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_otono ?v))
     (test (> ?v 3))
 =>
-    (assert (ciudad-otono ALTA))
+    (assert (ciudad-otono ?ciudad ALTA))
 )
 
 (defrule ABSTRACCION::invierno-baja
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_invierno ?v))
     (test (< ?v 3))
 =>
-    (assert (ciudad-invierno BAJA))
+    (assert (ciudad-invierno ?ciudad BAJA))
 )
 
 (defrule ABSTRACCION::invierno-media
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno 3))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_invierno 3))
 =>
-    (assert (ciudad-invierno MEDIA))
+    (assert (ciudad-invierno ?ciudad MEDIA))
 )
 
 (defrule ABSTRACCION::invierno-alta
     (declare (salience 9))
     (entrada-completada)
-    ?c <- (object (is-a Ciudad) (name [ciudad1]) (valoracion_invierno ?v))
+    ?c <- (object (is-a Ciudad) (name ?ciudad) (valoracion_invierno ?v))
     (test (> ?v 3))
 =>
-    (assert (ciudad-invierno ALTA))
+    (assert (ciudad-invierno ?ciudad ALTA))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

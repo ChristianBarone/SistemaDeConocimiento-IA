@@ -6,7 +6,7 @@
     (import MAIN ?ALL)
     (import ABSTRACCION ?ALL)
     (import PREGUNTAS ?ALL)
-    (export ?ALL)
+    (export ?ALL)   
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -347,12 +347,18 @@
 )
 
 (defrule HEURISTICA::calcular-idoneidad-climatica
-    ?cand <- (object (is-a CandidatoCiudad) (ciudad ?c) (ventajas $?v) (desventajas $?d) (grado nil))
+    ?cand <- (object (is-a CandidatoCiudad) 
+                     (ciudad ?c) 
+                     (ventajas $?v) 
+                     (desventajas $?d) 
+                     (grado nil))
     (ciudad-primavera ?c ?nivel-prim)
     (ciudad-verano ?c ?nivel-ver)
     (ciudad-otono ?c ?nivel-oto)
     (ciudad-invierno ?c ?nivel-inv)
-    ?u <- (object (is-a Usuario) (name [usuario1]) (temporada_viaje ?temporada))
+    ?u <- (object (is-a Usuario) 
+                  (name [usuario1]) 
+                  (temporada_viaje ?temporada))
     (test (eq (member$ "Temporada ideal" ?v) FALSE))
     (test (eq (member$ "Temporada no optima" ?d) FALSE))
     (test (eq (member$ "Mala temporada" ?d) FALSE))
@@ -362,24 +368,29 @@
     (bind ?nivel-evaluado MEDIA)
 
     (switch ?temporada
-        (case "PRIMAVERA" then (bind ?nivel-evaluado ?nivel-prim))
-        (case "VERANO"    then (bind ?nivel-evaluado ?nivel-ver))
-        (case "OTONO"     then (bind ?nivel-evaluado ?nivel-oto))
-        (case "INVIERNO"  then (bind ?nivel-evaluado ?nivel-inv))
+        (case PRIMAVERA then (bind ?nivel-evaluado ?nivel-prim))
+        (case VERANO    then (bind ?nivel-evaluado ?nivel-ver))
+        (case OTONO     then (bind ?nivel-evaluado ?nivel-oto))
+        (case INVIERNO  then (bind ?nivel-evaluado ?nivel-inv))
     )
 
     (switch ?nivel-evaluado
-        (case BAJA  then (bind ?etiqueta "Mala temporada") (bind ?es-ventaja FALSE))
-        (case MEDIA then (bind ?etiqueta "Temporada no optima") (bind ?es-ventaja FALSE))
-        (case ALTA  then (bind ?etiqueta "Temporada ideal") (bind ?es-ventaja TRUE))
+        (case BAJA  then
+            (bind ?etiqueta "Mala temporada")
+            (bind ?es-ventaja FALSE))
+        (case MEDIA then
+            (bind ?etiqueta "Temporada no optima")
+            (bind ?es-ventaja FALSE))
+        (case ALTA  then
+            (bind ?etiqueta "Temporada ideal")
+            (bind ?es-ventaja TRUE))
     )
 
     (if (eq ?es-ventaja TRUE)
         then
-        (modify-instance ?cand (ventajas (insert$ ?v 1 ?etiqueta)))
+            (slot-insert$ ?cand ventajas 1 ?etiqueta)
         else
-        (modify-instance ?cand (desventajas (insert$ ?d 1 ?etiqueta)))
-    )
+            (slot-insert$ ?cand desventajas 1 ?etiqueta))
 )
 
 (defrule HEURISTICA::ventaja-clima-calido
