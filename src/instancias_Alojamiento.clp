@@ -13,7 +13,7 @@
    (nombre "Hostal Jordaan")
    (precio_noche 44.4)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelMuseo_Ams] of Alojamiento
@@ -45,7 +45,7 @@
    (nombre "Hostal SanMarco")
    (precio_noche 43.2)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelLaguna_Ven] of Alojamiento
@@ -77,7 +77,7 @@
    (nombre "Hostal InnereStadt")
    (precio_noche 36.4)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelBelvedere_Vie] of Alojamiento
@@ -141,7 +141,7 @@
    (nombre "Hostal Born")
    (precio_noche 38.8)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelGracia_Bcn] of Alojamiento
@@ -173,7 +173,7 @@
    (nombre "Hostal Arno")
    (precio_noche 38.8)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelUffizi_Flo] of Alojamiento
@@ -205,7 +205,7 @@
    (nombre "Hostal Georgian")
    (precio_noche 30.0)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelLiffey_Dub] of Alojamiento
@@ -237,7 +237,7 @@
    (nombre "Hostal Sol")
    (precio_noche 30.0)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelMalasana_Mad] of Alojamiento
@@ -301,7 +301,7 @@
    (nombre "Hostal VieuxNice")
    (precio_noche 41.6)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelGaribaldi_Niz] of Alojamiento
@@ -333,7 +333,7 @@
    (nombre "Hostal Montmartre")
    (precio_noche 39.2)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelLatin_Par] of Alojamiento
@@ -365,7 +365,7 @@
    (nombre "Hostal Trastevere")
    (precio_noche 41.6)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelNavona_Rom] of Alojamiento
@@ -429,7 +429,7 @@
    (nombre "Hostal Marina")
    (precio_noche 32.0)
    (accesible SI)
-   (calidad 3)
+   (calidad 1)
 )
 
 ([HotelLido_Fun] of Alojamiento
@@ -493,7 +493,7 @@
    (nombre "Hostal Centro")
    (precio_noche 39.2)
    (accesible SI)
-   (calidad 3)
+   (calidad 2)
 )
 
 ([HotelTivoli_Cop] of Alojamiento
