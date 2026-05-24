@@ -3,7 +3,7 @@
 ([AptoCanales_Ams] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Canales")
-   (precio_noche 77.5)
+   (precio_noche 140.0)
    (accesible SI)
    (calidad 4)
 )
@@ -35,7 +35,7 @@
 ([AptoRialto_Ven] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Rialto")
-   (precio_noche 77.0)
+   (precio_noche 138.0)
    (accesible SI)
    (calidad 4)
 )
@@ -67,7 +67,7 @@
 ([AptoOpera_Vie] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Opera")
-   (precio_noche 86.5)
+   (precio_noche 155.0)
    (accesible SI)
    (calidad 4)
 )
@@ -131,7 +131,7 @@
 ([AptoEixample_Bcn] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Eixample")
-   (precio_noche 66.5)
+   (precio_noche 130.0)
    (accesible SI)
    (calidad 4)
 )
@@ -163,7 +163,7 @@
 ([AptoDuomo_Flo] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Duomo")
-   (precio_noche 66.5)
+   (precio_noche 130.0)
    (accesible SI)
    (calidad 4)
 )
@@ -259,7 +259,7 @@
 ([AptoMarienplatz_Mun] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Marienplatz")
-   (precio_noche 95.0)
+   (precio_noche 155.0)
    (accesible SI)
    (calidad 4)
 )
@@ -291,7 +291,7 @@
 ([AptoPromenade_Niz] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Promenade")
-   (precio_noche 60.0)
+   (precio_noche 125.0)
    (accesible SI)
    (calidad 4)
 )
@@ -323,7 +323,7 @@
 ([AptoMarais_Par] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Marais")
-   (precio_noche 92.0)
+   (precio_noche 150.0)
    (accesible SI)
    (calidad 4)
 )
@@ -355,7 +355,7 @@
 ([AptoVaticano_Rom] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Vaticano")
-   (precio_noche 78.0)
+   (precio_noche 140.0)
    (accesible SI)
    (calidad 4)
 )
@@ -387,7 +387,7 @@
 ([AptoAlpen_Inn] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Alpen")
-   (precio_noche 72.0)
+   (precio_noche 135.0)
    (accesible SI)
    (calidad 4)
 )
@@ -419,7 +419,7 @@
 ([AptoMadeira_Fun] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Madeira")
-   (precio_noche 50.0)
+   (precio_noche 115.0)
    (accesible SI)
    (calidad 4)
 )
@@ -451,7 +451,7 @@
 ([AptoCarmen_Val] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Carmen")
-   (precio_noche 45.0)
+   (precio_noche 110.0)
    (accesible SI)
    (calidad 4)
 )
@@ -483,7 +483,7 @@
 ([AptoNyhavn_Cop] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Nyhavn")
-   (precio_noche 86.0)
+   (precio_noche 145.0)
    (accesible SI)
    (calidad 4)
 )
@@ -579,7 +579,7 @@
 ([AptoMozart_Sal] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Mozart")
-   (precio_noche 72.0)
+   (precio_noche 138.0)
    (accesible SI)
    (calidad 4)
 )
@@ -611,7 +611,7 @@
 ([AptoBryggen_Ber] of Alojamiento
    (categoria APARTAMENTO)
    (nombre "Apartamento Bryggen")
-   (precio_noche 89.5)
+   (precio_noche 150.0)
    (accesible SI)
    (calidad 4)
 )
