@@ -18,7 +18,7 @@ També s'inclou informació sobre les preferències de l'usuari que s'han comple
 
 ## Requisits
 - **CLIPS IDE** versió 6.4 o superior
-- `loads.txt` dintre de la carpeta *src*
+- `loads.txt` dintre la carpeta *src*
 
 ## Compilació i Execució
 
