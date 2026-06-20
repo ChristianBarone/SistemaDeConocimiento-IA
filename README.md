@@ -13,7 +13,19 @@ La solució és la recomanació de dos plans de viatge no semblants a l'usuari. 
 - Punts d'interès a visitar a la ciutat
 - Mitjans de transport entre ciutats
 - Tipus d'allotjament
+
 També s'inclou informació sobre les preferències de l'usuari que s'han complert en la solució.
 
 ## Requisits
+- **CLIPS IDE** versió 6.4 o superior
+- *loads.txt* dentro de la carpeta *src*
 
+## Compilació i Execució
+
+```CLIPSIDE
+(batch "loads.txt")
+```
+
+```CLIPSIDE
+(run)
+```
