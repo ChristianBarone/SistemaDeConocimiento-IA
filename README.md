@@ -21,10 +21,12 @@ També s'inclou informació sobre les preferències de l'usuari que s'han comple
 - `loads.txt` dintre la carpeta *src*
 
 ## Compilació i Execució
+A la terminal de CLIPS IDE, executeu la següent comanda per carregar totes les dades necessàries.
 
 ```CLIPSIDE
 (batch "loads.txt")
 ```
+Executeu el codi CLIPS fent servir `(run)`.
 
 ```CLIPSIDE
 (run)
