@@ -9,5 +9,4 @@
 (load "modulo-refinamiento.clp")
 (load "modulo-salida.clp")
 
-;;; 3. INICIO AUTOMÁTICO
 (reset)
