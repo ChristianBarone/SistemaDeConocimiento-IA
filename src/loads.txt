@@ -11,4 +11,3 @@
 
 ;;; 3. INICIO AUTOMÁTICO
 (reset)
-(run)
